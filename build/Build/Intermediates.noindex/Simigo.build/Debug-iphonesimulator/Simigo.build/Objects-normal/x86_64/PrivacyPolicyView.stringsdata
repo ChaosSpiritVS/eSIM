@@ -1,0 +1,56 @@
+{
+  "source": "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/PrivacyPolicyView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "隐私政策",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 19
+        }
+      },
+      {
+        "comment": "",
+        "key": "隐私政策简介",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 7
+        }
+      },
+      {
+        "comment": "",
+        "key": "我们收集的信息包括：设备标识、使用数据与诊断。",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 8
+        }
+      },
+      {
+        "comment": "",
+        "key": "我们仅用于提供服务、改进体验与安全风控。",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 10
+        }
+      },
+      {
+        "comment": "",
+        "key": "您可通过设置控制数据与删除账户请求。",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 12
+        }
+      },
+      {
+        "comment": "",
+        "key": "更多详尽条款请访问官网隐私政策页面。",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 14
+        }
+      }
+    ]
+  },
+  "version": 1
+}

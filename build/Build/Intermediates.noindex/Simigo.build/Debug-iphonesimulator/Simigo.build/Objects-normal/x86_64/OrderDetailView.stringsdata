@@ -1,0 +1,456 @@
+{
+  "source": "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/OrderDetailView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "订单详情",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 411
+        }
+      },
+      {
+        "comment": "",
+        "key": "已复制激活码",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 519
+        }
+      },
+      {
+        "comment": "",
+        "key": "已复制 SM-DP+ 地址",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 522
+        }
+      },
+      {
+        "comment": "",
+        "key": "订单信息",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 27
+        }
+      },
+      {
+        "comment": "",
+        "key": "操作",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 116
+        }
+      },
+      {
+        "comment": "",
+        "key": "使用情况",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 159
+        }
+      },
+      {
+        "comment": "",
+        "key": "安装信息",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 207
+        }
+      },
+      {
+        "comment": "",
+        "key": "售后",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 388
+        }
+      },
+      {
+        "comment": "",
+        "key": "订单ID",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 36
+        }
+      },
+      {
+        "comment": "",
+        "key": "套餐名称",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 41
+        }
+      },
+      {
+        "comment": "",
+        "key": "创建时间",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 46
+        }
+      },
+      {
+        "comment": "",
+        "key": "金额",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 51
+        }
+      },
+      {
+        "comment": "",
+        "key": "状态",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 56
+        }
+      },
+      {
+        "comment": "",
+        "key": "支付方式",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 61
+        }
+      },
+      {
+        "comment": "",
+        "key": "套餐类型",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 67
+        }
+      },
+      {
+        "comment": "",
+        "key": "国家/地区",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 74
+        }
+      },
+      {
+        "comment": "",
+        "key": "到期时间",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 82
+        }
+      },
+      {
+        "comment": "",
+        "key": "已开始",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 91
+        }
+      },
+      {
+        "comment": "",
+        "key": "是",
+        "location": {
+          "startingColumn": 52,
+          "startingLine": 93
+        }
+      },
+      {
+        "comment": "",
+        "key": "否",
+        "location": {
+          "startingColumn": 60,
+          "startingLine": 93
+        }
+      },
+      {
+        "comment": "",
+        "key": "计划状态",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 98
+        }
+      },
+      {
+        "comment": "",
+        "key": "套餐代码",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 106
+        }
+      },
+      {
+        "comment": "",
+        "key": "未能加载套餐信息",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 122
+        }
+      },
+      {
+        "comment": "",
+        "key": "订单加载完成后可查看套餐或支付",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 154
+        }
+      },
+      {
+        "comment": "",
+        "key": "重试支付",
+        "location": {
+          "startingColumn": 64,
+          "startingLine": 131
+        }
+      },
+      {
+        "comment": "",
+        "key": "继续支付",
+        "location": {
+          "startingColumn": 81,
+          "startingLine": 131
+        }
+      },
+      {
+        "comment": "",
+        "key": "查看套餐详情",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 141
+        }
+      },
+      {
+        "comment": "",
+        "key": "查看套餐详情",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 148
+        }
+      },
+      {
+        "comment": "",
+        "key": "请稍候…",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 150
+        }
+      },
+      {
+        "comment": "",
+        "key": "暂未获取到用量信息",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 202
+        }
+      },
+      {
+        "comment": "",
+        "key": "刷新用量",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 196
+        }
+      },
+      {
+        "comment": "",
+        "key": "总流量",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 167
+        }
+      },
+      {
+        "comment": "",
+        "key": "已用流量",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 174
+        }
+      },
+      {
+        "comment": "",
+        "key": "剩余流量",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 180
+        }
+      },
+      {
+        "comment": "",
+        "key": "到期时间",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 186
+        }
+      },
+      {
+        "comment": "",
+        "key": "最后更新",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 192
+        }
+      },
+      {
+        "comment": "",
+        "key": "支付成功后，您将获得安装二维码与步骤说明。",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 378
+        }
+      },
+      {
+        "comment": "",
+        "key": "扫描二维码以安装 eSIM",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 300
+        }
+      },
+      {
+        "comment": "",
+        "key": "扫描二维码以安装 eSIM",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 312
+        }
+      },
+      {
+        "comment": "",
+        "key": "复制激活码",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 330
+        }
+      },
+      {
+        "comment": "",
+        "key": "激活码",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 322
+        }
+      },
+      {
+        "comment": "",
+        "key": "复制 SM-DP+ 地址",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 349
+        }
+      },
+      {
+        "comment": "",
+        "key": "SM-DP+ 地址",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 342
+        }
+      },
+      {
+        "comment": "",
+        "key": "安装步骤",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 360
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld.",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 363
+        }
+      },
+      {
+        "comment": "",
+        "key": "如无法扫描二维码，可输入激活码。",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 371
+        }
+      },
+      {
+        "comment": "",
+        "key": "查看 eSIM 安装指南",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 383
+        }
+      },
+      {
+        "comment": "",
+        "key": "申请退款",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 393
+        }
+      },
+      {
+        "comment": "",
+        "key": "确认申请退款？",
+        "location": {
+          "startingColumn": 41,
+          "startingLine": 394
+        }
+      },
+      {
+        "comment": "",
+        "key": "退款申请已提交",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 400
+        }
+      },
+      {
+        "comment": "",
+        "key": "退款申请失败",
+        "location": {
+          "startingColumn": 57,
+          "startingLine": 400
+        }
+      },
+      {
+        "comment": "",
+        "key": "确认申请",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 395
+        }
+      },
+      {
+        "comment": "",
+        "key": "取消",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 396
+        }
+      },
+      {
+        "comment": "",
+        "key": "当前离线，仅可浏览，部分操作不可用",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 513
+        }
+      },
+      {
+        "comment": "",
+        "key": "好的",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 520
+        }
+      },
+      {
+        "comment": "",
+        "key": "好的",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 523
+        }
+      }
+    ]
+  },
+  "version": 1
+}

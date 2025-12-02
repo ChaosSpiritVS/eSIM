@@ -1,0 +1,72 @@
+{
+  "source": "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/OrdersListView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "搜索订单ID",
+        "location": {
+          "startingColumn": 103,
+          "startingLine": 57
+        }
+      },
+      {
+        "comment": "",
+        "key": "订单",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 54
+        }
+      },
+      {
+        "comment": "",
+        "key": "我的订单",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 13
+        }
+      },
+      {
+        "comment": "",
+        "key": "暂无订单",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 34
+        }
+      },
+      {
+        "comment": "",
+        "key": "订单 #%@",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 25
+        }
+      },
+      {
+        "comment": "",
+        "key": "创建日期：%@",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 26
+        }
+      },
+      {
+        "comment": "",
+        "key": "加载中...",
+        "location": {
+          "startingColumn": 64,
+          "startingLine": 41
+        }
+      },
+      {
+        "comment": "",
+        "key": "加载更多",
+        "location": {
+          "startingColumn": 81,
+          "startingLine": 41
+        }
+      }
+    ]
+  },
+  "version": 1
+}

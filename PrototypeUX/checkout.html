@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>安全结账 · 原型</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="screen">
+      <div class="nav"><h1>安全结账</h1></div>
+      <div class="content">
+        <div class="card">
+          <div class="row" style="justify-content:space-between;">
+            <div>
+              <div style="font-weight:600;">中国 · Chinacom</div>
+              <div class="helper">数据 1 GB · 有效期 3 天</div>
+            </div>
+            <div class="money">Airmoney: £0.18 GBP</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="section-title">付款方式</div>
+          <div class="card" style="background:#fff8e1; border-color:#ffe3a3;">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <div style="font-weight:600;">PayPal</div>
+              <div>已选择</div>
+            </div>
+          </div>
+        </div>
+        <div class="helper">订单与安装说明将生成。确认购买即表示你同意<a class="link" href="terms.html">服务条款</a>。</div>
+        <div class="card">
+          <label class="checkbox"><input type="checkbox" id="acceptTerms"> 我已阅读并同意 <a class="link" href="terms.html">服务条款</a></label>
+        </div>
+        <div class="row" style="justify-content:space-between; align-items:center;">
+          <div style="font-weight:600;">总计 · £3.50 GBP</div>
+          <button class="btn paypal" id="payBtn" disabled>PayPal</button>
+        </div>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var accept = document.getElementById('acceptTerms');
+          var pay = document.getElementById('payBtn');
+          function update() { pay.disabled = !accept.checked; }
+          accept.addEventListener('change', update);
+          update();
+          pay.addEventListener('click', function() {
+            if (pay.disabled) return;
+            window.location.href = 'payment-success.html';
+          });
+        });
+        </script>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/MarketplaceView.swift":
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MarketplaceView.dia"
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MarketplaceView.swiftdeps"
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MarketplaceView.swiftconstvalues"
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MarketplaceView.o"
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MarketplaceView.d"
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/MoreInfoView.swift":
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MoreInfoView.o"
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MoreInfoView.dia"
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MoreInfoView.swiftconstvalues"
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MoreInfoView.d"
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MoreInfoView.swiftdeps"
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/OrderDetailView.swift":
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderDetailView.o"
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderDetailView.swiftdeps"
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderDetailView.dia"
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderDetailView.swiftconstvalues"
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderDetailView.d"

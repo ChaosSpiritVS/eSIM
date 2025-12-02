@@ -1,0 +1,18 @@
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Config/AppConfig.swift":
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AppConfig.o"
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AppConfig.d"
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AppConfig.dia"
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AppConfig.swiftdeps"
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AppConfig.swiftconstvalues"
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Models/ESIMBundle.swift":
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/ESIMBundle.swiftconstvalues"
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/ESIMBundle.dia"
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/ESIMBundle.d"
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/ESIMBundle.o"
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/ESIMBundle.swiftdeps"
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Models/Country.swift":
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/Country.swiftdeps"
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/Country.o"
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/Country.dia"
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/Country.swiftconstvalues"
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/Country.d"

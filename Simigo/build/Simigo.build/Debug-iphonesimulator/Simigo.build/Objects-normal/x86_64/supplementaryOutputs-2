@@ -1,0 +1,36 @@
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Repositories/UserRepository.swift":
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/UserRepository.d"
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/UserRepository.swiftdeps"
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/UserRepository.swiftconstvalues"
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/UserRepository.dia"
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/UserRepository.o"
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Repositories/UsageRepository.swift":
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/UsageRepository.swiftconstvalues"
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/UsageRepository.dia"
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/UsageRepository.o"
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/UsageRepository.d"
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/UsageRepository.swiftdeps"
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Repositories/UpstreamOrderRepository.swift":
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/UpstreamOrderRepository.swiftdeps"
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/UpstreamOrderRepository.o"
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/UpstreamOrderRepository.swiftconstvalues"
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/UpstreamOrderRepository.dia"
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/UpstreamOrderRepository.d"
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/Skeletons/OrderAfterSalesSkeleton.swift":
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/OrderAfterSalesSkeleton.swiftdeps"
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/OrderAfterSalesSkeleton.swiftconstvalues"
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/OrderAfterSalesSkeleton.d"
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/OrderAfterSalesSkeleton.dia"
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/OrderAfterSalesSkeleton.o"
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Services/Network/NetworkMonitor.swift":
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/NetworkMonitor.o"
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/NetworkMonitor.swiftconstvalues"
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/NetworkMonitor.swiftdeps"
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/NetworkMonitor.d"
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/NetworkMonitor.dia"
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Services/AuthManager.swift":
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AuthManager.d"
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AuthManager.swiftdeps"
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AuthManager.swiftconstvalues"
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AuthManager.o"
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AuthManager.dia"

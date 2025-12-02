@@ -1,0 +1,18 @@
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/AboutView.swift":
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AboutView.o"
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AboutView.swiftdeps"
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AboutView.dia"
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AboutView.d"
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AboutView.swiftconstvalues"
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/AccountInfoView.swift":
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AccountInfoView.o"
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AccountInfoView.swiftdeps"
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AccountInfoView.d"
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AccountInfoView.swiftconstvalues"
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AccountInfoView.dia"
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/AccountView.swift":
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AccountView.dia"
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AccountView.o"
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AccountView.swiftconstvalues"
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AccountView.swiftdeps"
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/AccountView.d"

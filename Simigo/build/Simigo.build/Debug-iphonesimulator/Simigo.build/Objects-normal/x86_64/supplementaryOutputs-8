@@ -1,0 +1,30 @@
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/SimigoApp.swift":
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/SimigoApp.d"
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/SimigoApp.dia"
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/SimigoApp.swiftconstvalues"
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/SimigoApp.o"
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/SimigoApp.swiftdeps"
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/TermsOfServiceView.swift":
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/TermsOfServiceView.o"
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/TermsOfServiceView.swiftdeps"
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/TermsOfServiceView.dia"
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/TermsOfServiceView.d"
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/TermsOfServiceView.swiftconstvalues"
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/SupportView.swift":
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/SupportView.d"
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/SupportView.swiftconstvalues"
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/SupportView.swiftdeps"
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/SupportView.o"
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/SupportView.dia"
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/DerivedSources/GeneratedAssetSymbols.swift":
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/GeneratedAssetSymbols.d"
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/GeneratedAssetSymbols.swiftconstvalues"
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/GeneratedAssetSymbols.swiftdeps"
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/GeneratedAssetSymbols.o"
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/GeneratedAssetSymbols.dia"
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/ContentView.swift":
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/ContentView.d"
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/ContentView.swiftconstvalues"
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/ContentView.o"
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/ContentView.swiftdeps"
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/x86_64/ContentView.dia"

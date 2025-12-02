@@ -1,0 +1,48 @@
+{
+  "source": "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/MoreInfoView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "更多信息",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 14
+        }
+      },
+      {
+        "comment": "",
+        "key": "关于",
+        "location": {
+          "startingColumn": 62,
+          "startingLine": 7
+        }
+      },
+      {
+        "comment": "",
+        "key": "隐私政策",
+        "location": {
+          "startingColumn": 70,
+          "startingLine": 8
+        }
+      },
+      {
+        "comment": "",
+        "key": "服务条款",
+        "location": {
+          "startingColumn": 71,
+          "startingLine": 9
+        }
+      },
+      {
+        "comment": "",
+        "key": "代理商中心",
+        "location": {
+          "startingColumn": 68,
+          "startingLine": 10
+        }
+      }
+    ]
+  },
+  "version": 1
+}

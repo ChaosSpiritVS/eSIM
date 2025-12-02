@@ -1,0 +1,72 @@
+{
+  "source": "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/SearchResultsView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "搜索结果",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 82
+        }
+      },
+      {
+        "comment": "",
+        "key": "正在加载…",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 25
+        }
+      },
+      {
+        "comment": "",
+        "key": "无结果",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 31
+        }
+      },
+      {
+        "comment": "",
+        "key": "国家",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 37
+        }
+      },
+      {
+        "comment": "",
+        "key": "地区",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 49
+        }
+      },
+      {
+        "comment": "",
+        "key": "套餐",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 58
+        }
+      },
+      {
+        "comment": "",
+        "key": "未发现匹配的套餐",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 60
+        }
+      },
+      {
+        "comment": "",
+        "key": "继续加载",
+        "location": {
+          "startingColumn": 111,
+          "startingLine": 72
+        }
+      }
+    ]
+  },
+  "version": 1
+}

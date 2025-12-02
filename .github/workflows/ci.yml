@@ -1,0 +1,425 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  backend:
+    name: Backend Unit & Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('server/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r server/requirements.txt
+          pip install coverage
+
+      - name: Run unit tests with coverage (branch)
+        env:
+          ENABLE_TEST_ENDPOINTS: '1'
+        run: |
+          coverage run --branch -m unittest discover -v server/tests
+          coverage report -m --fail-under=80
+          coverage xml -o backend-coverage.xml
+
+      - name: Enforce module branch thresholds (DTO/Tools/Exceptions ≥ 90%)
+        run: |
+          python3 - << 'PY'
+import xml.etree.ElementTree as ET
+import sys
+
+def parse(xml_path):
+    tree = ET.parse(xml_path)
+    root = tree.getroot()
+    # Cobertura-style: class elements under packages/classes
+    files = []
+    for cls in root.findall('.//class'):
+        filename = cls.get('filename') or ''
+        # coverage.py sets branch-rate attribute when --branch is enabled
+        br = cls.get('branch-rate')
+        try:
+            branch_rate = float(br) if br is not None else None
+        except Exception:
+            branch_rate = None
+        files.append({'filename': filename, 'branch_rate': branch_rate})
+    return files
+
+files = parse('backend-coverage.xml')
+
+def avg(items):
+    vals = [it['branch_rate'] for it in items if it['branch_rate'] is not None]
+    return (sum(vals) / len(vals)) if vals else 1.0
+
+def min_rate(items):
+    vals = [it['branch_rate'] for it in items if it['branch_rate'] is not None]
+    return (min(vals) if vals else 1.0)
+
+def select(patterns):
+    pats = patterns if isinstance(patterns, (list, tuple)) else [patterns]
+    return [it for it in files if any(p in it['filename'] for p in pats)]
+
+threshold = 0.90
+violations = []
+
+# DTO
+dto_files = select(['server/app/models/dto.py'])
+dto_avg = avg(dto_files)
+dto_min = min_rate(dto_files)
+if dto_avg < threshold or dto_min < threshold:
+    violations.append(f"DTO branch coverage avg={dto_avg:.2f} min={dto_min:.2f} (<{threshold:.2f})")
+
+# Tools
+tools_patterns = [
+    'server/app/i18n.py',
+    'server/app/db.py',
+    'server/app/security/jwt.py',
+    'server/app/middleware/request_id.py',
+    'server/app/provider/http.py',
+]
+tools_files = select(tools_patterns)
+tools_avg = avg(tools_files)
+tools_min = min_rate(tools_files)
+if tools_files and (tools_avg < threshold or tools_min < threshold):
+    violations.append(f"Tools branch coverage avg={tools_avg:.2f} min={tools_min:.2f} (<{threshold:.2f})")
+
+# Exceptions
+exc_files = select(['server/app/provider/errors.py'])
+exc_avg = avg(exc_files)
+exc_min = min_rate(exc_files)
+if exc_avg < threshold or exc_min < threshold:
+    violations.append(f"Exceptions branch coverage avg={exc_avg:.2f} min={exc_min:.2f} (<{threshold:.2f})")
+
+if violations:
+    print('\n'.join(violations))
+    sys.exit(2)
+else:
+    print('Module branch thresholds satisfied (≥ 90%)')
+PY
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-coverage
+          path: backend-coverage.xml
+
+      - name: Upload to Codecov (backend)
+        uses: codecov/codecov-action@v4
+        with:
+          files: backend-coverage.xml
+          flags: backend
+          fail_ci_if_error: false
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-coverage
+          path: backend-coverage.xml
+
+  ios:
+    name: iOS Tests & Coverage
+    runs-on: macos-14
+    if: ${{ hashFiles('**/*.xcodeproj') != '' || hashFiles('**/*.xcworkspace') != '' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set Xcode 16.2
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '16.2'
+
+      - name: Show Xcode version
+        run: xcodebuild -version
+
+      - name: Select Simulator
+        id: sim
+        run: |
+          xcrun simctl list devices --json > devices.json
+          python3 - <<'PY'
+import json,sys
+with open('devices.json') as f:
+  d=json.load(f)
+devs=d.get('devices',{})
+chosen=None
+for k in devs:
+  for dev in devs[k]:
+    name=dev.get('name','')
+    state=dev.get('state','')
+    if 'iPhone 15' in name and state=='Booted':
+      chosen=name
+      break
+    if 'iPhone 15' in name and state=='Shutdown':
+      chosen=name
+      break
+  if chosen: break
+print(f"::set-output name=device::{chosen or 'iPhone 15'}")
+PY
+
+      - name: Run tests (build+test)
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
+        run: |
+          DERIVED=$(mktemp -d)
+          set -o pipefail
+          xcodebuild \
+            -scheme Simigo \
+            -destination "platform=iOS Simulator,name=${{ steps.sim.outputs.device }}" \
+            -enableCodeCoverage YES \
+            -derivedDataPath "$DERIVED" \
+            -resultBundlePath TestResults.xcresult \
+            test | tee xcodebuild.log
+
+      - name: Calculate coverage threshold
+        run: |
+          xcrun xccov view --report --json TestResults.xcresult > coverage.json
+          python3 - <<'PY'
+import json,sys
+with open('coverage.json') as f:
+  data=json.load(f)
+targets=data.get('targets',[])
+if not targets:
+  print('No targets in coverage report'); sys.exit(1)
+# compute overall average coverage across app targets (exclude *Tests)
+app_targets=[t for t in targets if not t.get('name','').endswith('Tests')]
+if not app_targets:
+  app_targets=targets
+avg=sum(t.get('lineCoverage',0.0) for t in app_targets)/len(app_targets)
+print(f"App coverage: {avg*100:.2f}%")
+threshold=0.60
+sys.exit(0 if avg>=threshold else 2)
+PY
+
+      - name: Upload xcresult bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-xcresult
+          path: TestResults.xcresult
+
+      - name: Enforce iOS module coverage (DTO/Tools/Errors ≥ 90% approx)
+        run: |
+          python3 - <<'PY'
+import json,sys
+with open('coverage.json') as f:
+    data=json.load(f)
+files=[]
+for t in data.get('targets',[]):
+    for f in t.get('files',[]):
+        files.append({'path': f.get('path',''), 'lineCoverage': f.get('lineCoverage',0.0)})
+
+def select(patterns):
+    if isinstance(patterns,(list,tuple)):
+        pats=patterns
+    else:
+        pats=[patterns]
+    return [it for it in files if any(p in (it['path'] or '') for p in pats)]
+
+def avg(items):
+    return (sum(it['lineCoverage'] for it in items)/len(items)) if items else 1.0
+
+def min_rate(items):
+    return (min(it['lineCoverage'] for it in items)) if items else 1.0
+
+threshold=0.90
+violations=[]
+
+# DTO files
+dto = select(['DTO.swift','/Models/','/Repositories/Upstream'])
+if dto:
+    a=avg(dto); m=min_rate(dto)
+    if a<threshold or m<threshold:
+        violations.append(f"iOS DTO coverage avg={a:.2f} min={m:.2f} (<{threshold:.2f})")
+
+# Tools files
+tools = select(['/Utils/','Formatting.swift','NetworkService.swift'])
+if tools:
+    a=avg(tools); m=min_rate(tools)
+    if a<threshold or m<threshold:
+        violations.append(f"iOS Tools coverage avg={a:.2f} min={m:.2f} (<{threshold:.2f})")
+
+# Errors files
+errs = select(['Error.swift','NetworkService.swift'])
+if errs:
+    a=avg(errs); m=min_rate(errs)
+    if a<threshold or m<threshold:
+        violations.append(f"iOS Errors coverage avg={a:.2f} min={m:.2f} (<{threshold:.2f})")
+
+if violations:
+    print('\n'.join(violations))
+    sys.exit(2)
+else:
+    print('iOS module thresholds satisfied (approx ≥ 90%)')
+PY
+
+      - name: Upload to Codecov (iOS unit)
+        uses: codecov/codecov-action@v4
+        with:
+          files: TestResults.xcresult
+          flags: ios-unit
+          fail_ci_if_error: false
+
+  ios_integration_ui:
+    name: iOS Integration + UI (with backend)
+    runs-on: macos-14
+    needs: backend
+    if: ${{ hashFiles('**/*.xcodeproj') != '' || hashFiles('**/*.xcworkspace') != '' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set Xcode 16.2
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '16.2'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install backend deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r server/requirements.txt
+
+      - name: Start backend (fake upstream) on 127.0.0.1:3001
+        run: |
+          export PROVIDER_FAKE=true
+          nohup python -m uvicorn server.app.main:app --host 127.0.0.1 --port 3001 &
+          sleep 5
+
+      - name: Select Simulator
+        id: sim2
+        run: |
+          xcrun simctl list devices --json > devices.json
+          python3 - <<'PY'
+import json
+with open('devices.json') as f:
+  d=json.load(f)
+devs=d.get('devices',{})
+chosen=None
+for k in devs:
+  for dev in devs[k]:
+    name=dev.get('name','')
+    state=dev.get('state','')
+    if 'iPhone 15' in name and state=='Booted':
+      chosen=name
+      break
+    if 'iPhone 15' in name and state=='Shutdown':
+      chosen=name
+      break
+  if chosen: break
+print(f"::set-output name=device::{chosen or 'iPhone 15'}")
+PY
+
+      - name: Run UI+Integration tests
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
+          SIMIGO_BASE_URL: http://127.0.0.1:3001
+        run: |
+          DERIVED=$(mktemp -d)
+          set -o pipefail
+          xcodebuild \
+            -scheme Simigo \
+            -destination "platform=iOS Simulator,name=${{ steps.sim2.outputs.device }}" \
+            -enableCodeCoverage YES \
+            -derivedDataPath "$DERIVED" \
+            -resultBundlePath IntegrationResults.xcresult \
+            test | tee xcodebuild-integration.log
+
+      - name: Calculate coverage threshold (integration)
+        run: |
+          xcrun xccov view --report --json IntegrationResults.xcresult > integration-coverage.json
+          python3 - <<'PY'
+import json,sys
+with open('integration-coverage.json') as f:
+  data=json.load(f)
+targets=data.get('targets',[])
+if not targets:
+  print('No targets in coverage report'); sys.exit(1)
+app_targets=[t for t in targets if not t.get('name','').endswith('Tests')]
+if not app_targets:
+  app_targets=targets
+avg=sum(t.get('lineCoverage',0.0) for t in app_targets)/len(app_targets)
+print(f"Integration app coverage: {avg*100:.2f}%")
+threshold=0.60
+sys.exit(0 if avg>=threshold else 2)
+PY
+
+      - name: Enforce iOS module coverage (integration approx ≥ 90%)
+        run: |
+          python3 - <<'PY'
+import json,sys
+with open('integration-coverage.json') as f:
+    data=json.load(f)
+files=[]
+for t in data.get('targets',[]):
+    for f in t.get('files',[]):
+        files.append({'path': f.get('path',''), 'lineCoverage': f.get('lineCoverage',0.0)})
+
+def select(patterns):
+    pats=patterns if isinstance(patterns,(list,tuple)) else [patterns]
+    return [it for it in files if any(p in (it['path'] or '') for p in pats)]
+
+def avg(items):
+    return (sum(it['lineCoverage'] for it in items)/len(items)) if items else 1.0
+
+def min_rate(items):
+    return (min(it['lineCoverage'] for it in items)) if items else 1.0
+
+threshold=0.90
+violations=[]
+dto = select(['DTO.swift','/Models/','/Repositories/Upstream'])
+if dto:
+    a=avg(dto); m=min_rate(dto)
+    if a<threshold or m<threshold:
+        violations.append(f"iOS DTO coverage (integration) avg={a:.2f} min={m:.2f} (<{threshold:.2f})")
+tools = select(['/Utils/','Formatting.swift','NetworkService.swift'])
+if tools:
+    a=avg(tools); m=min_rate(tools)
+    if a<threshold or m<threshold:
+        violations.append(f"iOS Tools coverage (integration) avg={a:.2f} min={m:.2f} (<{threshold:.2f})")
+errs = select(['Error.swift','NetworkService.swift'])
+if errs:
+    a=avg(errs); m=min_rate(errs)
+    if a<threshold or m<threshold:
+        violations.append(f"iOS Errors coverage (integration) avg={a:.2f} min={m:.2f} (<{threshold:.2f})")
+if violations:
+    print('\n'.join(violations))
+    sys.exit(2)
+else:
+    print('iOS integration module thresholds satisfied (approx ≥ 90%)')
+PY
+
+      - name: Upload xcresult bundle (integration)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-integration-xcresult
+          path: IntegrationResults.xcresult
+
+      - name: Upload to Codecov (iOS integration)
+        uses: codecov/codecov-action@v4
+        with:
+          files: IntegrationResults.xcresult
+          flags: ios-integration
+          fail_ci_if_error: false

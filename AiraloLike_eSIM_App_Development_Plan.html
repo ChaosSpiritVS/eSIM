@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Airalo 风格 eSIM iOS 应用开发计划（MVP+迭代）</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #222; padding: 24px; }
+    h1, h2, h3 { margin-top: 1.6em; }
+    code, pre { background: #f5f5f7; padding: 2px 6px; border-radius: 6px; }
+    pre { padding: 12px; overflow-x: auto; }
+    ul { margin: 0.5em 0 0.5em 1.2em; }
+    .section { margin-bottom: 24px; }
+  </style>
+  </head>
+<body>
+  <h1>Airalo 风格 eSIM iOS 应用开发计划（MVP+迭代）</h1>
+
+  <div class="section" id="overview">
+    <h2>1. 项目概述</h2>
+    <ul>
+      <li>目标：打造一款类似 Airalo 的 eSIM 市场与管理 App，支持国家/地区套餐浏览、下单购买、引导式安装与使用状态展示；后期增加分享/邀请与奖励体系。</li>
+      <li>平台与架构：iOS（Swift + SwiftUI，MVVM + Repository 模式），后端自研用户 API，代理商 API 由 eSIM 供应商提供（Agent/Bundles/Orders）。</li>
+      <li>约束与假设：
+        <ul>
+          <li>移动端无法直接使用运营商安装私有权限，MVP采用“二维码/SM-DP+ + Activation Code”的引导式安装。</li>
+          <li>移动端不暴露代理商密钥，所有供应商调用经由自有后端转发。</li>
+          <li>支付合规按电信服务范畴处理（Stripe+Apple Pay），同时评估 App Store 审核政策风险。</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section" id="mvp">
+    <h2>2. MVP 范围（首版上线）</h2>
+    <h3>2.1 移动端功能</h3>
+    <ul>
+      <li>套餐商城：国家/地区/全球 Tab（列表、热门、搜索）、套餐卡片展示、套餐详情页。</li>
+      <li>下单与支付：下单确认、Stripe（含 Apple Pay）支付、成功后展示 eSIM 信息（SM-DP+、激活码、二维码）。</li>
+      <li>引导式安装：步骤化教程及常见问题与错误处理。</li>
+      <li>我的 eSIM / 订单：已购套餐列表、订单详情与状态、使用情况展示。</li>
+      <li>账号与基础：登录、资料、中文/英文、多语言、客服入口、崩溃与统计。</li>
+    </ul>
+    <h3>2.2 后端功能</h3>
+    <ul>
+      <li>用户与会话：注册/登录/刷新令牌（JWT）、资料查询/更新。</li>
+      <li>目录与缓存：同步国家/地区/套餐/网络列表并缓存，对移动端提供聚合接口。</li>
+      <li>订单与采购：创建我方订单→调用供应商购买→回填 eSIM 信息；订单查询与状态跟踪。</li>
+      <li>支付与结算：Stripe 意图创建与 Webhook 校验，对账与审计。</li>
+      <li>安全与合规：代理商凭证保密、速率限制、审计日志、加密存储。</li>
+    </ul>
+  </div>
+
+  <div class="section" id="roadmap">
+    <h2>3. 迭代版本规划（MVP 后）</h2>
+    <h3>V1.1（分享与奖励、体验优化）</h3>
+    <ul>
+      <li>分享/邀请与奖励（Airmoney 类似）、钱包/积分抵扣。</li>
+      <li>FAQ 与指引中心升级；多语言与货币扩展（GBP、USD、CNY）。</li>
+    </ul>
+    <h3>V1.2（可观测与客服、性能）</h3>
+    <ul>
+      <li>监控大盘、异常告警、慢请求分析；App 内客服。</li>
+      <li>离线缓存与增量同步、启动速度优化。</li>
+    </ul>
+    <h3>V2.0（产品拓展）</h3>
+    <ul>
+      <li>订阅/自动续费套餐（供应商能力评估）。</li>
+      <li>组合包与跨地区套餐、动态推荐与 A/B 测试；企业账号与批量采购。</li>
+    </ul>
+  </div>
+
+  <div class="section" id="architecture">
+    <h2>4. 技术架构设计</h2>
+    <h3>4.1 总体架构</h3>
+    <pre><code>iOS App ──REST──▶ 自有后端 API ──M2M──▶ eSIM 供应商 API
+           │                        
+           ├─▶ 支付网关（Stripe）
+           └─▶ 对象存储/日志/监控</code></pre>
+    <h3>4.2 iOS 客户端目录建议</h3>
+    <pre><code>App/
+  ├─ Application.swift / AppState
+  ├─ Config/
+  ├─ Services/
+  ├─ Repositories/
+  ├─ Models/
+  ├─ ViewModels/
+  ├─ Views/
+  ├─ Utils/
+  └─ Resources/</code></pre>
+    <h3>4.3 后端接口草案</h3>
+    <ul>
+      <li>认证：POST /auth/signup，POST /auth/login，POST /auth/refresh，GET /me</li>
+      <li>目录：GET /catalog/countries，GET /catalog/regions，GET /catalog/bundles?country=HK，GET /catalog/bundle/:id</li>
+      <li>订单：POST /orders，GET /orders/:id，GET /orders，POST /orders/:id/refund（占位）</li>
+      <li>用量：GET /usage/:orderId</li>
+      <li>支付：POST /payments/intent，POST /payments/webhook</li>
+      <li>分享/奖励（迭代）：POST /referrals/link，GET /wallet/balance，POST /wallet/redeem</li>
+    </ul>
+    <h3>4.4 供应商 API 对接点</h3>
+    <ul>
+      <li>Agent：登录、刷新访问凭证、查询账户/账单（仅后端）。</li>
+      <li>Bundles：国家/地区/套餐/网络列表、购买 eSIM 套餐。</li>
+      <li>Orders：交易订单记录、交易详情、套餐使用情况。</li>
+      <li>定时任务：定时刷新目录缓存；下单后拉取状态与用量。</li>
+    </ul>
+  </div>
+
+  <div class="section" id="models">
+    <h2>5. 数据模型草案</h2>
+    <ul>
+      <li>users、sessions、countries、regions、bundles、orders、esim_profiles、payments</li>
+      <li>（迭代）referrals、wallets、transactions</li>
+    </ul>
+  </div>
+
+  <div class="section" id="security">
+    <h2>6. 安全与合规</h2>
+    <ul>
+      <li>秘钥管理与最小权限、个人数据保护与加密、访问控制与速率限制。</li>
+      <li>审计与合规：订单与支付留痕；隐私政策与用户协议。</li>
+    </ul>
+  </div>
+
+  <div class="section" id="qa">
+    <h2>7. 测试与质量保障</h2>
+    <ul>
+      <li>单元/集成/端到端测试，沙箱打通下单→支付→回填→安装。</li>
+      <li>覆盖率与崩溃率指标；灰度发布与监控。</li>
+    </ul>
+  </div>
+
+  <div class="section" id="release">
+    <h2>8. 发布与运营</h2>
+    <ul>
+      <li>TestFlight 内测，上架资料与隐私政策，运营报表。</li>
+    </ul>
+  </div>
+
+  <div class="section" id="timeline">
+    <h2>9. 开发周期与里程碑（单人）</h2>
+    <ul>
+      <li>第1周：脚手架、Agent 接入、目录接口验证。</li>
+      <li>第2周：商城列表/搜索/详情、目录缓存与分页、我的 eSIM 框架。</li>
+      <li>第3周：下单与支付、采购打通、Webhook 入账。</li>
+      <li>第4周：安装引导、订单状态与使用情况展示。</li>
+      <li>第5周：多语言、客服入口、性能与离线缓存。</li>
+      <li>第6周：全面测试、隐私与条款、上架准备与灰度。</li>
+      <li>V1.1（2–3周）：分享与奖励、钱包抵扣、体验优化。</li>
+      <li>V1.2（2–3周）：监控与客服、性能优化、多语言与货币扩展。</li>
+    </ul>
+  </div>
+
+  <div class="section" id="risks">
+    <h2>10. 风险清单与缓解</h2>
+    <ul>
+      <li>安装受限 → 二维码/SM-DP+ 引导、收集失败原因优化。</li>
+      <li>支付与审核 → 走 Stripe+Apple Pay 并预案 IAP，与审核沟通。</li>
+      <li>供应商稳定性 → 缓存、重试、监控告警、降级展示与 SLA。</li>
+      <li>单人开发瓶颈 → 明确优先级，压缩非关键需求。</li>
+      <li>数据安全 → 加密存储、访问审计、最小可见范围。</li>
+      <li>多机型差异 → 机型分支教程与常见错误页。</li>
+    </ul>
+  </div>
+
+  <div class="section" id="acceptance">
+    <h2>11. 验收标准（MVP）</h2>
+    <ul>
+      <li>完成套餐浏览与详情；下单支付打通并回填 eSIM 信息。</li>
+      <li>安装流程可操作且成功率可观；用量与到期信息展示。</li>
+      <li>登录稳定、多语言与客服可用；崩溃率 &lt; 1%。</li>
+    </ul>
+  </div>
+
+  <div class="section" id="tools">
+    <h2>12. 资源与工具建议</h2>
+    <ul>
+      <li>SwiftUI、Combine/async-await、URLSession、Firebase/Sentry、Stripe SDK。</li>
+      <li>后端：Node/NestJS、PostgreSQL、Redis、GitHub Actions。</li>
+      <li>设计与管理：Figma、Jira/Linear、Notion；监控：Grafana/Prometheus（可选）。</li>
+    </ul>
+  </div>
+
+  <div class="section" id="next">
+    <h2>13. 立即下一步</h2>
+    <ul>
+      <li>创建骨架工程、接入沙箱、完成列表与详情、明确支付与审核路径。</li>
+    </ul>
+  </div>
+
+</body>
+</html>

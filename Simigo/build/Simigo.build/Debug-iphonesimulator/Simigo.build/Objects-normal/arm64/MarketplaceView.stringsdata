@@ -1,0 +1,200 @@
+{
+  "source": "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/MarketplaceView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "可用套餐",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 73
+        }
+      },
+      {
+        "comment": "",
+        "key": "可用套餐",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 77
+        }
+      },
+      {
+        "comment": "",
+        "key": "分类",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 64
+        }
+      },
+      {
+        "comment": "",
+        "key": "全部",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 65
+        }
+      },
+      {
+        "comment": "",
+        "key": "本地",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 66
+        }
+      },
+      {
+        "comment": "",
+        "key": "区域",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 67
+        }
+      },
+      {
+        "comment": "",
+        "key": "全球",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 68
+        }
+      },
+      {
+        "comment": "",
+        "key": "未找到匹配的套餐",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 79
+        }
+      },
+      {
+        "comment": "",
+        "key": "共 %lld 个套餐",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 83
+        }
+      },
+      {
+        "comment": "",
+        "key": "您需要哪里的 eSIM?",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 100
+        }
+      },
+      {
+        "comment": "",
+        "key": "退出编辑",
+        "location": {
+          "startingColumn": 41,
+          "startingLine": 109
+        }
+      },
+      {
+        "comment": "",
+        "key": "最近搜索",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 139
+        }
+      },
+      {
+        "comment": "",
+        "key": "试试更短的关键词，或切换分类",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 191
+        }
+      },
+      {
+        "comment": "",
+        "key": "未找到相关内容",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 188
+        }
+      },
+      {
+        "comment": "",
+        "key": "商店",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 220
+        }
+      },
+      {
+        "comment": "",
+        "key": "价格（↑）",
+        "location": {
+          "startingColumn": 64,
+          "startingLine": 238
+        }
+      },
+      {
+        "comment": "",
+        "key": "价格（↓）",
+        "location": {
+          "startingColumn": 65,
+          "startingLine": 239
+        }
+      },
+      {
+        "comment": "",
+        "key": "价格",
+        "location": {
+          "startingColumn": 57,
+          "startingLine": 240
+        }
+      },
+      {
+        "comment": "",
+        "key": "流量（↑）",
+        "location": {
+          "startingColumn": 63,
+          "startingLine": 249
+        }
+      },
+      {
+        "comment": "",
+        "key": "流量（↓）",
+        "location": {
+          "startingColumn": 64,
+          "startingLine": 250
+        }
+      },
+      {
+        "comment": "",
+        "key": "流量",
+        "location": {
+          "startingColumn": 57,
+          "startingLine": 251
+        }
+      },
+      {
+        "comment": "",
+        "key": "名称",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 258
+        }
+      },
+      {
+        "comment": "",
+        "key": "排序",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 265
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@ • 有效期 %lld 天",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 471
+        }
+      }
+    ]
+  },
+  "version": 1
+}

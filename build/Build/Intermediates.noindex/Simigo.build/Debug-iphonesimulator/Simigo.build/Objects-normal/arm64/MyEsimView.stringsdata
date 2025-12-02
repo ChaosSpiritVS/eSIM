@@ -1,0 +1,48 @@
+{
+  "source": "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/MyEsimView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "我的 eSIM",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 80
+        }
+      },
+      {
+        "comment": "",
+        "key": "暂无订单",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 59
+        }
+      },
+      {
+        "comment": "",
+        "key": "创建日期：%@",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 33
+        }
+      },
+      {
+        "comment": "",
+        "key": "加载中...",
+        "location": {
+          "startingColumn": 64,
+          "startingLine": 52
+        }
+      },
+      {
+        "comment": "",
+        "key": "加载更多",
+        "location": {
+          "startingColumn": 81,
+          "startingLine": 52
+        }
+      }
+    ]
+  },
+  "version": 1
+}

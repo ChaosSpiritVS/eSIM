@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>注册 · 原型</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="screen">
+      <div class="nav"><h1>注册</h1></div>
+      <div class="content">
+        <div class="tab">
+          <a href="login.html">登录</a>
+          <a class="active" href="register.html">注册</a>
+        </div>
+        <div class="row" style="margin-bottom:12px;">
+          <span class="pill"> Apple</span>
+          <span class="pill">G Google</span>
+          <span class="pill">f Facebook</span>
+        </div>
+        <input class="input" placeholder="名字">
+        <div style="height:8px"></div>
+        <input class="input" placeholder="姓氏（可选）">
+        <div style="height:8px"></div>
+        <input class="input" placeholder="电子邮件">
+        <div style="height:8px"></div>
+        <input class="input" placeholder="密码">
+        <div class="helper">— 最少 8 个字符<br>— 大写<br>— 小写<br>— 数字 1234567890<br>— 一个符号 +-*^/?=!%$#</div>
+        <input class="input" placeholder="推荐码或代金券码">
+        <div style="height:12px"></div>
+        <div class="card">
+          <label class="checkbox"><input type="checkbox" id="acceptRegister"> 我已阅读并同意 <a class="link" href="terms.html">条款与条件</a> 与 <a class="link" href="privacy.html">隐私政策</a></label>
+          <label class="checkbox"><input type="checkbox" id="acceptMarketing"> 订阅营销资讯（可选）</label>
+        </div>
+        <button class="btn primary" id="registerBtn" disabled>注册</button>
+        <div style="height:12px"></div>
+        <div class="helper" style="text-align:center;">注册账户，即表示我同意 <a href="terms.html">条款与条件</a> 与 <a href="privacy.html">隐私政策</a>。</div>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var accept = document.getElementById('acceptRegister');
+          var btn = document.getElementById('registerBtn');
+          function update() { btn.disabled = !accept.checked; }
+          accept.addEventListener('change', update);
+          update();
+          btn.addEventListener('click', function() {
+            if (btn.disabled) return;
+            window.location.href = 'profile.html';
+          });
+        });
+        </script>
+      </div>
+    </div>
+  </body>
+</html>

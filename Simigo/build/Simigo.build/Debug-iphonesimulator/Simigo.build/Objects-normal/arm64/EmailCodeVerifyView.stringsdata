@@ -1,0 +1,56 @@
+{
+  "source": "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/EmailCodeVerifyView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "输入验证码",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 50
+        }
+      },
+      {
+        "comment": "",
+        "key": "您的验证码已发送至 %@ — 请输入 4 位验证码完成验证。",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 23
+        }
+      },
+      {
+        "comment": "",
+        "key": "验证码",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 28
+        }
+      },
+      {
+        "comment": "",
+        "key": "输入验证码",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 139
+        }
+      },
+      {
+        "comment": "",
+        "key": "您的验证码已发送至 %@ — 请输入 4 位验证码完成验证。",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 112
+        }
+      },
+      {
+        "comment": "",
+        "key": "验证码",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 117
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,88 @@
+{
+  "source": "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/BundleDetailView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "套餐详情",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 82
+        }
+      },
+      {
+        "comment": "",
+        "key": "说明",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 29
+        }
+      },
+      {
+        "comment": "",
+        "key": "查看服务条款",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 70
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@ • 有效期 %lld 天",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 19
+        }
+      },
+      {
+        "comment": "",
+        "key": "网络与覆盖",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 36
+        }
+      },
+      {
+        "comment": "",
+        "key": "网络与覆盖",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 48
+        }
+      },
+      {
+        "comment": "",
+        "key": "网络与覆盖",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 54
+        }
+      },
+      {
+        "comment": "",
+        "key": "支持热点共享",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 64
+        }
+      },
+      {
+        "comment": "",
+        "key": "不支持热点共享",
+        "location": {
+          "startingColumn": 63,
+          "startingLine": 64
+        }
+      },
+      {
+        "comment": "",
+        "key": "立即购买",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 75
+        }
+      }
+    ]
+  },
+  "version": 1
+}

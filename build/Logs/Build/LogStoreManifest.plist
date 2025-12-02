@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>11</integer>
+	<key>logs</key>
+	<dict>
+		<key>B536764B-96F0-4C0F-9A4D-2A380FCA3E33</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>B536764B-96F0-4C0F-9A4D-2A380FCA3E33.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>2</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>14</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Simigo project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Simigo</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building project Simigo with scheme Simigo and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>784979789.18423104</real>
+			<key>timeStoppedRecording</key>
+			<real>784979795.16581702</real>
+			<key>title</key>
+			<string>Building project Simigo with scheme Simigo and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>B536764B-96F0-4C0F-9A4D-2A380FCA3E33</string>
+		</dict>
+		<key>C34C0019-E220-45DC-9E39-A4FD28A06794</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>C34C0019-E220-45DC-9E39-A4FD28A06794.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>46</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Simigo project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Simigo</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building project Simigo with scheme Simigo and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>784980676.19959795</real>
+			<key>timeStoppedRecording</key>
+			<real>784980682.12073398</real>
+			<key>title</key>
+			<string>Building project Simigo with scheme Simigo and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>C34C0019-E220-45DC-9E39-A4FD28A06794</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

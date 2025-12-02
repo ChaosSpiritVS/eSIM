@@ -1,0 +1,18 @@
+{
+  "" : {
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/SimigoTests.build/Objects-normal/x86_64/SimigoTests-master.dia",
+    "emit-module-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/SimigoTests.build/Objects-normal/x86_64/SimigoTests-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/SimigoTests.build/Objects-normal/x86_64/SimigoTests-master-emit-module.dia",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/SimigoTests.build/Objects-normal/x86_64/SimigoTests-master.swiftdeps"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/SimigoTests/SimigoTests.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/SimigoTests.build/Objects-normal/x86_64/SimigoTests.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/SimigoTests.build/Objects-normal/x86_64/SimigoTests.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/SimigoTests.build/Objects-normal/x86_64/SimigoTests.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/SimigoTests.build/Objects-normal/x86_64/SimigoTests.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/SimigoTests.build/Objects-normal/x86_64/SimigoTests.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/SimigoTests.build/Objects-normal/x86_64/SimigoTests.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/SimigoTests.build/Objects-normal/x86_64/SimigoTests.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/SimigoTests.build/Objects-normal/x86_64/SimigoTests~partial.swiftmodule"
+  }
+}

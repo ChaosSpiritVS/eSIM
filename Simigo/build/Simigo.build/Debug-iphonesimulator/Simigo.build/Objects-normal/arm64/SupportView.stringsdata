@@ -1,0 +1,64 @@
+{
+  "source": "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/SupportView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "客服与支持",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 25
+        }
+      },
+      {
+        "comment": "",
+        "key": "帮助与支持",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 11
+        }
+      },
+      {
+        "comment": "",
+        "key": "如需帮助，您可以通过以下方式联系我们：",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 12
+        }
+      },
+      {
+        "comment": "",
+        "key": "打开帮助中心",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 15
+        }
+      },
+      {
+        "comment": "",
+        "key": "发送邮件至 support@example.com",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 16
+        }
+      },
+      {
+        "comment": "",
+        "key": "隐私政策",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 18
+        }
+      },
+      {
+        "comment": "",
+        "key": "服务条款",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 21
+        }
+      }
+    ]
+  },
+  "version": 1
+}

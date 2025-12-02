@@ -1,0 +1,18 @@
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/EmailCodeVerifyView.swift":
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/EmailCodeVerifyView.d"
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/EmailCodeVerifyView.o"
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/EmailCodeVerifyView.swiftconstvalues"
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/EmailCodeVerifyView.dia"
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/EmailCodeVerifyView.swiftdeps"
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/ForgotPasswordView.swift":
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ForgotPasswordView.dia"
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ForgotPasswordView.swiftdeps"
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ForgotPasswordView.o"
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ForgotPasswordView.swiftconstvalues"
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ForgotPasswordView.d"
+"/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/LanguageSettingsView.swift":
+  dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/LanguageSettingsView.d"
+  object: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/LanguageSettingsView.o"
+  const-values: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/LanguageSettingsView.swiftconstvalues"
+  swift-dependencies: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/LanguageSettingsView.swiftdeps"
+  diagnostics: "/Users/lijie/Desktop/Manzhan/eSIM/build/Build/Intermediates.noindex/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/LanguageSettingsView.dia"

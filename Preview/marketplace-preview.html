@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Simigo 商店 UI 更改预览</title>
+    <style>
+      html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+      .wrap { max-width: 720px; margin: 24px auto; padding: 16px; }
+      .card { background: rgba(240, 240, 240, 0.7); border-radius: 12px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); padding: 16px; }
+      h1 { font-size: 20px; margin: 0 0 12px; }
+      ul { margin: 0; padding-left: 18px; }
+      .suggestion-panel { height: 280px; overflow: auto; border-radius: 12px; background: rgba(255,255,255,0.7); border: 1px solid rgba(0,0,0,0.08); }
+      .row { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-bottom: 1px solid rgba(0,0,0,0.06); }
+      .row:last-child { border-bottom: none; }
+      .flag { width: 20px; height: 14px; background: #ddd; border-radius: 2px; }
+      .title-inline { position: sticky; top: 0; background: rgba(255,255,255,0.85); backdrop-filter: blur(6px); padding: 10px 12px; border-bottom: 1px solid rgba(0,0,0,0.06); }
+      .toolbar { display:flex; gap:8px; align-items:center; padding:8px 12px; }
+      .menu-button { border:1px solid #ddd; background:#fff; padding:6px 10px; border-radius:8px; }
+      .accent { color:#0a84ff; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <h1>本次改动</h1>
+        <ul>
+          <li>导航标题改为内联（避免大标题与搜索框重叠）。</li>
+          <li>搜索建议改为可滚动的卡片面板（限制最大高度）。</li>
+    <li>建议首包数量网络自适应：Wi‑Fi 100、蜂窝 50、受限 50。</li>
+        </ul>
+      </div>
+
+      <div style="height: 16px"></div>
+
+      <div class="card">
+        <div class="title-inline">商店（内联标题示意）</div>
+        <div style="padding: 12px 12px 8px;">
+          <input type="text" placeholder="搜索国家 / 地区 / 套餐" style="width:100%; height:36px; padding: 6px 10px; border-radius: 8px; border:1px solid #ddd;" />
+        </div>
+        <div class="toolbar">
+          <button class="menu-button" id="btn-price">价格（↑/↓）</button>
+          <button class="menu-button" id="btn-data">流量（↑/↓）</button>
+          <button class="menu-button" id="btn-name">名称 <span id="name-check" class="accent" style="display:none;">✓</span></button>
+        </div>
+        <div class="suggestion-panel">
+          <div class="row"><div class="flag"></div><div>United Arab Emirates</div></div>
+          <div class="row"><div class="flag"></div><div>Belgium</div></div>
+          <div class="row"><div class="flag"></div><div>Benin</div></div>
+          <div class="row"><div class="flag"></div><div>Czech Republic</div></div>
+          <div class="row"><div class="flag"></div><div>Germany</div></div>
+          <div class="row"><div class="flag"></div><div>Denmark</div></div>
+          <div class="row"><div class="flag"></div><div>Spain</div></div>
+          <div class="row"><div class="flag"></div><div>Estonia</div></div>
+          <div class="row"><div class="flag"></div><div>France</div></div>
+          <div class="row"><div class="flag"></div><div>Faroe Islands</div></div>
+          <div class="row"><div class="flag"></div><div>United Kingdom</div></div>
+          <div class="row"><div class="flag"></div><div>Ireland</div></div>
+          <div class="row"><div class="flag"></div><div>Iceland</div></div>
+          <div class="row"><div class="flag"></div><div>Kenya</div></div>
+          <div class="row"><div class="flag"></div><div>Liechtenstein</div></div>
+          <div class="row"><div class="flag"></div><div>Luxembourg</div></div>
+          <div class="row"><div class="flag"></div><div>Nigeria</div></div>
+          <div class="row"><div class="flag"></div><div>Netherlands</div></div>
+          <div class="row"><div class="flag"></div><div>Slovenia</div></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // 预览交互：点击“名称”显示 √ 以示选中
+      const nameBtn = document.getElementById('btn-name');
+      const nameCheck = document.getElementById('name-check');
+      nameBtn.addEventListener('click', () => {
+        nameCheck.style.display = 'inline';
+      });
+    </script>
+  </body>
+  </html>

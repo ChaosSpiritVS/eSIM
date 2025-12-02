@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marketplace UI 预览：粘性搜索与覆盖层</title>
+  <style>
+    :root {
+      --bg: #0b0b0c;
+      --panel: rgba(30, 30, 32, 0.6);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #f2f2f7;
+      --muted: #a1a1a6;
+      --accent: #2f95f7;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+    .search-bar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 12px;
+      background: rgba(40, 40, 42, 0.6);
+      backdrop-filter: saturate(180%) blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .search-inner {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(60, 60, 62, 0.35);
+      border: 1.25px solid var(--border);
+      border-radius: 12px;
+      padding: 8px 12px;
+    }
+    .search-inner:focus-within {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent);
+    }
+    .search-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-size: 16px;
+    }
+    .page {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .list {
+      flex: 1;
+      overflow-y: auto;
+    }
+    .section {
+      padding: 12px;
+    }
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      background: rgba(60, 60, 62, 0.35);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 8px;
+    }
+    .tab {
+      text-align: center;
+      padding: 8px 6px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      color: var(--text);
+      cursor: pointer;
+    }
+    .tab.active { border-color: var(--accent); color: var(--accent); }
+    .bundle {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 12px;
+      background: rgba(50, 50, 52, 0.35);
+    }
+    .overlay {
+      position: fixed;
+      left: 0; right: 0;
+      z-index: 50; /* 高于 tabs 与列表 */
+      pointer-events: auto;
+    }
+    .suggest-box {
+      margin: 8px 12px 0 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(60, 60, 62, 0.55);
+      backdrop-filter: saturate(180%) blur(14px);
+      max-height: 320px;
+      overflow: auto;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    }
+    .suggest-title { font-size: 12px; color: var(--muted); padding: 10px 12px; }
+    .suggest-item { padding: 8px 12px; border-top: 1px solid var(--border); cursor: pointer; }
+    .suggest-item:hover { background: rgba(255,255,255,0.06); }
+    .dim {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.08);
+      z-index: 40;
+    }
+  </style>
+  <script>
+    let overlayVisible = false;
+    function updateOverlayTop() {
+      const sb = document.getElementById('searchBar');
+      const ov = document.getElementById('overlay');
+      if (!sb || !ov) return;
+      const rect = sb.getBoundingClientRect();
+      ov.style.top = (rect.bottom) + 'px';
+    }
+    function showRecent() {
+      overlayVisible = true;
+      document.getElementById('overlay').style.display = 'block';
+      document.getElementById('recentBox').style.display = 'block';
+      document.getElementById('suggestBox').style.display = 'none';
+      document.getElementById('dim').style.display = 'block';
+      updateOverlayTop();
+    }
+    function showSuggest() {
+      overlayVisible = true;
+      document.getElementById('overlay').style.display = 'block';
+      document.getElementById('recentBox').style.display = 'none';
+      document.getElementById('suggestBox').style.display = 'block';
+      document.getElementById('dim').style.display = 'block';
+      updateOverlayTop();
+    }
+    function hideOverlay() {
+      overlayVisible = false;
+      document.getElementById('overlay').style.display = 'none';
+      document.getElementById('dim').style.display = 'none';
+    }
+    function closeLikeX() {
+      const input = document.getElementById('query');
+      input.value = '';
+      input.blur();
+      hideOverlay();
+    }
+    window.addEventListener('scroll', () => overlayVisible && updateOverlayTop());
+    window.addEventListener('resize', () => overlayVisible && updateOverlayTop());
+    window.addEventListener('DOMContentLoaded', updateOverlayTop);
+  </script>
+  </head>
+<body>
+  <div class="page">
+    <div id="searchBar" class="search-bar">
+      <div class="search-inner">
+        <span>🔍</span>
+        <input id="query" class="search-input" placeholder="您需要哪里的 eSIM?" onfocus="showRecent()" oninput="this.value.trim() ? showSuggest() : showRecent()" />
+        <button onclick="closeLikeX()">✖️</button>
+      </div>
+<div style="padding:6px 4px 0 4px; color: var(--muted); font-size: 12px;">建议首包：Wi‑Fi 100 / 蜂窝 50 / 受限网络 50</div>
+    </div>
+    <div class="list" onclick="hideOverlay()">
+      <div class="section">
+        <div class="tabs">
+          <div class="tab active">全部</div>
+          <div class="tab">本地</div>
+          <div class="tab">区域</div>
+          <div class="tab">全球</div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="bundle">示例套餐 A · 5GB · 7天</div>
+        <div class="bundle">示例套餐 B · 10GB · 15天</div>
+        <div class="bundle">示例套餐 C · 1GB · 3天</div>
+        <div class="bundle">示例套餐 D · 20GB · 30天</div>
+        <div class="bundle">示例套餐 E · 3GB · 5天</div>
+        <div class="bundle">示例套餐 F · 7GB · 10天</div>
+        <div class="bundle">示例套餐 G · 15GB · 20天</div>
+        <div class="bundle">示例套餐 H · 500MB · 1天</div>
+        <div class="bundle">示例套餐 I · 8GB · 12天</div>
+        <div class="bundle">示例套餐 J · 6GB · 9天</div>
+      </div>
+      <div class="section">
+        <div class="bundle">示例套餐 K · 2GB · 4天</div>
+        <div class="bundle">示例套餐 L · 12GB · 18天</div>
+        <div class="bundle">示例套餐 M · 25GB · 45天</div>
+        <div class="bundle">示例套餐 N · 9GB · 14天</div>
+        <div class="bundle">示例套餐 O · 30GB · 60天</div>
+      </div>
+    </div>
+  </div>
+  <div id="overlay" class="overlay" style="display:none">
+    <div id="recentBox" class="suggest-box" style="display:none">
+      <div class="suggest-title">最近搜索</div>
+      <div class="suggest-item">日本 · Tokyo</div>
+      <div class="suggest-item">欧洲区域 · EU</div>
+      <div class="suggest-item">全球 · Global</div>
+    </div>
+    <div id="suggestBox" class="suggest-box" style="display:none">
+      <div class="suggest-item">日本 · 套餐 3GB</div>
+      <div class="suggest-item">日本 · 套餐 10GB</div>
+      <div class="suggest-item">欧洲区域 · 12GB</div>
+      <div class="suggest-item">全球 · 20GB</div>
+    </div>
+  </div>
+    <div id="dim" class="dim" style="display:none" onclick="closeLikeX()"></div>
+</body>
+</html>

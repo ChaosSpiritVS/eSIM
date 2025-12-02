@@ -1,0 +1,136 @@
+{
+  "source": "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/CheckoutView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "确认下单",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 121
+        }
+      },
+      {
+        "comment": "",
+        "key": "下单后将生成订单与安装说明，确认购买即表示同意服务条款。",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 86
+        }
+      },
+      {
+        "comment": "",
+        "key": "您将通过本次购买赚取 AirMoney:",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 38
+        }
+      },
+      {
+        "comment": "",
+        "key": "付款方式",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 50
+        }
+      },
+      {
+        "comment": "",
+        "key": "使用新银行卡支付",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 70
+        }
+      },
+      {
+        "comment": "",
+        "key": "Visa、Mastercard、AMEX、CUP、JCB",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 79
+        }
+      },
+      {
+        "comment": "",
+        "key": "添加新银行卡",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 74
+        }
+      },
+      {
+        "comment": "",
+        "key": "查看服务条款",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 91
+        }
+      },
+      {
+        "comment": "",
+        "key": "订单已创建：%@",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 98
+        }
+      },
+      {
+        "comment": "",
+        "key": "状态：%@",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 99
+        }
+      },
+      {
+        "comment": "",
+        "key": "正在支付…",
+        "location": {
+          "startingColumn": 65,
+          "startingLine": 111
+        }
+      },
+      {
+        "comment": "",
+        "key": "正在下单…",
+        "location": {
+          "startingColumn": 85,
+          "startingLine": 111
+        }
+      },
+      {
+        "comment": "",
+        "key": "重试支付",
+        "location": {
+          "startingColumn": 156,
+          "startingLine": 111
+        }
+      },
+      {
+        "comment": "",
+        "key": "继续支付",
+        "location": {
+          "startingColumn": 173,
+          "startingLine": 111
+        }
+      },
+      {
+        "comment": "",
+        "key": "立即购买",
+        "location": {
+          "startingColumn": 191,
+          "startingLine": 111
+        }
+      },
+      {
+        "comment": "",
+        "key": "当前离线，请连接网络后重试",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 126
+        }
+      }
+    ]
+  },
+  "version": 1
+}

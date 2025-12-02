@@ -1,0 +1,32 @@
+{
+  "source": "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/SimigoApp.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "商店",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 30
+        }
+      },
+      {
+        "comment": "",
+        "key": "我的 eSIM",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 36
+        }
+      },
+      {
+        "comment": "",
+        "key": "个人资料",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 42
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,898 @@
+{
+  "" : {
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Simigo-master.dia",
+    "emit-module-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Simigo-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Simigo-master-emit-module.dia",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Simigo-master.swiftdeps"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Config/AppConfig.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AppConfig.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AppConfig.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AppConfig.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AppConfig.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AppConfig.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AppConfig.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AppConfig.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AppConfig~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/ContentView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Models/Country.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Country.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Country.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Country.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Country.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Country.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Country.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Country.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Country~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Models/ESIMBundle.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ESIMBundle.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ESIMBundle.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ESIMBundle.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ESIMBundle.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ESIMBundle.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ESIMBundle.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ESIMBundle.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ESIMBundle~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Models/Order.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Order.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Order.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Order.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Order.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Order.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Order.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Order.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Order~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Models/OrderInstallationInfo.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderInstallationInfo.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderInstallationInfo.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderInstallationInfo.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderInstallationInfo.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderInstallationInfo.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderInstallationInfo.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderInstallationInfo.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderInstallationInfo~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Models/OrderUsage.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderUsage.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderUsage.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderUsage.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderUsage.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderUsage.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderUsage.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderUsage.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderUsage~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Models/PaymentMethod.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentMethod.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentMethod.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentMethod.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentMethod.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentMethod.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentMethod.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentMethod.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentMethod~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Models/Region.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Region.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Region.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Region.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Region.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Region.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Region.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Region.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Region~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Models/SearchResult.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResult.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResult.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResult.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResult.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResult.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResult.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResult.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResult~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Models/User.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/User.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/User.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/User.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/User.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/User.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/User.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/User.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/User~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Navigation/AuthNavigation.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthNavigation.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthNavigation.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthNavigation.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthNavigation.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthNavigation.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthNavigation.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthNavigation.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthNavigation~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Navigation/AuthRoute.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthRoute.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthRoute.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthRoute.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthRoute.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthRoute.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthRoute.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthRoute.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthRoute~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Repositories/AuthRepository.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthRepository.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthRepository.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthRepository.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthRepository.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthRepository.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthRepository.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthRepository.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthRepository~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Repositories/CatalogRepository.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CatalogRepository.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CatalogRepository.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CatalogRepository.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CatalogRepository.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CatalogRepository.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CatalogRepository.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CatalogRepository.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CatalogRepository~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Repositories/OrderRepository.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderRepository.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderRepository.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderRepository.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderRepository.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderRepository.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderRepository.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderRepository.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderRepository~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Repositories/SearchRepository.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchRepository.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchRepository.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchRepository.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchRepository.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchRepository.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchRepository.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchRepository.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchRepository~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Repositories/UpstreamAgentRepository.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamAgentRepository.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamAgentRepository.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamAgentRepository.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamAgentRepository.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamAgentRepository.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamAgentRepository.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamAgentRepository.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamAgentRepository~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Repositories/UpstreamCatalogRepository.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamCatalogRepository.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamCatalogRepository.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamCatalogRepository.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamCatalogRepository.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamCatalogRepository.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamCatalogRepository.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamCatalogRepository.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamCatalogRepository~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Repositories/UpstreamOrderRepository.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamOrderRepository.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamOrderRepository.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamOrderRepository.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamOrderRepository.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamOrderRepository.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamOrderRepository.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamOrderRepository.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UpstreamOrderRepository~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Repositories/UsageRepository.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UsageRepository.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UsageRepository.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UsageRepository.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UsageRepository.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UsageRepository.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UsageRepository.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UsageRepository.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UsageRepository~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Repositories/UserRepository.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UserRepository.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UserRepository.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UserRepository.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UserRepository.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UserRepository.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UserRepository.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UserRepository.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/UserRepository~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Services/AuthManager.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthManager.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthManager.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthManager.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthManager.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthManager.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthManager.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthManager.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthManager~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Services/CatalogCacheStore.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CatalogCacheStore.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CatalogCacheStore.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CatalogCacheStore.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CatalogCacheStore.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CatalogCacheStore.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CatalogCacheStore.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CatalogCacheStore.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CatalogCacheStore~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Services/CoreDataStack.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CoreDataStack.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CoreDataStack.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CoreDataStack.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CoreDataStack.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CoreDataStack.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CoreDataStack.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CoreDataStack.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CoreDataStack~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Services/ESIMSDKBridge.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ESIMSDKBridge.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ESIMSDKBridge.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ESIMSDKBridge.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ESIMSDKBridge.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ESIMSDKBridge.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ESIMSDKBridge.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ESIMSDKBridge.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ESIMSDKBridge~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Services/HTTPLogger.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/HTTPLogger.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/HTTPLogger.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/HTTPLogger.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/HTTPLogger.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/HTTPLogger.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/HTTPLogger.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/HTTPLogger.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/HTTPLogger~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Services/Network/NetworkMonitor.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/NetworkMonitor.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/NetworkMonitor.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/NetworkMonitor.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/NetworkMonitor.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/NetworkMonitor.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/NetworkMonitor.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/NetworkMonitor.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/NetworkMonitor~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Services/NetworkService.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/NetworkService.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/NetworkService.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/NetworkService.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/NetworkService.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/NetworkService.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/NetworkService.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/NetworkService.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/NetworkService~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Services/PaymentCallbackHandler.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentCallbackHandler.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentCallbackHandler.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentCallbackHandler.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentCallbackHandler.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentCallbackHandler.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentCallbackHandler.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentCallbackHandler.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentCallbackHandler~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Services/PaymentEventBridge.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentEventBridge.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentEventBridge.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentEventBridge.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentEventBridge.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentEventBridge.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentEventBridge.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentEventBridge.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentEventBridge~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Services/PaymentService.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentService.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentService.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentService.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentService.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentService.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentService.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentService.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PaymentService~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Services/RequestCenter.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RequestCenter.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RequestCenter.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RequestCenter.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RequestCenter.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RequestCenter.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RequestCenter.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RequestCenter.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RequestCenter~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Services/SettingsManager.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SettingsManager.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SettingsManager.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SettingsManager.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SettingsManager.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SettingsManager.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SettingsManager.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SettingsManager.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SettingsManager~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Services/TokenStore.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/TokenStore.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/TokenStore.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/TokenStore.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/TokenStore.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/TokenStore.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/TokenStore.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/TokenStore.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/TokenStore~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/SimigoApp.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SimigoApp.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SimigoApp.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SimigoApp.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SimigoApp.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SimigoApp.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SimigoApp.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SimigoApp.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SimigoApp~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Utils/Formatting.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Formatting.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Formatting.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Formatting.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Formatting.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Formatting.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Formatting.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Formatting.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Formatting~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Utils/QRCodeGenerator.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/QRCodeGenerator.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/QRCodeGenerator.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/QRCodeGenerator.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/QRCodeGenerator.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/QRCodeGenerator.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/QRCodeGenerator.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/QRCodeGenerator.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/QRCodeGenerator~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Utils/RegionCodeConverter.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RegionCodeConverter.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RegionCodeConverter.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RegionCodeConverter.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RegionCodeConverter.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RegionCodeConverter.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RegionCodeConverter.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RegionCodeConverter.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RegionCodeConverter~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Utils/Shimmer.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Shimmer.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Shimmer.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Shimmer.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Shimmer.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Shimmer.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Shimmer.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Shimmer.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/Shimmer~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/ViewModels/AgentCenterViewModel.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentCenterViewModel.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentCenterViewModel.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentCenterViewModel.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentCenterViewModel.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentCenterViewModel.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentCenterViewModel.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentCenterViewModel.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentCenterViewModel~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/ViewModels/AuthViewModel.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthViewModel.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthViewModel.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthViewModel.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthViewModel.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthViewModel.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthViewModel.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthViewModel.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthViewModel~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/ViewModels/BundleDetailViewModel.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailViewModel.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailViewModel.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailViewModel.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailViewModel.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailViewModel.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailViewModel.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailViewModel.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailViewModel~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/ViewModels/CheckoutViewModel.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CheckoutViewModel.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CheckoutViewModel.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CheckoutViewModel.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CheckoutViewModel.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CheckoutViewModel.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CheckoutViewModel.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CheckoutViewModel.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CheckoutViewModel~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/ViewModels/MarketplaceViewModel.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MarketplaceViewModel.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MarketplaceViewModel.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MarketplaceViewModel.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MarketplaceViewModel.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MarketplaceViewModel.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MarketplaceViewModel.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MarketplaceViewModel.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MarketplaceViewModel~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/ViewModels/OrderDetailViewModel.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderDetailViewModel.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderDetailViewModel.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderDetailViewModel.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderDetailViewModel.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderDetailViewModel.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderDetailViewModel.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderDetailViewModel.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderDetailViewModel~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/ViewModels/OrdersListViewModel.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrdersListViewModel.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrdersListViewModel.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrdersListViewModel.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrdersListViewModel.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrdersListViewModel.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrdersListViewModel.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrdersListViewModel.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrdersListViewModel~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/ViewModels/SearchResultsViewModel.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResultsViewModel.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResultsViewModel.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResultsViewModel.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResultsViewModel.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResultsViewModel.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResultsViewModel.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResultsViewModel.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResultsViewModel~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/ViewModels/SearchViewModel.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchViewModel.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchViewModel.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchViewModel.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchViewModel.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchViewModel.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchViewModel.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchViewModel.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchViewModel~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/AboutView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AboutView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AboutView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AboutView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AboutView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AboutView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AboutView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AboutView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AboutView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/AccountInfoView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AccountInfoView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AccountInfoView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AccountInfoView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AccountInfoView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AccountInfoView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AccountInfoView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AccountInfoView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AccountInfoView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/AccountView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AccountView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AccountView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AccountView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AccountView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AccountView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AccountView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AccountView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AccountView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/AgentCenterView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentCenterView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentCenterView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentCenterView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentCenterView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentCenterView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentCenterView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentCenterView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentCenterView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/AppleContinueView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AppleContinueView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AppleContinueView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AppleContinueView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AppleContinueView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AppleContinueView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AppleContinueView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AppleContinueView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AppleContinueView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/AuthView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AuthView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/BannerView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BannerView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BannerView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BannerView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BannerView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BannerView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BannerView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BannerView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BannerView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/BundleDetailView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/CheckoutView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CheckoutView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CheckoutView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CheckoutView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CheckoutView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CheckoutView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CheckoutView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CheckoutView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CheckoutView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/CurrencySettingsView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CurrencySettingsView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CurrencySettingsView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CurrencySettingsView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CurrencySettingsView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CurrencySettingsView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CurrencySettingsView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CurrencySettingsView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CurrencySettingsView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/EmailCodeVerifyView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/EmailCodeVerifyView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/EmailCodeVerifyView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/EmailCodeVerifyView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/EmailCodeVerifyView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/EmailCodeVerifyView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/EmailCodeVerifyView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/EmailCodeVerifyView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/EmailCodeVerifyView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/ForgotPasswordView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ForgotPasswordView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ForgotPasswordView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ForgotPasswordView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ForgotPasswordView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ForgotPasswordView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ForgotPasswordView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ForgotPasswordView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ForgotPasswordView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/LanguageSettingsView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/LanguageSettingsView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/LanguageSettingsView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/LanguageSettingsView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/LanguageSettingsView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/LanguageSettingsView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/LanguageSettingsView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/LanguageSettingsView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/LanguageSettingsView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/LoadingButton.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/LoadingButton.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/LoadingButton.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/LoadingButton.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/LoadingButton.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/LoadingButton.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/LoadingButton.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/LoadingButton.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/LoadingButton~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/MarketplaceView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MarketplaceView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MarketplaceView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MarketplaceView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MarketplaceView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MarketplaceView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MarketplaceView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MarketplaceView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MarketplaceView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/MoreInfoView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MoreInfoView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MoreInfoView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MoreInfoView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MoreInfoView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MoreInfoView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MoreInfoView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MoreInfoView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MoreInfoView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/MyEsimView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MyEsimView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MyEsimView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MyEsimView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MyEsimView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MyEsimView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MyEsimView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MyEsimView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/MyEsimView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/OrderDetailView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderDetailView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderDetailView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderDetailView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderDetailView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderDetailView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderDetailView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderDetailView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderDetailView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/OrdersListView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrdersListView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrdersListView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrdersListView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrdersListView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrdersListView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrdersListView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrdersListView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrdersListView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/PrivacyPolicyView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PrivacyPolicyView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PrivacyPolicyView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PrivacyPolicyView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PrivacyPolicyView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PrivacyPolicyView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PrivacyPolicyView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PrivacyPolicyView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/PrivacyPolicyView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/ResetPasswordConfirmView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ResetPasswordConfirmView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ResetPasswordConfirmView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ResetPasswordConfirmView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ResetPasswordConfirmView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ResetPasswordConfirmView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ResetPasswordConfirmView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ResetPasswordConfirmView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/ResetPasswordConfirmView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/SearchResultsView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResultsView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResultsView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResultsView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResultsView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResultsView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResultsView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResultsView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SearchResultsView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/Shared/OrderStatusFilter.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderStatusFilter.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderStatusFilter.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderStatusFilter.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderStatusFilter.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderStatusFilter.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderStatusFilter.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderStatusFilter.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderStatusFilter~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/Skeletons/AgentAccountSkeleton.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentAccountSkeleton.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentAccountSkeleton.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentAccountSkeleton.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentAccountSkeleton.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentAccountSkeleton.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentAccountSkeleton.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentAccountSkeleton.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentAccountSkeleton~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/Skeletons/AgentBillRowSkeleton.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentBillRowSkeleton.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentBillRowSkeleton.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentBillRowSkeleton.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentBillRowSkeleton.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentBillRowSkeleton.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentBillRowSkeleton.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentBillRowSkeleton.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/AgentBillRowSkeleton~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/Skeletons/BundleCardSkeleton.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleCardSkeleton.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleCardSkeleton.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleCardSkeleton.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleCardSkeleton.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleCardSkeleton.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleCardSkeleton.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleCardSkeleton.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleCardSkeleton~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/Skeletons/BundleDetailSkeleton.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailSkeleton.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailSkeleton.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailSkeleton.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailSkeleton.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailSkeleton.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailSkeleton.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailSkeleton.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/BundleDetailSkeleton~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/Skeletons/CountryRowSkeleton.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CountryRowSkeleton.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CountryRowSkeleton.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CountryRowSkeleton.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CountryRowSkeleton.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CountryRowSkeleton.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CountryRowSkeleton.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CountryRowSkeleton.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/CountryRowSkeleton~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/Skeletons/DownloadConfigSkeleton.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/DownloadConfigSkeleton.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/DownloadConfigSkeleton.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/DownloadConfigSkeleton.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/DownloadConfigSkeleton.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/DownloadConfigSkeleton.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/DownloadConfigSkeleton.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/DownloadConfigSkeleton.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/DownloadConfigSkeleton~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/Skeletons/InstallationStepsSkeleton.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/InstallationStepsSkeleton.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/InstallationStepsSkeleton.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/InstallationStepsSkeleton.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/InstallationStepsSkeleton.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/InstallationStepsSkeleton.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/InstallationStepsSkeleton.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/InstallationStepsSkeleton.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/InstallationStepsSkeleton~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/Skeletons/OrderActionSkeleton.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderActionSkeleton.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderActionSkeleton.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderActionSkeleton.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderActionSkeleton.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderActionSkeleton.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderActionSkeleton.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderActionSkeleton.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderActionSkeleton~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/Skeletons/OrderAfterSalesSkeleton.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderAfterSalesSkeleton.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderAfterSalesSkeleton.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderAfterSalesSkeleton.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderAfterSalesSkeleton.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderAfterSalesSkeleton.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderAfterSalesSkeleton.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderAfterSalesSkeleton.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderAfterSalesSkeleton~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/Skeletons/OrderInfoSkeleton.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderInfoSkeleton.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderInfoSkeleton.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderInfoSkeleton.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderInfoSkeleton.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderInfoSkeleton.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderInfoSkeleton.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderInfoSkeleton.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderInfoSkeleton~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/Skeletons/OrderRowSkeleton.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderRowSkeleton.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderRowSkeleton.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderRowSkeleton.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderRowSkeleton.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderRowSkeleton.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderRowSkeleton.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderRowSkeleton.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderRowSkeleton~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/Skeletons/OrderUsageSkeleton.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderUsageSkeleton.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderUsageSkeleton.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderUsageSkeleton.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderUsageSkeleton.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderUsageSkeleton.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderUsageSkeleton.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderUsageSkeleton.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/OrderUsageSkeleton~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/Skeletons/QRCodeSkeleton.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/QRCodeSkeleton.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/QRCodeSkeleton.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/QRCodeSkeleton.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/QRCodeSkeleton.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/QRCodeSkeleton.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/QRCodeSkeleton.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/QRCodeSkeleton.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/QRCodeSkeleton~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/Skeletons/RegionRowSkeleton.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RegionRowSkeleton.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RegionRowSkeleton.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RegionRowSkeleton.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RegionRowSkeleton.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RegionRowSkeleton.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RegionRowSkeleton.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RegionRowSkeleton.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/RegionRowSkeleton~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/SupportView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SupportView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SupportView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SupportView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SupportView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SupportView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SupportView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SupportView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/SupportView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/Simigo/Views/TermsOfServiceView.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/TermsOfServiceView.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/TermsOfServiceView.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/TermsOfServiceView.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/TermsOfServiceView.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/TermsOfServiceView.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/TermsOfServiceView.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/TermsOfServiceView.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/TermsOfServiceView~partial.swiftmodule"
+  },
+  "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/lijie/Desktop/Manzhan/eSIM/Simigo/build/Simigo.build/Debug-iphonesimulator/Simigo.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  }
+}
