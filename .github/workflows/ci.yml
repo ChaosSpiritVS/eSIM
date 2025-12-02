@@ -153,25 +153,26 @@ jobs:
         id: sim
         run: |
           xcrun simctl list devices --json > devices.json
-          python3 - <<'PY'
-import json,sys
-with open('devices.json') as f:
-  d=json.load(f)
-devs=d.get('devices',{})
-chosen=None
-for k in devs:
-  for dev in devs[k]:
-    name=dev.get('name','')
-    state=dev.get('state','')
-    if 'iPhone 15' in name and state=='Booted':
-      chosen=name
-      break
-    if 'iPhone 15' in name and state=='Shutdown':
-      chosen=name
-      break
-  if chosen: break
-print(f"::set-output name=device::{chosen or 'iPhone 15'}")
-PY
+          cat > select_sim.py << 'PY'
+          import os, json
+          with open('devices.json') as f:
+              d = json.load(f)
+          devs = d.get('devices', {})
+          chosen = None
+          for k in devs:
+              for dev in devs[k]:
+                  name = dev.get('name','')
+                  state = dev.get('state','')
+                  if 'iPhone 15' in name and state in ('Booted','Shutdown'):
+                      chosen = name
+                      break
+              if chosen:
+                  break
+          out = os.environ.get('GITHUB_OUTPUT')
+          with open(out, 'a') as fo:
+              fo.write(f"device={chosen or 'iPhone 15'}\n")
+          PY
+          python3 select_sim.py
 
       - name: Run tests (build+test)
         env:
@@ -190,22 +191,22 @@ PY
       - name: Calculate coverage threshold
         run: |
           xcrun xccov view --report --json TestResults.xcresult > coverage.json
-          python3 - <<'PY'
-import json,sys
-with open('coverage.json') as f:
-  data=json.load(f)
-targets=data.get('targets',[])
-if not targets:
-  print('No targets in coverage report'); sys.exit(1)
-# compute overall average coverage across app targets (exclude *Tests)
-app_targets=[t for t in targets if not t.get('name','').endswith('Tests')]
-if not app_targets:
-  app_targets=targets
-avg=sum(t.get('lineCoverage',0.0) for t in app_targets)/len(app_targets)
-print(f"App coverage: {avg*100:.2f}%")
-threshold=0.60
-sys.exit(0 if avg>=threshold else 2)
-PY
+          cat > calc_coverage.py << 'PY'
+          import json, sys
+          with open('coverage.json') as f:
+              data = json.load(f)
+          targets = data.get('targets', [])
+          if not targets:
+              print('No targets in coverage report'); sys.exit(1)
+          app_targets = [t for t in targets if not t.get('name','').endswith('Tests')]
+          if not app_targets:
+              app_targets = targets
+          avg = sum(t.get('lineCoverage',0.0) for t in app_targets) / len(app_targets)
+          print(f"App coverage: {avg*100:.2f}%")
+          threshold = 0.60
+          sys.exit(0 if avg >= threshold else 2)
+          PY
+          python3 calc_coverage.py
 
       - name: Upload xcresult bundle
         if: always()
@@ -216,58 +217,49 @@ PY
 
       - name: Enforce iOS module coverage (DTO/Tools/Errors ≥ 90% approx)
         run: |
-          python3 - <<'PY'
-import json,sys
-with open('coverage.json') as f:
-    data=json.load(f)
-files=[]
-for t in data.get('targets',[]):
-    for f in t.get('files',[]):
-        files.append({'path': f.get('path',''), 'lineCoverage': f.get('lineCoverage',0.0)})
+          cat > enforce_ios_modules.py << 'PY'
+          import json, sys
+          with open('coverage.json') as f:
+              data = json.load(f)
+          files = []
+          for t in data.get('targets', []):
+              for f in t.get('files', []):
+                  files.append({'path': f.get('path',''), 'lineCoverage': f.get('lineCoverage',0.0)})
 
-def select(patterns):
-    if isinstance(patterns,(list,tuple)):
-        pats=patterns
-    else:
-        pats=[patterns]
-    return [it for it in files if any(p in (it['path'] or '') for p in pats)]
+          def select(patterns):
+              pats = patterns if isinstance(patterns,(list,tuple)) else [patterns]
+              return [it for it in files if any(p in (it['path'] or '') for p in pats)]
 
-def avg(items):
-    return (sum(it['lineCoverage'] for it in items)/len(items)) if items else 1.0
+          def avg(items):
+              return (sum(it['lineCoverage'] for it in items)/len(items)) if items else 1.0
 
-def min_rate(items):
-    return (min(it['lineCoverage'] for it in items)) if items else 1.0
+          def min_rate(items):
+              return (min(it['lineCoverage'] for it in items)) if items else 1.0
 
-threshold=0.90
-violations=[]
-
-# DTO files
-dto = select(['DTO.swift','/Models/','/Repositories/Upstream'])
-if dto:
-    a=avg(dto); m=min_rate(dto)
-    if a<threshold or m<threshold:
-        violations.append(f"iOS DTO coverage avg={a:.2f} min={m:.2f} (<{threshold:.2f})")
-
-# Tools files
-tools = select(['/Utils/','Formatting.swift','NetworkService.swift'])
-if tools:
-    a=avg(tools); m=min_rate(tools)
-    if a<threshold or m<threshold:
-        violations.append(f"iOS Tools coverage avg={a:.2f} min={m:.2f} (<{threshold:.2f})")
-
-# Errors files
-errs = select(['Error.swift','NetworkService.swift'])
-if errs:
-    a=avg(errs); m=min_rate(errs)
-    if a<threshold or m<threshold:
-        violations.append(f"iOS Errors coverage avg={a:.2f} min={m:.2f} (<{threshold:.2f})")
-
-if violations:
-    print('\n'.join(violations))
-    sys.exit(2)
-else:
-    print('iOS module thresholds satisfied (approx ≥ 90%)')
-PY
+          threshold = 0.90
+          violations = []
+          dto = select(['DTO.swift','/Models/','/Repositories/Upstream'])
+          if dto:
+              a = avg(dto); m = min_rate(dto)
+              if a < threshold or m < threshold:
+                  violations.append(f"iOS DTO coverage avg={a:.2f} min={m:.2f} (<{threshold:.2f})")
+          tools = select(['/Utils/','Formatting.swift','NetworkService.swift'])
+          if tools:
+              a = avg(tools); m = min_rate(tools)
+              if a < threshold or m < threshold:
+                  violations.append(f"iOS Tools coverage avg={a:.2f} min={m:.2f} (<{threshold:.2f})")
+          errs = select(['Error.swift','NetworkService.swift'])
+          if errs:
+              a = avg(errs); m = min_rate(errs)
+              if a < threshold or m < threshold:
+                  violations.append(f"iOS Errors coverage avg={a:.2f} min={m:.2f} (<{threshold:.2f})")
+          if violations:
+              print('\n'.join(violations))
+              sys.exit(2)
+          else:
+              print('iOS module thresholds satisfied (approx ≥ 90%)')
+          PY
+          python3 enforce_ios_modules.py
 
       - name: Upload to Codecov (iOS unit)
         uses: codecov/codecov-action@v4
@@ -310,25 +302,26 @@ PY
         id: sim2
         run: |
           xcrun simctl list devices --json > devices.json
-          python3 - <<'PY'
-import json
-with open('devices.json') as f:
-  d=json.load(f)
-devs=d.get('devices',{})
-chosen=None
-for k in devs:
-  for dev in devs[k]:
-    name=dev.get('name','')
-    state=dev.get('state','')
-    if 'iPhone 15' in name and state=='Booted':
-      chosen=name
-      break
-    if 'iPhone 15' in name and state=='Shutdown':
-      chosen=name
-      break
-  if chosen: break
-print(f"::set-output name=device::{chosen or 'iPhone 15'}")
-PY
+          cat > select_sim2.py << 'PY'
+          import os, json
+          with open('devices.json') as f:
+              d = json.load(f)
+          devs = d.get('devices', {})
+          chosen = None
+          for k in devs:
+              for dev in devs[k]:
+                  name = dev.get('name','')
+                  state = dev.get('state','')
+                  if 'iPhone 15' in name and state in ('Booted','Shutdown'):
+                      chosen = name
+                      break
+              if chosen:
+                  break
+          out = os.environ.get('GITHUB_OUTPUT')
+          with open(out, 'a') as fo:
+              fo.write(f"device={chosen or 'iPhone 15'}\n")
+          PY
+          python3 select_sim2.py
 
       - name: Run UI+Integration tests
         env:
@@ -348,66 +341,68 @@ PY
       - name: Calculate coverage threshold (integration)
         run: |
           xcrun xccov view --report --json IntegrationResults.xcresult > integration-coverage.json
-          python3 - <<'PY'
-import json,sys
-with open('integration-coverage.json') as f:
-  data=json.load(f)
-targets=data.get('targets',[])
-if not targets:
-  print('No targets in coverage report'); sys.exit(1)
-app_targets=[t for t in targets if not t.get('name','').endswith('Tests')]
-if not app_targets:
-  app_targets=targets
-avg=sum(t.get('lineCoverage',0.0) for t in app_targets)/len(app_targets)
-print(f"Integration app coverage: {avg*100:.2f}%")
-threshold=0.60
-sys.exit(0 if avg>=threshold else 2)
-PY
+          cat > calc_integration_coverage.py << 'PY'
+          import json, sys
+          with open('integration-coverage.json') as f:
+              data = json.load(f)
+          targets = data.get('targets', [])
+          if not targets:
+              print('No targets in coverage report'); sys.exit(1)
+          app_targets = [t for t in targets if not t.get('name','').endswith('Tests')]
+          if not app_targets:
+              app_targets = targets
+          avg = sum(t.get('lineCoverage',0.0) for t in app_targets) / len(app_targets)
+          print(f"Integration app coverage: {avg*100:.2f}%")
+          threshold = 0.60
+          sys.exit(0 if avg >= threshold else 2)
+          PY
+          python3 calc_integration_coverage.py
 
       - name: Enforce iOS module coverage (integration approx ≥ 90%)
         run: |
-          python3 - <<'PY'
-import json,sys
-with open('integration-coverage.json') as f:
-    data=json.load(f)
-files=[]
-for t in data.get('targets',[]):
-    for f in t.get('files',[]):
-        files.append({'path': f.get('path',''), 'lineCoverage': f.get('lineCoverage',0.0)})
+          cat > enforce_ios_modules_integration.py << 'PY'
+          import json, sys
+          with open('integration-coverage.json') as f:
+              data = json.load(f)
+          files = []
+          for t in data.get('targets', []):
+              for f in t.get('files', []):
+                  files.append({'path': f.get('path',''), 'lineCoverage': f.get('lineCoverage',0.0)})
 
-def select(patterns):
-    pats=patterns if isinstance(patterns,(list,tuple)) else [patterns]
-    return [it for it in files if any(p in (it['path'] or '') for p in pats)]
+          def select(patterns):
+              pats = patterns if isinstance(patterns,(list,tuple)) else [patterns]
+              return [it for it in files if any(p in (it['path'] or '') for p in pats)]
 
-def avg(items):
-    return (sum(it['lineCoverage'] for it in items)/len(items)) if items else 1.0
+          def avg(items):
+              return (sum(it['lineCoverage'] for it in items)/len(items)) if items else 1.0
 
-def min_rate(items):
-    return (min(it['lineCoverage'] for it in items)) if items else 1.0
+          def min_rate(items):
+              return (min(it['lineCoverage'] for it in items)) if items else 1.0
 
-threshold=0.90
-violations=[]
-dto = select(['DTO.swift','/Models/','/Repositories/Upstream'])
-if dto:
-    a=avg(dto); m=min_rate(dto)
-    if a<threshold or m<threshold:
-        violations.append(f"iOS DTO coverage (integration) avg={a:.2f} min={m:.2f} (<{threshold:.2f})")
-tools = select(['/Utils/','Formatting.swift','NetworkService.swift'])
-if tools:
-    a=avg(tools); m=min_rate(tools)
-    if a<threshold or m<threshold:
-        violations.append(f"iOS Tools coverage (integration) avg={a:.2f} min={m:.2f} (<{threshold:.2f})")
-errs = select(['Error.swift','NetworkService.swift'])
-if errs:
-    a=avg(errs); m=min_rate(errs)
-    if a<threshold or m<threshold:
-        violations.append(f"iOS Errors coverage (integration) avg={a:.2f} min={m:.2f} (<{threshold:.2f})")
-if violations:
-    print('\n'.join(violations))
-    sys.exit(2)
-else:
-    print('iOS integration module thresholds satisfied (approx ≥ 90%)')
-PY
+          threshold = 0.90
+          violations = []
+          dto = select(['DTO.swift','/Models/','/Repositories/Upstream'])
+          if dto:
+              a = avg(dto); m = min_rate(dto)
+              if a < threshold or m < threshold:
+                  violations.append(f"iOS DTO coverage (integration) avg={a:.2f} min={m:.2f} (<{threshold:.2f})")
+          tools = select(['/Utils/','Formatting.swift','NetworkService.swift'])
+          if tools:
+              a = avg(tools); m = min_rate(tools)
+              if a < threshold or m < threshold:
+                  violations.append(f"iOS Tools coverage (integration) avg={a:.2f} min={m:.2f} (<{threshold:.2f})")
+          errs = select(['Error.swift','NetworkService.swift'])
+          if errs:
+              a = avg(errs); m = min_rate(errs)
+              if a < threshold or m < threshold:
+                  violations.append(f"iOS Errors coverage (integration) avg={a:.2f} min={m:.2f} (<{threshold:.2f})")
+          if violations:
+              print('\n'.join(violations))
+              sys.exit(2)
+          else:
+              print('iOS integration module thresholds satisfied (approx ≥ 90%)')
+          PY
+          python3 enforce_ios_modules_integration.py
 
       - name: Upload xcresult bundle (integration)
         if: always()
