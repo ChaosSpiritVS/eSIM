@@ -33,12 +33,21 @@ jobs:
           pip install -r server/requirements.txt
           pip install coverage
 
+      - name: Initialize DB schema
+        run: |
+          python - << 'PY'
+          from server.app.db import init_db
+          init_db()
+          print('DB initialized')
+          PY
+
       - name: Run unit tests with coverage (branch)
         env:
           ENABLE_TEST_ENDPOINTS: '1'
         run: |
-          coverage run --branch -m unittest discover -v server/tests
-          coverage report -m --fail-under=80
+          set -o pipefail
+          coverage run --branch -m unittest discover -v server/tests | tee backend-tests.log
+          coverage report -m --fail-under=80 | tee -a backend-tests.log
           coverage xml -o backend-coverage.xml
 
       - name: Enforce module branch thresholds (DTO/Tools/Exceptions ≥ 90%)
@@ -120,6 +129,12 @@ jobs:
           name: backend-coverage
           path: backend-coverage.xml
 
+      - name: Upload backend test log
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-tests-log
+          path: backend-tests.log
+
       - name: Upload to Codecov (backend)
         uses: codecov/codecov-action@v4
         with:
@@ -159,19 +174,34 @@ jobs:
           with open('devices.json') as f:
               d = json.load(f)
           devs = d.get('devices', {})
-          chosen = None
-          for k in devs:
-              for dev in devs[k]:
+          chosen_udid = None
+          chosen_name = None
+          for runtime in devs:
+              for dev in devs[runtime]:
                   name = dev.get('name','')
                   state = dev.get('state','')
-                  if 'iPhone 15' in name and state in ('Booted','Shutdown'):
-                      chosen = name
+                  udid = dev.get('udid','')
+                  if 'iPhone' in name and state in ('Booted','Shutdown') and udid:
+                      chosen_udid = udid
+                      chosen_name = name
                       break
-              if chosen:
+              if chosen_udid:
                   break
+          if not chosen_udid:
+              for runtime in devs:
+                  for dev in devs[runtime]:
+                      name = dev.get('name','')
+                      udid = dev.get('udid','')
+                      if 'iPhone' in name and udid:
+                          chosen_udid = udid
+                          chosen_name = name
+                          break
+                  if chosen_udid:
+                      break
           out = os.environ.get('GITHUB_OUTPUT')
           with open(out, 'a') as fo:
-              fo.write(f"device={chosen or 'iPhone 15'}\n")
+              fo.write(f"udid={chosen_udid or ''}\n")
+              fo.write(f"name={chosen_name or ''}\n")
           PY
           python3 select_sim.py
         if: ${{ hashFiles('**/*.xcodeproj') != '' || hashFiles('**/*.xcworkspace') != '' }}
@@ -182,10 +212,12 @@ jobs:
         run: |
           DERIVED=$(mktemp -d)
           set -o pipefail
+          if [ -z "${{ steps.sim.outputs.udid }}" ]; then echo "No simulator UDID found"; exit 1; fi
+          xcrun simctl boot "${{ steps.sim.outputs.udid }}" || true
           xcodebuild \
             -project Simigo/Simigo.xcodeproj \
             -scheme Simigo \
-            -destination "platform=iOS Simulator,name=${{ steps.sim.outputs.device }}" \
+            -destination "platform=iOS Simulator,id=${{ steps.sim.outputs.udid }}" \
             -enableCodeCoverage YES \
             -derivedDataPath "$DERIVED" \
             -resultBundlePath TestResults.xcresult \
@@ -220,6 +252,20 @@ jobs:
         with:
           name: ios-xcresult
           path: TestResults.xcresult
+        if: ${{ always() && (hashFiles('**/*.xcodeproj') != '' || hashFiles('**/*.xcworkspace') != '') }}
+
+      - name: Upload devices json
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-devices-json
+          path: devices.json
+        if: ${{ always() && (hashFiles('**/*.xcodeproj') != '' || hashFiles('**/*.xcworkspace') != '') }}
+
+      - name: Upload xcodebuild log
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-xcodebuild-log
+          path: xcodebuild.log
         if: ${{ always() && (hashFiles('**/*.xcodeproj') != '' || hashFiles('**/*.xcworkspace') != '') }}
 
       - name: Enforce iOS module coverage (DTO/Tools/Errors ≥ 90% approx)
@@ -319,19 +365,34 @@ jobs:
           with open('devices.json') as f:
               d = json.load(f)
           devs = d.get('devices', {})
-          chosen = None
-          for k in devs:
-              for dev in devs[k]:
+          chosen_udid = None
+          chosen_name = None
+          for runtime in devs:
+              for dev in devs[runtime]:
                   name = dev.get('name','')
                   state = dev.get('state','')
-                  if 'iPhone 15' in name and state in ('Booted','Shutdown'):
-                      chosen = name
+                  udid = dev.get('udid','')
+                  if 'iPhone' in name and state in ('Booted','Shutdown') and udid:
+                      chosen_udid = udid
+                      chosen_name = name
                       break
-              if chosen:
+              if chosen_udid:
                   break
+          if not chosen_udid:
+              for runtime in devs:
+                  for dev in devs[runtime]:
+                      name = dev.get('name','')
+                      udid = dev.get('udid','')
+                      if 'iPhone' in name and udid:
+                          chosen_udid = udid
+                          chosen_name = name
+                          break
+                  if chosen_udid:
+                      break
           out = os.environ.get('GITHUB_OUTPUT')
           with open(out, 'a') as fo:
-              fo.write(f"device={chosen or 'iPhone 15'}\n")
+              fo.write(f"udid={chosen_udid or ''}\n")
+              fo.write(f"name={chosen_name or ''}\n")
           PY
           python3 select_sim2.py
         if: ${{ hashFiles('**/*.xcodeproj') != '' || hashFiles('**/*.xcworkspace') != '' }}
@@ -343,10 +404,12 @@ jobs:
         run: |
           DERIVED=$(mktemp -d)
           set -o pipefail
+          if [ -z "${{ steps.sim2.outputs.udid }}" ]; then echo "No simulator UDID found"; exit 1; fi
+          xcrun simctl boot "${{ steps.sim2.outputs.udid }}" || true
           xcodebuild \
             -project Simigo/Simigo.xcodeproj \
             -scheme Simigo \
-            -destination "platform=iOS Simulator,name=${{ steps.sim2.outputs.device }}" \
+            -destination "platform=iOS Simulator,id=${{ steps.sim2.outputs.udid }}" \
             -enableCodeCoverage YES \
             -derivedDataPath "$DERIVED" \
             -resultBundlePath IntegrationResults.xcresult \
@@ -428,6 +491,13 @@ jobs:
         with:
           name: ios-integration-xcresult
           path: IntegrationResults.xcresult
+        if: ${{ always() && (hashFiles('**/*.xcodeproj') != '' || hashFiles('**/*.xcworkspace') != '') }}
+
+      - name: Upload xcodebuild integration log
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-integration-xcodebuild-log
+          path: xcodebuild-integration.log
         if: ${{ always() && (hashFiles('**/*.xcodeproj') != '' || hashFiles('**/*.xcworkspace') != '') }}
 
       - name: Upload to Codecov (iOS integration)
