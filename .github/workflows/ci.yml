@@ -43,77 +43,76 @@ jobs:
 
       - name: Enforce module branch thresholds (DTO/Tools/Exceptions ≥ 90%)
         run: |
-          python3 - << 'PY'
-import xml.etree.ElementTree as ET
-import sys
+          cat > enforce_modules.py << 'PY'
+          import xml.etree.ElementTree as ET
+          import sys
 
-def parse(xml_path):
-    tree = ET.parse(xml_path)
-    root = tree.getroot()
-    # Cobertura-style: class elements under packages/classes
-    files = []
-    for cls in root.findall('.//class'):
-        filename = cls.get('filename') or ''
-        # coverage.py sets branch-rate attribute when --branch is enabled
-        br = cls.get('branch-rate')
-        try:
-            branch_rate = float(br) if br is not None else None
-        except Exception:
-            branch_rate = None
-        files.append({'filename': filename, 'branch_rate': branch_rate})
-    return files
+          def parse(xml_path):
+              tree = ET.parse(xml_path)
+              root = tree.getroot()
+              files = []
+              for cls in root.findall('.//class'):
+                  filename = cls.get('filename') or ''
+                  br = cls.get('branch-rate')
+                  try:
+                      branch_rate = float(br) if br is not None else None
+                  except Exception:
+                      branch_rate = None
+                  files.append({'filename': filename, 'branch_rate': branch_rate})
+              return files
 
-files = parse('backend-coverage.xml')
+          files = parse('backend-coverage.xml')
 
-def avg(items):
-    vals = [it['branch_rate'] for it in items if it['branch_rate'] is not None]
-    return (sum(vals) / len(vals)) if vals else 1.0
+          def avg(items):
+              vals = [it['branch_rate'] for it in items if it['branch_rate'] is not None]
+              return (sum(vals) / len(vals)) if vals else 1.0
 
-def min_rate(items):
-    vals = [it['branch_rate'] for it in items if it['branch_rate'] is not None]
-    return (min(vals) if vals else 1.0)
+          def min_rate(items):
+              vals = [it['branch_rate'] for it in items if it['branch_rate'] is not None]
+              return (min(vals) if vals else 1.0)
 
-def select(patterns):
-    pats = patterns if isinstance(patterns, (list, tuple)) else [patterns]
-    return [it for it in files if any(p in it['filename'] for p in pats)]
+          def select(patterns):
+              pats = patterns if isinstance(patterns, (list, tuple)) else [patterns]
+              return [it for it in files if any(p in it['filename'] for p in pats)]
 
-threshold = 0.90
-violations = []
+          threshold = 0.90
+          violations = []
 
-# DTO
-dto_files = select(['server/app/models/dto.py'])
-dto_avg = avg(dto_files)
-dto_min = min_rate(dto_files)
-if dto_avg < threshold or dto_min < threshold:
-    violations.append(f"DTO branch coverage avg={dto_avg:.2f} min={dto_min:.2f} (<{threshold:.2f})")
+          # DTO
+          dto_files = select(['server/app/models/dto.py'])
+          dto_avg = avg(dto_files)
+          dto_min = min_rate(dto_files)
+          if dto_avg < threshold or dto_min < threshold:
+              violations.append(f"DTO branch coverage avg={dto_avg:.2f} min={dto_min:.2f} (<{threshold:.2f})")
 
-# Tools
-tools_patterns = [
-    'server/app/i18n.py',
-    'server/app/db.py',
-    'server/app/security/jwt.py',
-    'server/app/middleware/request_id.py',
-    'server/app/provider/http.py',
-]
-tools_files = select(tools_patterns)
-tools_avg = avg(tools_files)
-tools_min = min_rate(tools_files)
-if tools_files and (tools_avg < threshold or tools_min < threshold):
-    violations.append(f"Tools branch coverage avg={tools_avg:.2f} min={tools_min:.2f} (<{threshold:.2f})")
+          # Tools
+          tools_patterns = [
+              'server/app/i18n.py',
+              'server/app/db.py',
+              'server/app/security/jwt.py',
+              'server/app/middleware/request_id.py',
+              'server/app/provider/http.py',
+          ]
+          tools_files = select(tools_patterns)
+          tools_avg = avg(tools_files)
+          tools_min = min_rate(tools_files)
+          if tools_files and (tools_avg < threshold or tools_min < threshold):
+              violations.append(f"Tools branch coverage avg={tools_avg:.2f} min={tools_min:.2f} (<{threshold:.2f})")
 
-# Exceptions
-exc_files = select(['server/app/provider/errors.py'])
-exc_avg = avg(exc_files)
-exc_min = min_rate(exc_files)
-if exc_avg < threshold or exc_min < threshold:
-    violations.append(f"Exceptions branch coverage avg={exc_avg:.2f} min={exc_min:.2f} (<{threshold:.2f})")
+          # Exceptions
+          exc_files = select(['server/app/provider/errors.py'])
+          exc_avg = avg(exc_files)
+          exc_min = min_rate(exc_files)
+          if exc_avg < threshold or exc_min < threshold:
+              violations.append(f"Exceptions branch coverage avg={exc_avg:.2f} min={exc_min:.2f} (<{threshold:.2f})")
 
-if violations:
-    print('\n'.join(violations))
-    sys.exit(2)
-else:
-    print('Module branch thresholds satisfied (≥ 90%)')
-PY
+          if violations:
+              print('\n'.join(violations))
+              sys.exit(2)
+          else:
+              print('Module branch thresholds satisfied (≥ 90%)')
+          PY
+          python3 enforce_modules.py
 
       - name: Upload coverage report
         uses: actions/upload-artifact@v4
