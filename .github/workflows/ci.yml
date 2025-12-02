@@ -213,12 +213,11 @@ jobs:
         if: ${{ hashFiles('**/*.xcodeproj') != '' || hashFiles('**/*.xcworkspace') != '' }}
 
       - name: Upload xcresult bundle
-        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ios-xcresult
           path: TestResults.xcresult
-        if: ${{ hashFiles('**/*.xcodeproj') != '' || hashFiles('**/*.xcworkspace') != '' }}
+        if: ${{ always() && (hashFiles('**/*.xcodeproj') != '' || hashFiles('**/*.xcworkspace') != '') }}
 
       - name: Enforce iOS module coverage (DTO/Tools/Errors ≥ 90% approx)
         run: |
@@ -419,12 +418,11 @@ jobs:
         if: ${{ hashFiles('**/*.xcodeproj') != '' || hashFiles('**/*.xcworkspace') != '' }}
 
       - name: Upload xcresult bundle (integration)
-        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ios-integration-xcresult
           path: IntegrationResults.xcresult
-        if: ${{ hashFiles('**/*.xcodeproj') != '' || hashFiles('**/*.xcworkspace') != '' }}
+        if: ${{ always() && (hashFiles('**/*.xcodeproj') != '' || hashFiles('**/*.xcworkspace') != '') }}
 
       - name: Upload to Codecov (iOS integration)
         uses: codecov/codecov-action@v4
