@@ -46,7 +46,7 @@ jobs:
           ENABLE_TEST_ENDPOINTS: '1'
         run: |
           set -o pipefail
-          coverage run --branch -m unittest discover -v server/tests | tee backend-tests.log
+          coverage run --branch --source=server/app -m unittest discover -v server/tests | tee backend-tests.log
           coverage report -m --fail-under=80 | tee -a backend-tests.log
           coverage xml -o backend-coverage.xml
 
