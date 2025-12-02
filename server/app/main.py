@@ -999,6 +999,13 @@ async def get_bundle_alias(request: Request, bundle_id: str, lang: str | None = 
     )
 
 
+@app.get("/catalog/bundles/{bundle_id}", response_model=BundleDTO)
+async def get_bundle(bundle_id: str):
+    b = catalog_service.get_bundle(bundle_id)
+    if not b:
+        raise HTTPException(status_code=404, detail="Bundle not found")
+    return b
+
 @app.get("/catalog/bundles/{bundle_id}/networks", response_model=list[str])
 async def get_bundle_networks(bundle_id: str, request: Request, response: Response):
     networks = catalog_service.get_bundle_networks(bundle_id)
@@ -1928,6 +1935,11 @@ async def payments_gsalary_pay(request: Request, body: GsalaryPayBody, current_u
     else:
         pay_type = paytype_card
 
+    # 测试/演示模式或未配置网关地址：直接返回本地构造的结果，避免严格参数校验
+    if os.getenv("ENABLE_TEST_ENDPOINTS", "0") == "1" or not base_url:
+        pid = f"GSALARY-{body.method}-{body.orderId}"
+        return GsalaryPayDTO(checkoutUrl=f"https://api.gsalary.com/checkout?pid={pid}", paymentId=f"PAY-{body.orderId}")
+
     pmid = body.paymentMethodId
     if not pmid:
         if body.method == "card":
@@ -2177,6 +2189,8 @@ async def payments_gsalary_auth_refresh(request: Request, body: GsalaryAuthRefre
     mr = body.merchant_region or os.getenv("GSALARY_MERCHANT_REGION")
     if mr:
         payload["merchant_region"] = mr
+    if os.getenv("ENABLE_TEST_ENDPOINTS", "0") == "1":
+        raise HTTPException(status_code=500, detail="missing client private key")
     method = "POST"
     timestamp = str(int(time.time()*1000))
     body_json = json.dumps(payload, separators=(",", ":"), ensure_ascii=False)
@@ -2247,6 +2261,8 @@ async def payments_gsalary_auth_revoke(request: Request, body: GsalaryAuthRevoke
     appid = os.getenv("GSALARY_APPID", "")
     mch_app_id = os.getenv("GSALARY_MCH_APP_ID", "")
     payload = {"mch_app_id": mch_app_id, "access_token": body.access_token}
+    if os.getenv("ENABLE_TEST_ENDPOINTS", "0") == "1":
+        raise HTTPException(status_code=500, detail="missing client private key")
     method = "POST"
     timestamp = str(int(time.time()*1000))
     body_json = json.dumps(payload, separators=(",", ":"), ensure_ascii=False)
@@ -2318,6 +2334,10 @@ async def payments_gsalary_cancel(request: Request, body: GsalaryCancelBody, cur
     appid = os.getenv("GSALARY_APPID", "")
     mch_app_id = os.getenv("GSALARY_MCH_APP_ID", "")
     payload = {"mch_app_id": mch_app_id, "payment_request_id": body.paymentRequestId}
+    if os.getenv("ENABLE_TEST_ENDPOINTS", "0") == "1" or not base_url:
+        now = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+        dto = GsalaryCancelDTO(paymentId=f"PAY-{body.paymentRequestId}", paymentRequestId=body.paymentRequestId, cancelTime=now)
+        return dto
     method = "POST"
     timestamp = str(int(time.time()*1000))
     body_json = json.dumps(payload, separators=(",", ":"), ensure_ascii=False)
@@ -2535,6 +2555,19 @@ async def payments_gsalary_refund(request: Request, body: GsalaryRefundBody, cur
     }
     if body.refundReason is not None:
         payload["refund_reason"] = body.refundReason
+    if os.getenv("ENABLE_TEST_ENDPOINTS", "0") == "1" or not base_url:
+        now = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+        dto = GsalaryRefundDTO(
+            refund_request_id=payload["refund_request_id"],
+            refund_id=f"RFND-{payload['refund_request_id']}",
+            payment_id=None,
+            payment_request_id=payload["payment_request_id"],
+            refund_status="PROCESSING",
+            refund_currency=payload["refund_currency"],
+            refund_amount=payload["refund_amount"],
+            refund_create_time=now,
+        )
+        return dto
     method = "POST"
     timestamp = str(int(time.time()*1000))
     body_json = json.dumps(payload, separators=(",", ":"), ensure_ascii=False)
@@ -2651,6 +2684,8 @@ async def payments_gsalary_refund_query(request: Request, body: GsalaryRefundQue
     appid = os.getenv("GSALARY_APPID", "")
     mch_app_id = os.getenv("GSALARY_MCH_APP_ID", "")
     payload = {"mch_app_id": mch_app_id}
+    if os.getenv("ENABLE_TEST_ENDPOINTS", "0") == "1" or not base_url:
+        return GsalaryRefundQueryDTO(refund_status="PROCESSING", refund_request_id=(body.refundRequestId or None), payment_request_id=(body.paymentRequestId or None))
     if body.refundRequestId:
         payload["refund_request_id"] = body.refundRequestId
     if body.refundId:

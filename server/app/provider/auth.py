@@ -15,7 +15,11 @@ class TokenManager:
         self._expires_at: float = time.time() + 86400 if self._token else 0
         self._refresh_token: Optional[str] = None
         self._refresh_expires_at: float = 0
-        self.fake: bool = os.getenv("PROVIDER_FAKE", "true").lower() in ("1", "true", "yes")
+
+    @property
+    def fake(self) -> bool:
+        # 动态读取环境变量，允许测试在运行时切换假数据模式
+        return os.getenv("PROVIDER_FAKE", "true").lower() in ("1", "true", "yes")
 
     def get_token(self) -> str:
         if self.fake:

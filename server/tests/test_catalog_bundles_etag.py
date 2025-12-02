@@ -10,6 +10,8 @@ class TestCatalogBundlesEtag(unittest.TestCase):
     def setUp(self):
         if TestClient is None:
             self.skipTest("fastapi not installed")
+        import os
+        os.environ["PROVIDER_FAKE"] = "true"
         from server.app.main import app  # type: ignore
         self.client = TestClient(app)
 

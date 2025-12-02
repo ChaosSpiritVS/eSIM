@@ -19,6 +19,7 @@ class TestAuthFlow(unittest.TestCase):
         if TestClient is None:
             self.skipTest("fastapi not installed")
         # Ensure dev exposure for email code and reset token
+        os.environ["PROVIDER_FAKE"] = "true"
         os.environ["EMAIL_CODE_DEV_EXPOSE"] = "true"
         os.environ["REGISTER_REQUIRE_EMAIL_VERIFICATION"] = "true"
         os.environ["REGISTER_DEV_UPDATE_PASSWORD"] = "true"
@@ -86,7 +87,6 @@ class TestAuthFlow(unittest.TestCase):
         self.assertEqual(r_ch.json().get("email"), new_email)
 
         # delete account
-        r_del = self.client.delete("/me", json={"currentPassword": "NewPwd1234", "reason": "test", "details": "cleanup"}, headers={"Authorization": f"Bearer {access2}"})
+        r_del = self.client.request("DELETE", "/me", json={"currentPassword": "NewPwd1234", "reason": "test", "details": "cleanup"}, headers={"Authorization": f"Bearer {access2}"})
         self.assertEqual(r_del.status_code, 200)
         self.assertTrue(r_del.json().get("success"))
-

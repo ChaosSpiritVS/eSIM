@@ -1,4 +1,0 @@
-Target dependency graph (2 targets)
-Target 'SimigoTests' in project 'Simigo'
-➜ Explicit dependency on target 'Simigo' in project 'Simigo'
-Target 'Simigo' in project 'Simigo' (no dependencies)

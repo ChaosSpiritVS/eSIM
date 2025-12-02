@@ -1,7 +1,7 @@
 from __future__ import annotations
 from datetime import datetime
 from typing import Optional, List, Literal
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 
 class InstallationDTO(BaseModel):
@@ -294,7 +294,8 @@ class OrdersDetailQuery(BaseModel):
 
 # 通过上游订单ID桥接详情
 class OrdersDetailByIdQuery(BaseModel):
-    order_id: str
+    order_id: str = Field(..., alias="orderId")
+    model_config = ConfigDict(populate_by_name=True)
 
 # ===== 订单用量（上游 alias 风格） =====
 class OrdersConsumptionQuery(BaseModel):

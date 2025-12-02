@@ -260,6 +260,20 @@ final class SimigoTests: XCTestCase {
         XCTAssertEqual(dto.createdAt, "1000000000000")
     }
 
+    func testOrderListItemCreatedAtDoubleMillisConvertsToSeconds() throws {
+        let json = """
+        {
+          "order_id": "OID102",
+          "order_reference": "R102",
+          "created_at": 1700000000123.0
+        }
+        """.data(using: .utf8)!
+        let dec = JSONDecoder()
+        dec.keyDecodingStrategy = .convertFromSnakeCase
+        let dto = try dec.decode(HTTPUpstreamOrderRepository.OrderListItemDTO.self, from: json)
+        XCTAssertEqual(dto.createdAt, "1700000000")
+    }
+
     func testOrderListItemCountryNameSingleStringArray() throws {
         let json = """
         {
@@ -272,6 +286,20 @@ final class SimigoTests: XCTestCase {
         dec.keyDecodingStrategy = .convertFromSnakeCase
         let dto = try dec.decode(HTTPUpstreamOrderRepository.OrderListItemDTO.self, from: json)
         XCTAssertEqual(dto.countryName?.first, "中国")
+    }
+
+    func testOrderListItemBundleSalePriceDoubleIntegerToStringInt() throws {
+        let json = """
+        {
+          "order_id": "OIDPRC",
+          "order_reference": "RPRC",
+          "bundle_sale_price": 15.0
+        }
+        """.data(using: .utf8)!
+        let dec = JSONDecoder()
+        dec.keyDecodingStrategy = .convertFromSnakeCase
+        let dto = try dec.decode(HTTPUpstreamOrderRepository.OrderListItemDTO.self, from: json)
+        XCTAssertEqual(dto.bundleSalePrice, "15")
     }
 
     func testOrderDetailDTODecodesMixedTypes() throws {

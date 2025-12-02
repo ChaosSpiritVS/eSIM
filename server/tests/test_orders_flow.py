@@ -10,6 +10,8 @@ class TestOrdersFlow(unittest.TestCase):
     def setUp(self):
         if TestClient is None:
             self.skipTest("fastapi not installed")
+        import os
+        os.environ["PROVIDER_FAKE"] = "true"
         from server.app.main import app  # type: ignore
         self.client = TestClient(app)
 
@@ -40,4 +42,3 @@ class TestOrdersFlow(unittest.TestCase):
         r_get = self.client.get(f"/orders/{oid}", headers={"Authorization": f"Bearer {access}"})
         self.assertEqual(r_get.status_code, 200)
         self.assertEqual(r_get.json().get("id"), oid)
-

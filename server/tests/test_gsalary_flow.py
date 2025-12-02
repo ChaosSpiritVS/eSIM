@@ -11,6 +11,7 @@ class TestGSalaryAndSearch(unittest.TestCase):
     def setUp(self):
         if TestClient is None:
             self.skipTest("fastapi not installed")
+        os.environ["PROVIDER_FAKE"] = "true"
         os.environ["EMAIL_CODE_DEV_EXPOSE"] = "true"
         os.environ["ENABLE_TEST_ENDPOINTS"] = "1"
         from server.app.main import app  # type: ignore
@@ -599,6 +600,5 @@ class TestGSalaryAndSearch(unittest.TestCase):
 
     def test_health_ok(self):
         r = self.client.get("/health")
-        self.assertEqual(r.status_code, 200)
-        j = r.json()
-        self.assertEqual(j.get("status"), "ok")
+        self.assertEqual(r.status_code, 204)
+        self.assertEqual(r.headers.get("Cache-Control"), "no-store")

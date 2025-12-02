@@ -183,11 +183,14 @@ jobs:
           DERIVED=$(mktemp -d)
           set -o pipefail
           xcodebuild \
+            -project Simigo/Simigo.xcodeproj \
             -scheme Simigo \
             -destination "platform=iOS Simulator,name=${{ steps.sim.outputs.device }}" \
             -enableCodeCoverage YES \
             -derivedDataPath "$DERIVED" \
             -resultBundlePath TestResults.xcresult \
+            -sdk iphonesimulator \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=YES \
             test | tee xcodebuild.log
         if: ${{ hashFiles('**/*.xcodeproj') != '' || hashFiles('**/*.xcworkspace') != '' }}
 
@@ -341,11 +344,14 @@ jobs:
           DERIVED=$(mktemp -d)
           set -o pipefail
           xcodebuild \
+            -project Simigo/Simigo.xcodeproj \
             -scheme Simigo \
             -destination "platform=iOS Simulator,name=${{ steps.sim2.outputs.device }}" \
             -enableCodeCoverage YES \
             -derivedDataPath "$DERIVED" \
             -resultBundlePath IntegrationResults.xcresult \
+            -sdk iphonesimulator \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=YES \
             test | tee xcodebuild-integration.log
         if: ${{ hashFiles('**/*.xcodeproj') != '' || hashFiles('**/*.xcworkspace') != '' }}
 
