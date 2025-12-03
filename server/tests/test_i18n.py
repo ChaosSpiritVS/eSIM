@@ -34,16 +34,20 @@ class TestI18n(unittest.TestCase):
         self.assertIsInstance(t, str)
 
     def test_translate_region_db_and_fallback(self):
-        db = SessionLocal()
-        try:
-            if db.query(I18nRegionName).filter(I18nRegionName.lang_code == "zh-Hans", I18nRegionName.region_code == "eu").count() == 0:
+        with SessionLocal() as db:
+            eu_row = db.query(I18nRegionName).filter(I18nRegionName.lang_code == "zh-Hans", I18nRegionName.region_code == "eu").first()
+            if eu_row:
+                eu_row.name = "欧洲"
+                db.add(eu_row)
+            else:
                 db.add(I18nRegionName(region_code="eu", lang_code="zh-Hans", name="欧洲"))
-                db.commit()
-            if db.query(I18nRegionName).filter(I18nRegionName.lang_code == "zh-Hans", I18nRegionName.region_code == "na").count() == 0:
+            na_row = db.query(I18nRegionName).filter(I18nRegionName.lang_code == "zh-Hans", I18nRegionName.region_code == "na").first()
+            if na_row:
+                na_row.name = "北美洲"
+                db.add(na_row)
+            else:
                 db.add(I18nRegionName(region_code="na", lang_code="zh-Hans", name="北美洲"))
-                db.commit()
-        finally:
-            db.close()
+            db.commit()
         self.assertEqual(translate_region("eu", None, "zh-Hans"), "欧洲")
         self.assertEqual(translate_region("na", None, "zh-Hans"), "北美洲")
 
