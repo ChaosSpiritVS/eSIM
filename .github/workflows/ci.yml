@@ -5,11 +5,54 @@ on:
     branches: ["**"]
   pull_request:
     branches: ["**"]
+  workflow_dispatch:
+    inputs:
+      run_ios:
+        description: "Run iOS jobs"
+        required: false
+        type: boolean
+        default: false
+      run_backend:
+        description: "Run Backend unit & coverage"
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
+  changes:
+    name: Detect Changes
+    runs-on: ubuntu-latest
+    outputs:
+      ios: ${{ steps.filter.outputs.ios }}
+      backend: ${{ steps.filter.outputs.backend }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Paths filter
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            ios:
+              - 'Simigo/**'
+              - '**/*.xcodeproj'
+              - '**/*.xcworkspace'
+              - 'ios/**'
+              - '**/*.swift'
+            backend:
+              - 'server/**'
+              - '!server/.venv/**'
+              - '!server/.venv-ci/**'
   backend:
     name: Backend Unit & Coverage
     runs-on: ubuntu-latest
+    needs: changes
+    if: ${{ (github.event_name == 'workflow_dispatch' && inputs.run_backend == true) || (github.event_name != 'workflow_dispatch' && needs.changes.outputs.backend == 'true') }}
+    timeout-minutes: 45
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -151,6 +194,8 @@ jobs:
   ios:
     name: iOS Tests & Coverage
     runs-on: macos-14
+    needs: changes
+    if: ${{ (github.event_name == 'workflow_dispatch' && inputs.run_ios == true) || (github.event_name != 'workflow_dispatch' && needs.changes.outputs.ios == 'true') }}
     env:
       SIM_UDID: 85C4C6E0-46A3-44A7-8035-7EDED91DDE46
     steps:
@@ -356,6 +401,8 @@ jobs:
   ios_integration_ui:
     name: iOS Integration + UI (with backend)
     runs-on: macos-14
+    needs: [backend, changes]
+    if: ${{ (github.event_name == 'workflow_dispatch' && inputs.run_ios == true) || (github.event_name != 'workflow_dispatch' && needs.changes.outputs.ios == 'true') }}
     env:
       SIM_UDID: 85C4C6E0-46A3-44A7-8035-7EDED91DDE46
     needs: backend
