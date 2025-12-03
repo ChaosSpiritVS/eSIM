@@ -151,6 +151,8 @@ jobs:
   ios:
     name: iOS Tests & Coverage
     runs-on: macos-14
+    env:
+      SIM_UDID: 85C4C6E0-46A3-44A7-8035-7EDED91DDE46
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -171,22 +173,48 @@ jobs:
           xcrun simctl list devices --json > devices.json
           cat > select_sim.py << 'PY'
           import os, json
+          pref = os.getenv('SIM_UDID')
           with open('devices.json') as f:
               d = json.load(f)
           devs = d.get('devices', {})
           chosen_udid = None
           chosen_name = None
-          for runtime in devs:
-              for dev in devs[runtime]:
-                  name = dev.get('name','')
-                  state = dev.get('state','')
-                  udid = dev.get('udid','')
-                  if 'iPhone' in name and state in ('Booted','Shutdown') and udid:
-                      chosen_udid = udid
-                      chosen_name = name
+          if pref:
+              for runtime in devs:
+                  for dev in devs[runtime]:
+                      if dev.get('udid') == pref:
+                          chosen_udid = dev.get('udid')
+                          chosen_name = dev.get('name')
+                          break
+                  if chosen_udid:
                       break
-              if chosen_udid:
-                  break
+          if not chosen_udid:
+              cands = []
+              for runtime in devs:
+                  ios = ('iOS' in runtime)
+                  ver182 = ('18.2' in runtime or '18-2' in runtime)
+                  for dev in devs[runtime]:
+                      name = dev.get('name','')
+                      state = dev.get('state','')
+                      udid = dev.get('udid','')
+                      avail = dev.get('isAvailable', True)
+                      if 'iPhone' in name and udid and avail:
+                          pri = 0
+                          if 'iPhone 16 Pro Max' in name:
+                              pri = 100
+                          elif 'iPhone SE (3rd generation)' in name:
+                              pri = 90
+                          elif ios:
+                              pri = 80
+                          if ver182:
+                              pri += 5
+                          if state in ('Booted','Shutdown'):
+                              pri += 2
+                          cands.append((pri, name, udid))
+              if cands:
+                  cands.sort(reverse=True)
+                  chosen_udid = cands[0][2]
+                  chosen_name = cands[0][1]
           if not chosen_udid:
               for runtime in devs:
                   for dev in devs[runtime]:
@@ -202,6 +230,7 @@ jobs:
           with open(out, 'a') as fo:
               fo.write(f"udid={chosen_udid or ''}\n")
               fo.write(f"name={chosen_name or ''}\n")
+          print(f"Chosen simulator: {chosen_name or 'N/A'} ({chosen_udid or 'N/A'})")
           PY
           python3 select_sim.py
         if: ${{ hashFiles('**/*.xcodeproj') != '' || hashFiles('**/*.xcworkspace') != '' }}
@@ -214,6 +243,7 @@ jobs:
           set -o pipefail
           if [ -z "${{ steps.sim.outputs.udid }}" ]; then echo "No simulator UDID found"; exit 1; fi
           xcrun simctl boot "${{ steps.sim.outputs.udid }}" || true
+          echo "Using simulator: ${{ steps.sim.outputs.name }} (${{ steps.sim.outputs.udid }})"
           xcodebuild \
             -project Simigo/Simigo.xcodeproj \
             -scheme Simigo \
@@ -326,6 +356,8 @@ jobs:
   ios_integration_ui:
     name: iOS Integration + UI (with backend)
     runs-on: macos-14
+    env:
+      SIM_UDID: 85C4C6E0-46A3-44A7-8035-7EDED91DDE46
     needs: backend
     steps:
       - name: Checkout
@@ -362,22 +394,48 @@ jobs:
           xcrun simctl list devices --json > devices.json
           cat > select_sim2.py << 'PY'
           import os, json
+          pref = os.getenv('SIM_UDID')
           with open('devices.json') as f:
               d = json.load(f)
           devs = d.get('devices', {})
           chosen_udid = None
           chosen_name = None
-          for runtime in devs:
-              for dev in devs[runtime]:
-                  name = dev.get('name','')
-                  state = dev.get('state','')
-                  udid = dev.get('udid','')
-                  if 'iPhone' in name and state in ('Booted','Shutdown') and udid:
-                      chosen_udid = udid
-                      chosen_name = name
+          if pref:
+              for runtime in devs:
+                  for dev in devs[runtime]:
+                      if dev.get('udid') == pref:
+                          chosen_udid = dev.get('udid')
+                          chosen_name = dev.get('name')
+                          break
+                  if chosen_udid:
                       break
-              if chosen_udid:
-                  break
+          if not chosen_udid:
+              cands = []
+              for runtime in devs:
+                  ios = ('iOS' in runtime)
+                  ver182 = ('18.2' in runtime or '18-2' in runtime)
+                  for dev in devs[runtime]:
+                      name = dev.get('name','')
+                      state = dev.get('state','')
+                      udid = dev.get('udid','')
+                      avail = dev.get('isAvailable', True)
+                      if 'iPhone' in name and udid and avail:
+                          pri = 0
+                          if 'iPhone 16 Pro Max' in name:
+                              pri = 100
+                          elif 'iPhone SE (3rd generation)' in name:
+                              pri = 90
+                          elif ios:
+                              pri = 80
+                          if ver182:
+                              pri += 5
+                          if state in ('Booted','Shutdown'):
+                              pri += 2
+                          cands.append((pri, name, udid))
+              if cands:
+                  cands.sort(reverse=True)
+                  chosen_udid = cands[0][2]
+                  chosen_name = cands[0][1]
           if not chosen_udid:
               for runtime in devs:
                   for dev in devs[runtime]:
@@ -393,6 +451,7 @@ jobs:
           with open(out, 'a') as fo:
               fo.write(f"udid={chosen_udid or ''}\n")
               fo.write(f"name={chosen_name or ''}\n")
+          print(f"Chosen simulator: {chosen_name or 'N/A'} ({chosen_udid or 'N/A'})")
           PY
           python3 select_sim2.py
         if: ${{ hashFiles('**/*.xcodeproj') != '' || hashFiles('**/*.xcworkspace') != '' }}
@@ -406,6 +465,7 @@ jobs:
           set -o pipefail
           if [ -z "${{ steps.sim2.outputs.udid }}" ]; then echo "No simulator UDID found"; exit 1; fi
           xcrun simctl boot "${{ steps.sim2.outputs.udid }}" || true
+          echo "Using simulator: ${{ steps.sim2.outputs.name }} (${{ steps.sim2.outputs.udid }})"
           xcodebuild \
             -project Simigo/Simigo.xcodeproj \
             -scheme Simigo \
