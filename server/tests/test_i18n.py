@@ -39,6 +39,9 @@ class TestI18n(unittest.TestCase):
             if db.query(I18nRegionName).filter(I18nRegionName.lang_code == "zh-Hans", I18nRegionName.region_code == "eu").count() == 0:
                 db.add(I18nRegionName(region_code="eu", lang_code="zh-Hans", name="欧洲"))
                 db.commit()
+            if db.query(I18nRegionName).filter(I18nRegionName.lang_code == "zh-Hans", I18nRegionName.region_code == "na").count() == 0:
+                db.add(I18nRegionName(region_code="na", lang_code="zh-Hans", name="北美洲"))
+                db.commit()
         finally:
             db.close()
         self.assertEqual(translate_region("eu", None, "zh-Hans"), "欧洲")
