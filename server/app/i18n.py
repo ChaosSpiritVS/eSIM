@@ -73,8 +73,8 @@ COUNTRY_NAMES: dict[str, dict[str, str]] = {
 
 REGION_NAMES: dict[str, dict[str, str]] = {
     "en": {"af": "Africa", "as": "Asia", "eu": "Europe", "me": "Middle East", "na": "North America", "sa": "South America"},
-    "zh-Hans": {"af": "非洲", "as": "亚洲", "eu": "欧洲", "me": "中东", "na": "北美", "sa": "南美"},
-    "zh-Hant": {"af": "非洲", "as": "亞洲", "eu": "歐洲", "me": "中東", "na": "北美", "sa": "南美"},
+    "zh-Hans": {"af": "非洲", "as": "亚洲", "eu": "欧洲", "me": "中东", "na": "北美洲", "sa": "南美洲"},
+    "zh-Hant": {"af": "非洲", "as": "亞洲", "eu": "歐洲", "me": "中東", "na": "北美洲", "sa": "南美洲"},
     "ja": {"af": "アフリカ", "as": "アジア", "eu": "ヨーロッパ", "me": "中東", "na": "北アメリカ", "sa": "南アメリカ"},
     "ms": {"af": "Afrika", "as": "Asia", "eu": "Eropah", "me": "Timur Tengah", "na": "Amerika Utara", "sa": "Amerika Selatan"},
     "id": {"af": "Afrika", "as": "Asia", "eu": "Eropa", "me": "Timur Tengah", "na": "Amerika Utara", "sa": "Amerika Selatan"},
