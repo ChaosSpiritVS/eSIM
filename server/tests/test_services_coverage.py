@@ -269,6 +269,17 @@ class TestOrderServiceCache(unittest.TestCase):
 
     def test_assign_bundle_upsert(self):
         svc = OrderService()
+        # ensure parent user exists for FK
+        db = SessionLocal()
+        try:
+            from server.app.models.orm import User
+            import datetime as _dt
+            if not db.query(User).filter(User.id == "U2").first():
+                u = User(id="U2", name="U2", email=None, password_hash=None, apple_id=None, created_at=_dt.datetime.utcnow(), last_name=None, language=None, currency=None, country=None)
+                db.add(u)
+                db.commit()
+        finally:
+            db.close()
         def fake_assign(*args, **kwargs):
             return {"order_id": "OIDZ", "iccid": "8910390000000000000"}
         svc.provider.assign_bundle = fake_assign  # type: ignore
@@ -473,7 +484,12 @@ class TestOrderServiceCache(unittest.TestCase):
         from server.app.models.orm import OrderReferenceEmail
         db = SessionLocal()
         try:
-            from server.app.models.orm import OrderReferenceEmail
+            from server.app.models.orm import OrderReferenceEmail, User
+            import datetime as _dt
+            if not db.query(User).filter(User.id == "U5").first():
+                u = User(id="U5", name="U5", email=None, password_hash=None, apple_id=None, created_at=_dt.datetime.utcnow(), last_name=None, language=None, currency=None, country=None)
+                db.add(u)
+                db.commit()
             if not db.query(OrderReferenceEmail).filter(OrderReferenceEmail.order_reference == "REFX").first():
                 r1 = OrderReferenceEmail(order_reference="REFX", user_id="U5", email="a@example.com")
                 db.add(r1)
@@ -525,3 +541,72 @@ class TestOrderServiceCache(unittest.TestCase):
         from server.app.models.dto import OrdersConsumptionBatchQuery
         out = svc.orders_consumption_batch(OrdersConsumptionBatchQuery(order_references=refs))
         self.assertEqual(len(out.get("items") or []), 2)
+
+class TestMainHelpers(unittest.TestCase):
+    def setUp(self):
+        init_db()
+
+    def test_status_for_gateway_error_mapping(self):
+        from server.app.main import _status_for_gateway_error
+        self.assertEqual(_status_for_gateway_error(500, "x"), 500)
+        self.assertEqual(_status_for_gateway_error(404, "x"), 404)
+        self.assertEqual(_status_for_gateway_error(403, "x"), 403)
+        self.assertEqual(_status_for_gateway_error(400, "x"), 400)
+        self.assertEqual(_status_for_gateway_error(None, "系统繁忙"), 423)
+        self.assertEqual(_status_for_gateway_error(None, "未找到"), 404)
+        self.assertEqual(_status_for_gateway_error(None, "余额不足"), 400)
+        self.assertEqual(_status_for_gateway_error("bad", "错误的请求"), 400)
+
+    def test_json_envelope_attaches_request_id(self):
+        from server.app.main import _json_envelope
+        class S:
+            pass
+        class R:
+            pass
+        r = R()
+        s = S()
+        s.request_id = "RID123"
+        r.state = s
+        resp = _json_envelope({"ok": True}, r)
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.headers.get("X-Request-Id"), "RID123")
+        import json
+        self.assertEqual(json.loads(resp.body.decode("utf-8")), {"ok": True})
+
+    def test_idem_get_set_db_and_store(self):
+        from server.app.main import _idem_get, _idem_set
+        from fastapi import FastAPI
+        from starlette.requests import Request
+        app = FastAPI()
+        app.state.idem_store = {}
+        scope = {
+            "type": "http",
+            "http_version": "1.1",
+            "method": "POST",
+            "path": "/idem/test",
+            "headers": [],
+            "query_string": b"",
+            "root_path": "",
+            "scheme": "http",
+            "server": ("testserver", 80),
+            "client": ("testclient", 123),
+            "app": app,
+        }
+        req = Request(scope)
+        import uuid as _uuid
+        key = "K_" + _uuid.uuid4().hex
+        bh = "H_" + _uuid.uuid4().hex[:8]
+        v = _idem_get(req, key, bh)
+        self.assertIsNone(v)
+        dto = {"a": 1}
+        _idem_set(req, key, bh, dto)
+        v2 = _idem_get(req, key, bh)
+        self.assertEqual(v2, dto)
+        import datetime as _dt
+        h2 = "H_" + _uuid.uuid4().hex[:8]
+        app.state.idem_store[f"idem:{key}:{req.url.path}:{req.method}:{h2}"] = {
+            "expires_at": _dt.datetime.utcnow() + _dt.timedelta(seconds=60),
+            "response": {"b": 2},
+        }
+        v3 = _idem_get(req, key, h2)
+        self.assertEqual(v3, {"b": 2})
