@@ -226,6 +226,9 @@ def translate_region(code: Optional[str], name: Optional[str], lang: str) -> str
             row = db.query(I18nRegionName).filter(I18nRegionName.lang_code == lang, I18nRegionName.region_code == key).first()
             if row:
                 return row.name
+            row2 = db.query(I18nRegionName).filter(I18nRegionName.lang_code == lang, I18nRegionName.region_code == "default").first()
+            if row2:
+                return row2.name
         finally:
             db.close()
     except Exception:

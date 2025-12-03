@@ -7,6 +7,13 @@ from server.app.i18n import canonical_language, resolve_language, translate_coun
 class TestI18n(unittest.TestCase):
     def setUp(self):
         init_db()
+        db = SessionLocal()
+        try:
+            if db.query(I18nRegionName).filter(I18nRegionName.lang_code == "zh-Hans", I18nRegionName.region_code == "default").count() == 0:
+                db.add(I18nRegionName(region_code="default", lang_code="zh-Hans", name="Default Region Name"))
+                db.commit()
+        finally:
+            db.close()
 
     def test_canonical_and_resolve_language(self):
         self.assertEqual(canonical_language("zh-CN"), "zh-Hans")
@@ -36,6 +43,9 @@ class TestI18n(unittest.TestCase):
             db.close()
         self.assertEqual(translate_region("eu", None, "zh-Hans"), "欧洲")
         self.assertEqual(translate_region("na", None, "zh-Hans"), "北美洲")
+
+    def test_translate_region_default_fallback(self):
+        self.assertEqual(translate_region("unknown", None, "zh-Hans"), "Default Region Name")
 
     def test_translate_marketing_canonical_plus(self):
         self.assertEqual(translate_marketing("Europe+", "zh-Hans", None), "欧洲+")
