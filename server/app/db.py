@@ -578,3 +578,4 @@ def _seed_i18n_catalog_from_files():
     except Exception:
         # Best-effort only
         pass
+

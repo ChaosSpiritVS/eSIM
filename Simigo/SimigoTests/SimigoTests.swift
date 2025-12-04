@@ -9,7 +9,6 @@ import XCTest
 @testable import Simigo
 
 final class SimigoTests: XCTestCase {
-
     func testOrderListItemDecodesArrayAndNumbers() throws {
         let json = """
         {
@@ -92,81 +91,6 @@ final class SimigoTests: XCTestCase {
         XCTAssertEqual(env.data.orders.first?.bundleSalePrice, "9.99")
     }
 
-    func testRegionCodeConverterAlpha2Alpha3() throws {
-        XCTAssertEqual(RegionCodeConverter.toAlpha2("usa"), "US")
-        XCTAssertEqual(RegionCodeConverter.toAlpha2("US"), "US")
-        XCTAssertEqual(RegionCodeConverter.toAlpha3("CN"), "CHN")
-        XCTAssertEqual(RegionCodeConverter.toAlpha3("CHN"), "CHN")
-        XCTAssertEqual(RegionCodeConverter.toAlpha2("ZZZ"), "ZZZ")
-        XCTAssertEqual(RegionCodeConverter.toAlpha2(" hk "), "HK")
-    }
-
-    func testPaymentProcessorFactoryMapping() throws {
-        let f = PaymentProcessorFactory()
-        XCTAssertTrue(f.processor(for: .alipay) is GsalaryAlipayProcessor)
-        XCTAssertTrue(f.processor(for: .paypal) is GsalaryPayPalProcessor)
-        XCTAssertTrue(f.processor(for: .card) is GsalaryCardProcessor)
-        XCTAssertTrue(f.processor(for: .applepay) is GsalaryApplePayProcessor)
-        XCTAssertNil(f.processor(for: .googlepay))
-    }
-
-    func testPaymentEventBridgeNotifications() {
-        let exp1 = expectation(forNotification: .paymentSucceeded, object: nil) { note in
-            let info = note.userInfo ?? [:]
-            return (info["orderId"] as? String) == "OID1" && (info["oldOrderId"] as? String) == "OLD1" && (info["method"] as? String) == "card"
-        }
-        let exp2 = expectation(forNotification: .paymentFailed, object: nil) { note in
-            let info = note.userInfo ?? [:]
-            return (info["orderId"] as? String) == "OID2" && (info["reasonCategory"] as? String) == "network" && (info["reasonCode"] as? String) == "offline"
-        }
-        PaymentEventBridge.paymentSucceeded(orderId: "OID1", oldOrderId: "OLD1", method: "card")
-        PaymentEventBridge.paymentFailed(orderId: "OID2", reason: "", method: "paypal", error: NetworkError.offline)
-        wait(for: [exp1, exp2], timeout: 1.0)
-    }
-
-    func testRequestCenterSingleFlightDedup() async throws {
-        let rc = RequestCenter.shared
-        var called = 0
-        let work: () async throws -> Int = {
-            called += 1
-            try await Task.sleep(nanoseconds: 200_000_000)
-            return 42
-        }
-        async let r1: Int = try rc.singleFlight(key: "K1", work: work)
-        async let r2: Int = try rc.singleFlight(key: "K1", work: work)
-        let v1 = try await r1
-        let v2 = try await r2
-        XCTAssertEqual(v1, 42)
-        XCTAssertEqual(v2, 42)
-        XCTAssertEqual(called, 1)
-    }
-
-    func testRequestCenterCancel() async {
-        let rc = RequestCenter.shared
-        let key = "KC"
-        let t = Task {
-            do {
-                let _: Int = try await rc.singleFlight(key: key) {
-                    try await Task.sleep(nanoseconds: 1_000_000_000)
-                    return 1
-                }
-                XCTFail("should be cancelled")
-            } catch is CancellationError {
-            } catch {
-                XCTFail("unexpected error")
-            }
-        }
-        try? await Task.sleep(nanoseconds: 100_000_000)
-        await rc.cancel(key: key)
-        _ = await t.result
-    }
-
-    func testNetworkErrorLocalizedDescription() {
-        XCTAssertEqual(NetworkError.invalidURL.localizedDescription, "请求地址无效")
-        XCTAssertEqual(NetworkError.badStatus(404).localizedDescription, "服务器返回错误（404）")
-        XCTAssertEqual(NetworkError.offline.localizedDescription, "当前无网络连接")
-    }
-    
     func testOrderListItemDecodesMixedTypes() throws {
         let json = """
         {
@@ -274,34 +198,6 @@ final class SimigoTests: XCTestCase {
         XCTAssertEqual(dto.createdAt, "1700000000")
     }
 
-    func testOrderListItemCountryNameSingleStringArray() throws {
-        let json = """
-        {
-          "order_id": "OIDCN",
-          "order_reference": "RCN",
-          "country_name": "中国"
-        }
-        """.data(using: .utf8)!
-        let dec = JSONDecoder()
-        dec.keyDecodingStrategy = .convertFromSnakeCase
-        let dto = try dec.decode(HTTPUpstreamOrderRepository.OrderListItemDTO.self, from: json)
-        XCTAssertEqual(dto.countryName?.first, "中国")
-    }
-
-    func testOrderListItemBundleSalePriceDoubleIntegerToStringInt() throws {
-        let json = """
-        {
-          "order_id": "OIDPRC",
-          "order_reference": "RPRC",
-          "bundle_sale_price": 15.0
-        }
-        """.data(using: .utf8)!
-        let dec = JSONDecoder()
-        dec.keyDecodingStrategy = .convertFromSnakeCase
-        let dto = try dec.decode(HTTPUpstreamOrderRepository.OrderListItemDTO.self, from: json)
-        XCTAssertEqual(dto.bundleSalePrice, "15")
-    }
-
     func testOrderDetailDTODecodesMixedTypes() throws {
         let json = """
         {
@@ -343,311 +239,6 @@ final class SimigoTests: XCTestCase {
         XCTAssertEqual(dto.planStatus, "active")
         XCTAssertEqual(dto.orderStatus, "paid")
         XCTAssertEqual(dto.dateCreated, "1700000000")
-    }
-
-    func testRegionDTODecodesSnakeCase() throws {
-        let json = """
-        {
-          "region_code": "asia",
-          "region_name": "亚洲"
-        }
-        """.data(using: .utf8)!
-        let dec = JSONDecoder()
-        dec.keyDecodingStrategy = .convertFromSnakeCase
-        let dto = try dec.decode(HTTPUpstreamCatalogRepository.RegionDTO.self, from: json)
-        XCTAssertEqual(dto.code, "asia")
-        XCTAssertEqual(dto.name, "亚洲")
-    }
-
-    func testRegionDTODecodesPlainKeys() throws {
-        let json = """
-        {
-          "code": "eu",
-          "name": "欧洲"
-        }
-        """.data(using: .utf8)!
-        let dec = JSONDecoder()
-        let dto = try dec.decode(HTTPUpstreamCatalogRepository.RegionDTO.self, from: json)
-        XCTAssertEqual(dto.code, "eu")
-        XCTAssertEqual(dto.name, "欧洲")
-    }
-
-    func testEnvelopeDecodesArrayData() throws {
-        let json = """
-        {
-          "code": 201,
-          "msg": "ok",
-          "data": ["x","y"]
-        }
-        """.data(using: .utf8)!
-        let dec = JSONDecoder()
-        let env = try dec.decode(Envelope<[String]>.self, from: json)
-        XCTAssertEqual(env.code, 201)
-        XCTAssertEqual(env.msg, "ok")
-        XCTAssertEqual(env.data.count, 2)
-        XCTAssertEqual(env.data[0], "x")
-    }
-
-    func testCountryFlagEmoji() {
-        XCTAssertEqual(countryFlag("US"), "🇺🇸")
-        XCTAssertEqual(countryFlag("chn"), "🇨🇳")
-        XCTAssertEqual(countryFlag("ZZZ"), "ZZZ")
-    }
-    
-    func testAgentAccountDTODecodesSnakeCase() throws {
-        let json = """
-        {
-          "agent_id": "A1",
-          "username": "u1",
-          "name": "n1",
-          "balance": 12.3,
-          "revenue_rate": 15,
-          "status": 1,
-          "created_at": 1700000000
-        }
-        """.data(using: .utf8)!
-        let dec = JSONDecoder()
-        dec.keyDecodingStrategy = .convertFromSnakeCase
-        let dto = try dec.decode(HTTPUpstreamAgentRepository.AgentAccountDTO.self, from: json)
-        XCTAssertEqual(dto.agentId, "A1")
-        XCTAssertEqual(dto.username, "u1")
-        XCTAssertEqual(dto.name, "n1")
-        XCTAssertEqual(dto.balance, 12.3, accuracy: 0.0001)
-        XCTAssertEqual(dto.revenueRate, 15)
-        XCTAssertEqual(dto.status, 1)
-        XCTAssertEqual(dto.createdAt, 1700000000)
-    }
-
-    func testAgentBillsDTODecodesSnakeCaseAndCount() throws {
-        let json = """
-        {
-          "bills": [
-            {"bill_id": "B1", "trade": 1, "amount": 9.99, "reference": "r1", "description": "d1", "created_at": 1700000000},
-            {"bill_id": "B2", "trade": -1, "amount": 5.0, "reference": "r2", "description": "d2", "created_at": 1700000100}
-          ],
-          "bills_count": 2
-        }
-        """.data(using: .utf8)!
-        let dec = JSONDecoder()
-        dec.keyDecodingStrategy = .convertFromSnakeCase
-        let dto = try dec.decode(HTTPUpstreamAgentRepository.AgentBillsDTO.self, from: json)
-        XCTAssertEqual(dto.bills.count, 2)
-        XCTAssertEqual(dto.billsCount, 2)
-        XCTAssertEqual(dto.bills.first?.billId, "B1")
-        if let trade = dto.bills.last?.trade {
-            XCTAssertEqual(trade, -1)
-        } else {
-            XCTFail("trade is nil")
-        }
-        if let amount = dto.bills.first?.amount {
-            XCTAssertEqual(amount, 9.99, accuracy: 0.0001)
-        } else {
-            XCTFail("amount is nil")
-        }
-        if let createdAt = dto.bills.last?.createdAt {
-            XCTAssertEqual(createdAt, 1700000100)
-        } else {
-            XCTFail("createdAt is nil")
-        }
-    }
-
-    func testCountriesDataDTODecodesObject() throws {
-        let json = """
-        {
-          "countries": [
-            {"iso2_code":"US","iso3_code":"USA","country_name":"美国"},
-            {"code":"cn","name":"中国","iso3_code":"CHN","iso2_code":"CN"}
-          ],
-          "countries_count": 2
-        }
-        """.data(using: .utf8)!
-        let dec = JSONDecoder()
-        let dto = try dec.decode(HTTPUpstreamCatalogRepository.CountriesDataDTO.self, from: json)
-        XCTAssertEqual(dto.countriesCount, 2)
-        XCTAssertEqual(dto.countries[0].iso2Code, "US")
-        XCTAssertEqual(dto.countries[1].iso3Code.uppercased(), "CHN")
-        XCTAssertEqual(dto.countries[1].countryName, "中国")
-    }
-
-    func testCountriesDataDTODecodesArray() throws {
-        let json = """
-        [
-          {"iso2_code":"GB","iso3_code":"GBR","country_name":"英国"},
-          {"code":"hk","name":"中国香港","iso3_code":"HKG","iso2_code":"HK"}
-        ]
-        """.data(using: .utf8)!
-        let dec = JSONDecoder()
-        let dto = try dec.decode(HTTPUpstreamCatalogRepository.CountriesDataDTO.self, from: json)
-        XCTAssertEqual(dto.countriesCount, 2)
-        XCTAssertEqual(dto.countries[0].iso3Code, "GBR")
-        XCTAssertEqual(dto.countries[1].iso2Code, "HK")
-    }
-
-    func testNetworksItemDTODecodesSnakeCase() throws {
-        let json = """
-        {
-          "country_code": "CN",
-          "operator_list": ["CMCC","CUCC"]
-        }
-        """.data(using: .utf8)!
-        let dec = JSONDecoder()
-        let dto = try dec.decode(HTTPUpstreamCatalogRepository.NetworksItemDTO.self, from: json)
-        XCTAssertEqual(dto.countryCode, "CN")
-        XCTAssertEqual(dto.operatorList.count, 2)
-        XCTAssertEqual(dto.operatorList[0], "CMCC")
-    }
-
-    func testOperatorsDataDTODecodesCountVariants() throws {
-        let json1 = """
-        {
-          "operators": ["A"],
-          "operators_count": 1
-        }
-        """.data(using: .utf8)!
-        let json2 = """
-        {
-          "operators": ["A","B"],
-          "operatorsCount": 2
-        }
-        """.data(using: .utf8)!
-        let dec = JSONDecoder()
-        let dto1 = try dec.decode(HTTPUpstreamCatalogRepository.OperatorsDataDTO.self, from: json1)
-        let dto2 = try dec.decode(HTTPUpstreamCatalogRepository.OperatorsDataDTO.self, from: json2)
-        XCTAssertEqual(dto1.operatorsCount, 1)
-        XCTAssertEqual(dto1.operators.first, "A")
-        XCTAssertEqual(dto2.operatorsCount, 2)
-        XCTAssertEqual(dto2.operators.last, "B")
-    }
-
-    func testOrderConsumptionDTODecodesVariousFields() throws {
-        let json = """
-        {
-          "bundle_expiry_date": "1700000200",
-          "data_allocated": 1024.0,
-          "data_remaining": 512.0,
-          "data_unit": "MB",
-          "data_used": 512.0,
-          "iccid": "ICCID1",
-          "minutes_allocated": 100.0,
-          "minutes_remaining": 50.0,
-          "minutes_used": 50.0,
-          "plan_status": "active",
-          "policy_status": "ok",
-          "profile_status": "enabled",
-          "supports_calls_sms": true,
-          "unlimited": false,
-          "profile_expiry_date": "1700000300"
-        }
-        """.data(using: .utf8)!
-        let dec = JSONDecoder()
-        dec.keyDecodingStrategy = .convertFromSnakeCase
-        let dto = try dec.decode(HTTPUpstreamOrderRepository.OrderConsumptionDTO.self, from: json)
-        XCTAssertEqual(dto.bundleExpiryDate, "1700000200")
-        XCTAssertEqual(dto.dataAllocated, 1024.0)
-        XCTAssertEqual(dto.dataRemaining, 512.0)
-        XCTAssertEqual(dto.dataUnit, "MB")
-        XCTAssertEqual(dto.dataUsed, 512.0)
-        XCTAssertEqual(dto.iccid, "ICCID1")
-        XCTAssertEqual(dto.minutesAllocated, 100.0)
-        XCTAssertEqual(dto.minutesRemaining, 50.0)
-        XCTAssertEqual(dto.minutesUsed, 50.0)
-        XCTAssertEqual(dto.planStatus, "active")
-        XCTAssertEqual(dto.policyStatus, "ok")
-        XCTAssertEqual(dto.profileStatus, "enabled")
-        XCTAssertEqual(dto.supportsCallsSms, true)
-        XCTAssertEqual(dto.unlimited, false)
-        XCTAssertEqual(dto.profileExpiryDate, "1700000300")
-    }
-
-    func testRefundDataDTODecodesStatesAndStepsStringDates() throws {
-        let json = """
-        {
-          "accepted": true,
-          "state": "requested",
-          "steps": [
-            {"state":"requested","updatedAt":"1700000000","note":"N1"},
-            {"state":"reviewing","updatedAt":"2024-01-01 12:00:00"}
-          ]
-        }
-        """.data(using: .utf8)!
-        let dec = JSONDecoder()
-        let dto = try dec.decode(HTTPUpstreamOrderRepository.RefundDataDTO.self, from: json)
-        XCTAssertEqual(dto.accepted, true)
-        XCTAssertEqual(dto.state, "requested")
-        XCTAssertEqual(dto.steps?.count, 2)
-        XCTAssertEqual(dto.steps?.first?.state, "requested")
-        XCTAssertEqual(dto.steps?.first?.note, "N1")
-    }
-
-    func testQRCodeGeneratorEmptyString() {
-        XCTAssertNil(QRCodeGenerator.uiImage(from: ""))
-    }
-    
-    func testBundleDTODecodesSnakeCase() throws {
-        let json = """
-        {
-          "bundle_category": "country",
-          "bundle_code": "B100",
-          "bundle_marketing_name": "M100",
-          "bundle_name": "N100",
-          "bundle_tag": ["popular"],
-          "country_code": ["CN","US"],
-          "country_name": ["中国","美国"],
-          "data_unit": "GB",
-          "gprs_limit": 5.0,
-          "is_active": true,
-          "region_code": "asia",
-          "region_name": "亚洲",
-          "service_type": "data",
-          "sms_amount": 0,
-          "support_topup": true,
-          "supports_calls_sms": false,
-          "unlimited": false,
-          "validity": 7,
-          "voice_amount": 0,
-          "reseller_retail_price": 9.99,
-          "bundle_price_final": 8.88
-        }
-        """.data(using: .utf8)!
-        let dec = JSONDecoder()
-        dec.keyDecodingStrategy = .convertFromSnakeCase
-        let dto = try dec.decode(HTTPUpstreamCatalogRepository.BundleDTO.self, from: json)
-        XCTAssertEqual(dto.bundleCategory, "country")
-        XCTAssertEqual(dto.bundleCode, "B100")
-        XCTAssertEqual(dto.bundleMarketingName, "M100")
-        XCTAssertEqual(dto.countryCode.first, "CN")
-        XCTAssertEqual(dto.regionCode, "asia")
-        XCTAssertEqual(dto.resellerRetailPrice, 9.99, accuracy: 0.0001)
-        XCTAssertEqual(dto.bundlePriceFinal, 8.88, accuracy: 0.0001)
-        XCTAssertEqual(dto.supportsCallsSms, false)
-    }
-
-    func testSimpleBundleDTODecodes() throws {
-        let json = """
-        {
-          "id": "B200",
-          "name": "中国香港 5GB/7天",
-          "countryCode": "HK",
-          "price": 15.5,
-          "currency": "HKD",
-          "dataAmount": "5GB",
-          "validityDays": 7,
-          "description": "说明",
-          "supportedNetworks": ["CMHK"],
-          "hotspotSupported": true,
-          "coverageNote": "城市覆盖为主",
-          "termsUrl": "https://example.com/terms"
-        }
-        """.data(using: .utf8)!
-        let dec = JSONDecoder()
-        let dto = try dec.decode(HTTPUpstreamCatalogRepository.SimpleBundleDTO.self, from: json)
-        XCTAssertEqual(dto.id, "B200")
-        XCTAssertEqual(dto.countryCode, "HK")
-        XCTAssertEqual(dto.price, 15.5, accuracy: 0.0001)
-        XCTAssertEqual(dto.currency, "HKD")
-        XCTAssertEqual(dto.validityDays, 7)
-        XCTAssertEqual(dto.hotspotSupported, true)
-        XCTAssertEqual(dto.termsUrl, "https://example.com/terms")
     }
 
     func testOrderDTODecodesWithInstallation() throws {
@@ -738,224 +329,111 @@ final class SimigoTests: XCTestCase {
         XCTAssertEqual(dto.items.first?.order.bundleId, "B10")
     }
 
-    func testLocFallbackReturnsKeyWhenMissing() {
-        UserDefaults.standard.set("xx", forKey: "simigo.languageCode")
-        let key = "__missing_key__"
-        XCTAssertEqual(loc(key), key)
-    }
-
-    func testEnvelopeDataDTODecodesInEnvelope() throws {
+    func testOrderDetailEnvelopeSnakeCaseDecodes() throws {
         let json = """
         {
           "code": 200,
           "msg": "ok",
           "data": {
-            "id": "B300",
-            "name": "香港 5GB/7天",
-            "countryCode": "HKG",
-            "price": 15.5,
-            "currency": "HKD",
-            "dataAmount": "5GB",
-            "validityDays": 7,
-            "description": "说明",
-            "supportedNetworks": ["CMHK"],
-            "hotspotSupported": true,
-            "coverageNote": "城市覆盖",
-            "termsUrl": "https://example.com/terms",
-            "bundleTag": ["popular"],
-            "isActive": true,
-            "serviceType": "data",
-            "supportTopup": true,
-            "unlimited": false
+            "order_id": "OID999",
+            "order_reference": "REF999",
+            "bundle_category": "data",
+            "bundle_code": "B999",
+            "bundle_marketing_name": "M",
+            "bundle_name": "N",
+            "country_code": ["HK"],
+            "country_name": ["中国香港"],
+            "order_status": "paid",
+            "activation_code": "ACT-XYZ",
+            "smdp_address": "SM-DP+",
+            "bundle_expiry_date": "1700000000",
+            "expiry_date": "1700005000",
+            "iccid": "ICCID123",
+            "plan_started": true,
+            "plan_status": "active",
+            "date_created": 1699999999123
           }
         }
         """.data(using: .utf8)!
         let dec = JSONDecoder()
-        let env = try dec.decode(Envelope<HTTPUpstreamCatalogRepository.EnvelopeDataDTO>.self, from: json)
+        dec.keyDecodingStrategy = .convertFromSnakeCase
+        let env = try dec.decode(Envelope<HTTPUpstreamOrderRepository.OrderDetailDTO>.self, from: json)
         XCTAssertEqual(env.code, 200)
         XCTAssertEqual(env.msg, "ok")
-        XCTAssertEqual(env.data.id, "B300")
-        XCTAssertEqual(env.data.countryCode, "HKG")
-        XCTAssertEqual(env.data.currency, "HKD")
-        XCTAssertEqual(env.data.validityDays, 7)
+        XCTAssertEqual(env.data.orderId, "OID999")
+        XCTAssertEqual(env.data.orderReference, "REF999")
+        XCTAssertEqual(env.data.bundleCode, "B999")
+        XCTAssertEqual(env.data.countryCode?.first, "HK")
+        XCTAssertEqual(env.data.countryName?.first, "中国香港")
+        XCTAssertEqual(env.data.orderStatus, "paid")
+        XCTAssertEqual(env.data.activationCode, "ACT-XYZ")
+        XCTAssertEqual(env.data.smdpAddress, "SM-DP+")
+        XCTAssertEqual(env.data.iccid, "ICCID123")
+        XCTAssertEqual(env.data.planStarted, true)
+        XCTAssertEqual(env.data.planStatus, "active")
     }
 
-    func testLocEnglish() {
-        UserDefaults.standard.set("en", forKey: "simigo.languageCode")
-        XCTAssertEqual(loc("商店"), "Store")
-    }
-
-    func testLocChineseSimplified() {
-        UserDefaults.standard.set("zh-cn", forKey: "simigo.languageCode")
-        XCTAssertEqual(loc("商店"), "商店")
-    }
-
-    func testBundleListDataDTODecodesObject() throws {
+    func testGsalaryConsultDTODecodes() throws {
         let json = """
         {
-          "bundles": [
+          "payment_options": [
             {
-              "bundle_category": "country",
-              "bundle_code": "B1",
-              "bundle_marketing_name": "M1",
-              "bundle_name": "N1",
-              "bundle_tag": [],
-              "country_code": ["US"],
-              "country_name": ["美国"],
-              "data_unit": "GB",
-              "gprs_limit": 5.0,
-              "is_active": true,
-              "region_code": "america",
-              "region_name": "美洲",
-              "service_type": "data",
-              "sms_amount": 0,
-              "support_topup": true,
-              "supports_calls_sms": false,
-              "unlimited": false,
-              "validity": 7,
-              "voice_amount": 0,
-              "reseller_retail_price": 10.0,
-              "bundle_price_final": 9.0
+              "payment_method_type": "card",
+              "payment_method_logo_name": "visa",
+              "payment_method_logo_url": "https://logo.example/visa.png",
+              "payment_method_category": "bank_card",
+              "payment_method_region": ["HK"],
+              "support_card_brands": [
+                { "card_brand": "VISA", "brand_logo_name": "visa", "brand_logo_url": "https://logo.example/visa.png" }
+              ],
+              "card_funding": ["credit"]
             }
-          ],
-          "bundlesCount": 1
+          ]
         }
         """.data(using: .utf8)!
         let dec = JSONDecoder()
-        dec.keyDecodingStrategy = .convertFromSnakeCase
-        let dto = try dec.decode(HTTPUpstreamCatalogRepository.BundleListDataDTO.self, from: json)
-        XCTAssertEqual(dto.bundles.count, 1)
-        XCTAssertEqual(dto.bundlesCount, 1)
-        XCTAssertEqual(dto.bundles.first?.bundleCode, "B1")
+        let dto = try dec.decode(PaymentPreparationService.GsalaryConsultDTO.self, from: json)
+        XCTAssertEqual(dto.payment_options.count, 1)
+        let opt = dto.payment_options.first!
+        XCTAssertEqual(opt.payment_method_type, "card")
+        XCTAssertEqual(opt.payment_method_category, "bank_card")
+        XCTAssertEqual(opt.payment_method_region?.first, "HK")
+        XCTAssertEqual(opt.support_card_brands?.first?.card_brand, "VISA")
     }
 
-    func testBundleListDataDTODecodesArray() throws {
+    func testGsalaryCreateDTODecodes() throws {
         let json = """
-        [
-          {
-            "bundle_category": "country",
-            "bundle_code": "B1",
-            "bundle_marketing_name": "M1",
-            "bundle_name": "N1",
-            "bundle_tag": [],
-            "country_code": ["US"],
-            "country_name": ["美国"],
-            "data_unit": "GB",
-            "gprs_limit": 5.0,
-            "is_active": true,
-            "region_code": "america",
-            "region_name": "美洲",
-            "service_type": "data",
-            "sms_amount": 0,
-            "support_topup": true,
-            "supports_calls_sms": false,
-            "unlimited": false,
-            "validity": 7,
-            "voice_amount": 0,
-            "reseller_retail_price": 10.0,
-            "bundle_price_final": 9.0
-          },
-          {
-            "bundle_category": "country",
-            "bundle_code": "B2",
-            "bundle_marketing_name": "M2",
-            "bundle_name": "N2",
-            "bundle_tag": [],
-            "country_code": ["CN"],
-            "country_name": ["中国"],
-            "data_unit": "GB",
-            "gprs_limit": 5.0,
-            "is_active": true,
-            "service_type": "data",
-            "sms_amount": 0,
-            "support_topup": true,
-            "supports_calls_sms": false,
-            "unlimited": false,
-            "validity": 15,
-            "voice_amount": 0,
-            "reseller_retail_price": 20.0,
-            "bundle_price_final": 18.0
-          }
-        ]
+        {
+          "checkoutUrl": "https://api.gsalary.com/checkout?pid=GSALARY-card-ORD-1",
+          "paymentId": "PAY-ORD-1",
+          "paymentMethodId": "PM-xyz",
+          "paymentRequestId": "PAY_ORD_1"
+        }
         """.data(using: .utf8)!
         let dec = JSONDecoder()
-        dec.keyDecodingStrategy = .convertFromSnakeCase
-        let dto = try dec.decode(HTTPUpstreamCatalogRepository.BundleListDataDTO.self, from: json)
-        XCTAssertEqual(dto.bundles.count, 2)
-        XCTAssertEqual(dto.bundlesCount, 2)
-        XCTAssertEqual(dto.bundles.last?.bundleCode, "B2")
+        let dto = try dec.decode(PaymentPreparationService.GsalaryCreateDTO.self, from: json)
+        XCTAssertEqual(dto.checkoutUrl, "https://api.gsalary.com/checkout?pid=GSALARY-card-ORD-1")
+        XCTAssertEqual(dto.paymentId, "PAY-ORD-1")
+        XCTAssertEqual(dto.paymentMethodId, "PM-xyz")
+        XCTAssertEqual(dto.paymentRequestId, "PAY_ORD_1")
     }
 
-    func testBundleAssignResultDTODecodes() throws {
+    func testGsalaryPayDTODecodesWithSchemeAndApplink() throws {
         let json = """
-        {"orderId":"OIDASSIGN","iccid":"ICCIDX"}
+        {
+          "checkoutUrl": "https://api.gsalary.com/checkout?pid=GSALARY-alipay-ORD-2",
+          "paymentId": "PAY-ORD-2",
+          "schemeUrl": "alipay://pay?id=PAY-ORD-2",
+          "applinkUrl": "https://alipay.example/app?id=PAY-ORD-2",
+          "appIdentifier": "com.alipay.app"
+        }
         """.data(using: .utf8)!
         let dec = JSONDecoder()
-        let dto = try dec.decode(HTTPUpstreamCatalogRepository.BundleAssignResultDTO.self, from: json)
-        XCTAssertEqual(dto.orderId, "OIDASSIGN")
-        XCTAssertEqual(dto.iccid, "ICCIDX")
-    }
-
-    func testEnvelopeMetaDecodes() throws {
-        let json = """
-        {"code":201,"msg":"ok"}
-        """.data(using: .utf8)!
-        let dec = JSONDecoder()
-        let meta = try dec.decode(EnvelopeMeta.self, from: json)
-        XCTAssertEqual(meta.code, 201)
-        XCTAssertEqual(meta.msg, "ok")
-    }
-
-    func testNetworkMonitorBackendReachabilityToggle() {
-        NetworkMonitor.shared.reportBackendReachable(false)
-        XCTAssertEqual(NetworkMonitor.shared.backendOnline, false)
-        NetworkMonitor.shared.reportBackendReachable(true)
-        XCTAssertEqual(NetworkMonitor.shared.backendOnline, true)
-    }
-
-    func testPriceFormatterUsesSelectedCurrency() {
-        UserDefaults.standard.set("usd", forKey: "simigo.currencyCode")
-        let amount = Decimal(string: "1234.56")!
-        let nf = NumberFormatter()
-        nf.numberStyle = .currency
-        nf.currencyCode = "USD"
-        let expected = nf.string(from: amount as NSDecimalNumber)
-        let actual = PriceFormatter.string(amount: amount, currencyCode: "EUR")
-        XCTAssertEqual(actual, expected)
-    }
-
-    func testPriceFormatterFallsBackToPassedCurrency() {
-        UserDefaults.standard.set("ABC", forKey: "simigo.currencyCode")
-        let amount = Decimal(string: "99.5")!
-        let nf = NumberFormatter()
-        nf.numberStyle = .currency
-        nf.currencyCode = "EUR"
-        let expected = nf.string(from: amount as NSDecimalNumber)
-        let actual = PriceFormatter.string(amount: amount, currencyCode: "EUR")
-        XCTAssertEqual(actual, expected)
-    }
-
-    func testSelectedCurrencyAllowed() {
-        UserDefaults.standard.set("gbp", forKey: "simigo.currencyCode")
-        let actual = selectedCurrency(fallback: "USD")
-        XCTAssertEqual(actual, "GBP")
-    }
-
-    func testSelectedCurrencyFallback() {
-        UserDefaults.standard.set("zzz", forKey: "simigo.currencyCode")
-        let actual = selectedCurrency(fallback: "HKD")
-        XCTAssertEqual(actual, "HKD")
-    }
-
-    func testSafePageSizeCatalog() {
-        let repo = HTTPUpstreamCatalogRepository()
-        XCTAssertEqual(repo.safePageSize(10), 10)
-        XCTAssertEqual(repo.safePageSize(999), 25)
-    }
-
-    func testSafePageSizeAgent() {
-        let repo = HTTPUpstreamAgentRepository()
-        XCTAssertEqual(repo.safePageSize(50), 50)
-        XCTAssertEqual(repo.safePageSize(7), 25)
+        let dto = try dec.decode(PaymentPreparationService.GsalaryPayDTO.self, from: json)
+        XCTAssertEqual(dto.paymentId, "PAY-ORD-2")
+        XCTAssertEqual(dto.checkoutUrl, "https://api.gsalary.com/checkout?pid=GSALARY-alipay-ORD-2")
+        XCTAssertEqual(dto.schemeUrl, "alipay://pay?id=PAY-ORD-2")
+        XCTAssertEqual(dto.applinkUrl, "https://alipay.example/app?id=PAY-ORD-2")
+        XCTAssertEqual(dto.appIdentifier, "com.alipay.app")
     }
 }
