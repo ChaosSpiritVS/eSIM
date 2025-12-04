@@ -59,8 +59,8 @@ jobs:
     name: iOS Tests & Coverage
     runs-on: macos-14
     env:
-      SIM_UDID: 85C4C6E0-46A3-44A7-8035-7EDED91DDE46
       IOS_RUNTIME: '18.2'
+      SIM_UDID: ""
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -222,8 +222,8 @@ jobs:
     name: iOS Integration + UI (with backend)
     runs-on: macos-14
     env:
-      SIM_UDID: 85C4C6E0-46A3-44A7-8035-7EDED91DDE46
       IOS_RUNTIME: '18.2'
+      SIM_UDID: ""
     needs: backend
     steps:
       - name: Checkout
