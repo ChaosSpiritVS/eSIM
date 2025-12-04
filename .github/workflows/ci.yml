@@ -163,6 +163,8 @@ jobs:
           DERIVED="$PWD/.derivedData-unit"
           set -o pipefail
           xcrun simctl list devices
+          xcrun simctl boot "${{ steps.sim.outputs.udid }}" || true
+          xcrun simctl bootstatus "${{ steps.sim.outputs.udid }}" -b -t 120 || true
           echo "Using generic destination: iPhone SE (3rd generation), OS=latest"
           xcodebuild \
             -project Simigo/Simigo.xcodeproj \
@@ -180,25 +182,28 @@ jobs:
         run: |
           DERIVED="$PWD/.derivedData-unit"
           set -o pipefail
+          xcrun simctl boot "${{ steps.sim.outputs.udid }}" || true
+          xcrun simctl bootstatus "${{ steps.sim.outputs.udid }}" -b -t 120 || true
           xcodebuild \
             -project Simigo/Simigo.xcodeproj \
             -scheme Simigo \
             -destination "platform=iOS Simulator,name=iPhone SE (3rd generation),OS=latest" \
             -derivedDataPath "$DERIVED" \
-            -resultBundlePath TestResults.xcresult \
             -sdk iphonesimulator \
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=YES \
+            -quiet \
+            -parallel-testing-enabled YES \
+            -maximum-parallel-testing-workers 4 \
+            -only-testing:SimigoTests/SimigoTests.testEnvelopeDecodesOrdersListData \
+            -only-testing:SimigoTests/SimigoTests.testOrderDetailEnvelopeSnakeCaseDecodes \
+            -only-testing:SimigoTests/SimigoTests.testGsalaryCreateDTODecodes \
+            -only-testing:SimigoTests/SimigoTests.testGsalaryPayDTODecodesWithSchemeAndApplink \
             test-without-building | tee -a xcodebuild.log
         if: ${{ hashFiles('**/*.pbxproj') != '' }}
 
       
 
-      - name: Upload xcresult bundle
-        uses: actions/upload-artifact@v4
-        with:
-          name: ios-xcresult
-          path: TestResults.xcresult
-        if: ${{ always() && (hashFiles('**/*.pbxproj') != '') }}
+      
 
       - name: Upload devices json
         uses: actions/upload-artifact@v4
@@ -342,6 +347,8 @@ jobs:
           DERIVED="$PWD/.derivedData-integration"
           set -o pipefail
           xcrun simctl list devices
+          xcrun simctl boot "${{ steps.sim2.outputs.udid }}" || true
+          xcrun simctl bootstatus "${{ steps.sim2.outputs.udid }}" -b -t 120 || true
           echo "Using generic destination: iPhone SE (3rd generation), OS=latest"
           xcodebuild \
             -project Simigo/Simigo.xcodeproj \
@@ -368,6 +375,9 @@ jobs:
             -resultBundlePath IntegrationResults.xcresult \
             -sdk iphonesimulator \
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=YES \
+            -parallel-testing-enabled YES \
+            -maximum-parallel-testing-workers 2 \
+            -only-testing:SimigoUITests \
             test-without-building | tee -a xcodebuild-integration.log
         if: ${{ hashFiles('**/*.pbxproj') != '' }}
 
