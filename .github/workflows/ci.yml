@@ -90,6 +90,15 @@ jobs:
             ${{ runner.os }}-xcode-${{ steps.xcode.outputs.version }}-unit-
         if: ${{ hashFiles('**/*.pbxproj') != '' }}
 
+      - name: Cache SwiftPM (unit)
+        uses: actions/cache@v4
+        with:
+          path: ~/Library/Caches/org.swift.swiftpm
+          key: ${{ runner.os }}-swiftpm-${{ steps.xcode.outputs.version }}-${{ hashFiles('Simigo/Simigo.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-swiftpm-
+        if: ${{ hashFiles('**/*.pbxproj') != '' }}
+
       - name: Select Simulator
         id: sim
         run: |
@@ -162,18 +171,15 @@ jobs:
         run: |
           DERIVED="$PWD/.derivedData-unit"
           set -o pipefail
-          xcrun simctl list devices
-          xcrun simctl boot "${{ steps.sim.outputs.udid }}" || true
-          xcrun simctl bootstatus "${{ steps.sim.outputs.udid }}" -b -t 120 || true
-          echo "Using generic destination: iPhone SE (3rd generation), OS=latest"
+          echo "Using generic destination: platform=iOS Simulator"
           xcodebuild \
             -project Simigo/Simigo.xcodeproj \
             -scheme Simigo \
-            -destination "platform=iOS Simulator,name=iPhone SE (3rd generation),OS=latest" \
+            -destination "generic/platform=iOS Simulator" \
             -derivedDataPath "$DERIVED" \
             -sdk iphonesimulator \
-            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=YES \
-            build-for-testing | tee xcodebuild.log
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO \
+            build-for-testing -quiet | tee xcodebuild.log
         if: ${{ hashFiles('**/*.pbxproj') != '' }}
 
       - name: Test without building (unit)
@@ -339,6 +345,15 @@ jobs:
             ${{ runner.os }}-xcode-${{ steps.xcode.outputs.version }}-integration-
         if: ${{ hashFiles('**/*.pbxproj') != '' }}
 
+      - name: Cache SwiftPM (integration)
+        uses: actions/cache@v4
+        with:
+          path: ~/Library/Caches/org.swift.swiftpm
+          key: ${{ runner.os }}-swiftpm-${{ steps.xcode.outputs.version }}-${{ hashFiles('Simigo/Simigo.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-swiftpm-
+        if: ${{ hashFiles('**/*.pbxproj') != '' }}
+
       - name: Build for testing (integration)
         env:
           DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
@@ -346,18 +361,15 @@ jobs:
         run: |
           DERIVED="$PWD/.derivedData-integration"
           set -o pipefail
-          xcrun simctl list devices
-          xcrun simctl boot "${{ steps.sim2.outputs.udid }}" || true
-          xcrun simctl bootstatus "${{ steps.sim2.outputs.udid }}" -b -t 120 || true
-          echo "Using generic destination: iPhone SE (3rd generation), OS=latest"
+          echo "Using generic destination: platform=iOS Simulator"
           xcodebuild \
             -project Simigo/Simigo.xcodeproj \
             -scheme Simigo \
-            -destination "platform=iOS Simulator,name=iPhone SE (3rd generation),OS=latest" \
+            -destination "generic/platform=iOS Simulator" \
             -derivedDataPath "$DERIVED" \
             -sdk iphonesimulator \
-            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=YES \
-            build-for-testing | tee xcodebuild-integration.log
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO \
+            build-for-testing -quiet | tee xcodebuild-integration.log
         if: ${{ hashFiles('**/*.pbxproj') != '' }}
 
       - name: Test without building (integration)
