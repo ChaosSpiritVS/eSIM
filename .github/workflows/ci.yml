@@ -162,13 +162,12 @@ jobs:
         run: |
           DERIVED="$PWD/.derivedData-unit"
           set -o pipefail
-          if [ -z "${{ steps.sim.outputs.udid }}" ]; then echo "No simulator UDID found"; exit 1; fi
-          xcrun simctl boot "${{ steps.sim.outputs.udid }}" || true
-          echo "Using simulator: ${{ steps.sim.outputs.name }} (${{ steps.sim.outputs.udid }})"
+          xcrun simctl list devices
+          echo "Using generic destination: iPhone SE (3rd generation), OS=latest"
           xcodebuild \
             -project Simigo/Simigo.xcodeproj \
             -scheme Simigo \
-            -destination "platform=iOS Simulator,OS=18.2,id=${{ steps.sim.outputs.udid }}" \
+            -destination "platform=iOS Simulator,name=iPhone SE (3rd generation),OS=latest" \
             -derivedDataPath "$DERIVED" \
             -sdk iphonesimulator \
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=YES \
@@ -184,7 +183,7 @@ jobs:
           xcodebuild \
             -project Simigo/Simigo.xcodeproj \
             -scheme Simigo \
-            -destination "platform=iOS Simulator,OS=18.2,id=${{ steps.sim.outputs.udid }}" \
+            -destination "platform=iOS Simulator,name=iPhone SE (3rd generation),OS=latest" \
             -derivedDataPath "$DERIVED" \
             -resultBundlePath TestResults.xcresult \
             -sdk iphonesimulator \
@@ -342,13 +341,12 @@ jobs:
         run: |
           DERIVED="$PWD/.derivedData-integration"
           set -o pipefail
-          if [ -z "${{ steps.sim2.outputs.udid }}" ]; then echo "No simulator UDID found"; exit 1; fi
-          xcrun simctl boot "${{ steps.sim2.outputs.udid }}" || true
-          echo "Using simulator: ${{ steps.sim2.outputs.name }} (${{ steps.sim2.outputs.udid }})"
+          xcrun simctl list devices
+          echo "Using generic destination: iPhone SE (3rd generation), OS=latest"
           xcodebuild \
             -project Simigo/Simigo.xcodeproj \
             -scheme Simigo \
-            -destination "platform=iOS Simulator,OS=18.2,id=${{ steps.sim2.outputs.udid }}" \
+            -destination "platform=iOS Simulator,name=iPhone SE (3rd generation),OS=latest" \
             -derivedDataPath "$DERIVED" \
             -sdk iphonesimulator \
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=YES \
@@ -365,7 +363,7 @@ jobs:
           xcodebuild \
             -project Simigo/Simigo.xcodeproj \
             -scheme Simigo \
-            -destination "platform=iOS Simulator,OS=18.2,id=${{ steps.sim2.outputs.udid }}" \
+            -destination "platform=iOS Simulator,name=iPhone SE (3rd generation),OS=latest" \
             -derivedDataPath "$DERIVED" \
             -resultBundlePath IntegrationResults.xcresult \
             -sdk iphonesimulator \
