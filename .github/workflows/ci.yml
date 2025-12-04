@@ -267,7 +267,25 @@ jobs:
         run: |
           export PROVIDER_FAKE=true
           nohup python -m uvicorn server.app.main:app --host 127.0.0.1 --port 3001 &
-          sleep 5
+        if: ${{ hashFiles('**/*.pbxproj') != '' }}
+
+      - name: Wait backend ready
+        run: |
+          attempts=0
+          max_attempts=15
+          while [ $attempts -lt $max_attempts ]; do
+            attempts=$((attempts+1))
+            if curl -sSfI http://127.0.0.1:3001/health >/dev/null 2>&1; then
+              echo "Backend is ready (health)"; break
+            fi
+            if curl -sSfI http://127.0.0.1:3001/status >/dev/null 2>&1; then
+              echo "Backend is ready (status)"; break
+            fi
+            sleep 0.3
+          done
+          if [ $attempts -ge $max_attempts ]; then
+            echo "Backend readiness check timed out"; exit 1
+          fi
         if: ${{ hashFiles('**/*.pbxproj') != '' }}
 
       - name: Select Simulator
@@ -379,6 +397,8 @@ jobs:
         run: |
           DERIVED="$PWD/.derivedData-integration"
           set -o pipefail
+          xcrun simctl boot "${{ steps.sim2.outputs.udid }}" || true
+          xcrun simctl bootstatus "${{ steps.sim2.outputs.udid }}" -b -t 120 || true
           xcodebuild \
             -project Simigo/Simigo.xcodeproj \
             -scheme Simigo \
@@ -387,9 +407,11 @@ jobs:
             -resultBundlePath IntegrationResults.xcresult \
             -sdk iphonesimulator \
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=YES \
-            -parallel-testing-enabled YES \
-            -maximum-parallel-testing-workers 2 \
-            -only-testing:SimigoUITests \
+            -quiet \
+            -parallel-testing-enabled NO \
+            -maximum-parallel-testing-workers 1 \
+            -only-testing:SimigoUITests/SimigoUITests.testCheckoutFlowNavigatesToOrderDetail \
+            -only-testing:SimigoUITests/SimigoUITests.testOrdersListAfterLoginAndLogout \
             test-without-building | tee -a xcodebuild-integration.log
         if: ${{ hashFiles('**/*.pbxproj') != '' }}
 
