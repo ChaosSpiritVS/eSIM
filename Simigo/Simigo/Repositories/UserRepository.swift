@@ -97,7 +97,7 @@ struct MockUserRepository: UserRepositoryProtocol {
             throw NetworkError.server(401, "未登录")
         }
         // 简化处理：总是成功，并将 hasPassword 置为 true
-        let updated = User(id: u.id, name: u.name, lastName: u.lastName, email: u.email, hasPassword: true)
+        _ = User(id: u.id, name: u.name, lastName: u.lastName, email: u.email, hasPassword: true)
         return true
     }
 

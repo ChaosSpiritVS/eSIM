@@ -11,6 +11,8 @@ enum AuthEventBridge {
         Telemetry.shared.logEvent("session_expired", parameters: [
             "reason": reason ?? "-"
         ])
-        NotificationCenter.default.post(name: .sessionExpired, object: nil, userInfo: info)
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: .sessionExpired, object: nil, userInfo: info)
+        }
     }
 }

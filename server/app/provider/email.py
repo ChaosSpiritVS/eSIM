@@ -61,8 +61,8 @@ class SESGateway(EmailGateway):
     def _subject(self, locale: Optional[str]) -> str:
         loc = (locale or "en").lower()
         if loc.startswith("zh"):
-            return "重置您的 Simigo 密码"
-        return "Reset your Simigo password"
+            return "重置您的 eSIM Home 密码"
+        return "Reset your eSIM Home password"
 
     def _html(self, reset_link: str, locale: Optional[str]) -> str:
         loc = (locale or "en").lower()

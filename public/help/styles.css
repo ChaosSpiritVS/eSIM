@@ -1,0 +1,21 @@
+body { font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; }
+.screen { min-height: 100vh; display: flex; flex-direction: column; }
+.nav { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid #eee; }
+.nav h1 { font-size: 18px; margin: 0; }
+.back { text-decoration: none; color: #007aff; font-size: 18px; }
+.nav-label { color: #888; font-size: 13px; }
+.content { padding: 12px; }
+.tab { display: flex; gap: 12px; margin-bottom: 8px; }
+.tab a { text-decoration: none; color: #007aff; padding: 6px 10px; border-radius: 999px; }
+.tab a.active { background: #e6f0ff; }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.tile { display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid #eee; border-radius: 8px; text-decoration: none; color: inherit; }
+.emoji { font-size: 20px; }
+.title { font-size: 16px; }
+.card { border: 1px solid #eee; border-radius: 8px; padding: 12px; background: #fff; }
+.list { list-style: none; margin: 0; padding: 0; }
+.list li { display: flex; justify-content: space-between; padding: 10px 8px; border-bottom: 1px solid #f0f0f0; cursor: pointer; }
+.list li:last-child { border-bottom: none; }
+.helper { color: #888; font-size: 13px; }
+.link { color: #007aff; text-decoration: none; }
+.input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; }

@@ -278,6 +278,7 @@
 "帮助与支持" = "Bantuan & Sokongan";
 "如需帮助，您可以通过以下方式联系我们：" = "Jika anda perlukan bantuan, hubungi kami melalui:";
 "打开帮助中心" = "Buka Pusat Bantuan";
+"关闭" = "Tutup";
 "发送邮件至 support@example.com" = "Emel support@example.com";
 "语言：简体中文" = "Bahasa: Cina Ringkas";
 "货币：英镑 (GBP) £" = "Mata wang: Paun British (GBP) £";
@@ -350,7 +351,7 @@
 "安全结账" = "Pembayaran selamat";
 "国家" = "Negara";
 "地区" = "Wilayah";
-"我正在使用 Simigo eSIM 应用，快来试试吧！" = "Saya menggunakan Simigo eSIM — cuba juga!";
+"我正在使用 Simigo eSIM 应用，快来试试吧！" = "Saya menggunakan eSIM Home — cuba juga!";
 "连接到网络" = "Sambung ke rangkaian";
 "安装教程" = "Panduan pemasangan";
 "点击 添加蜂窝套餐（Add eSIM / Add Cellular Plan）" = "Ketik Tambah eSIM / Tambah Pelan Selular";
@@ -371,7 +372,7 @@
 "审核中" = "Dalam semakan";
 "已完成" = "Selesai";
 "已拒绝" = "Ditolak";
-"品牌名" = "Simigo";
+"品牌名" = "eSIM Home";
 "官方网站" = "Laman rasmi";
 "模式" = "Mod";
 "名字" = "Nama pertama";
@@ -432,3 +433,4 @@
 "货币名_SAR" = "Riyal Arab Saudi (SAR) SAR";
 "货币名_AUD" = "Dolar Australia (AUD) A$";
 "货币名_CAD" = "Dolar Kanada (CAD) C$";
+"帮助中心" = "Pusat Bantuan";

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>帮助中心</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="data.js"></script>
+    <script src="help.js"></script>
+  </head>
+  <body>
+    <div class="screen">
+      <div class="nav" id="nav"><h1>帮助中心</h1></div>
+      <div class="content">
+        <div id="cats"></div>
+      </div>
+    </div>
+    <script>
+      const lang = detectLang();
+      document.documentElement.lang = lang==='zh' ? 'zh-Hans' : 'en';
+      renderHeader(document.getElementById('nav'), lang==='zh'?'帮助中心':'Help Center', lang);
+      const bl = document.getElementById('backLabel'); if (bl) bl.style.display = 'none';
+      const bk = document.getElementById('back'); if (bk) bk.style.display = 'none';
+      const cats = HelpData.categories;
+      const arts = HelpData.articles;
+      const catsEl = document.getElementById('cats');
+      renderLangToggle(document.querySelector('.content'), lang);
+      function renderGrid() {
+        catsEl.innerHTML = '';
+        const grid = document.createElement('div'); grid.className = 'grid';
+        cats.forEach(c=>{
+          const a = document.createElement('a'); a.className = 'tile';
+          a.href = `category.html?cat=${c.id}&lang=${lang}${isIOSHost()? '&ios=1':''}`;
+          const emoji = document.createElement('div'); emoji.className='emoji'; emoji.textContent = c.icon || '❓';
+          const title = document.createElement('div'); title.className='title'; title.textContent = t(c, lang);
+          a.appendChild(emoji); a.appendChild(title);
+          grid.appendChild(a);
+        });
+        catsEl.appendChild(grid);
+      }
+      renderSearch(document.querySelector('.content'), lang);
+      renderGrid();
+    </script>
+  </body>
+</html>

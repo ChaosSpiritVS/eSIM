@@ -9,8 +9,9 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei"; }
 .screen { max-width: 390px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; }
-.nav { padding: 14px 16px; border-bottom: 1px solid var(--border); background: var(--bg); position: sticky; top: 0; }
+.nav { padding: 14px 16px; border-bottom: 1px solid var(--border); background: var(--bg); position: sticky; top: 0; display:flex; align-items:center; gap:8px; }
 .nav h1 { font-size: 20px; margin: 0; }
+.nav-label { color: var(--text); font-size: 14px; }
 .content { padding: 16px; }
 .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 12px; margin-bottom: 12px; }
 .btn { display: block; width: 100%; padding: 14px; border-radius: 24px; border: 1px solid var(--border); text-align: center; text-decoration: none; color: var(--text); background: #ffffff; }
@@ -29,6 +30,13 @@ html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); f
 .tab a.active { background: #fff; border: 1px solid var(--border); }
 .money { color: #0b7a0b; font-weight: 600; }
 .link { color: #007aff; text-decoration: none; }
+
+/* 帮助中心分类网格 */
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.tile { display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; color: var(--text); box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+.tile .emoji { font-size: 24px; margin-bottom: 8px; }
+.tile .title { font-weight: 600; text-align: center; }
+.tile:hover { border-color: #d8cdc3; }
 
 /* 悬浮客服按钮 */
 .fab {
@@ -58,3 +66,4 @@ html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); f
 .checkbox { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; color: var(--muted); }
 .checkbox input { margin-top: 2px; }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.back { text-decoration: none; color: var(--text); font-size: 20px; display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border: 1px solid var(--border); border-radius: 8px; background: #fff; }

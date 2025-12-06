@@ -278,6 +278,7 @@
 "帮助与支持" = "Trợ giúp & Hỗ trợ";
 "如需帮助，您可以通过以下方式联系我们：" = "Nếu cần hỗ trợ, liên hệ qua:";
 "打开帮助中心" = "Mở Trung tâm trợ giúp";
+"关闭" = "Đóng";
 "发送邮件至 support@example.com" = "Gửi email tới support@example.com";
 "语言：简体中文" = "Ngôn ngữ: Tiếng Trung giản thể";
 "货币：英镑 (GBP) £" = "Tiền tệ: Bảng Anh (GBP) £";
@@ -350,7 +351,7 @@
 "安全结账" = "Thanh toán an toàn";
 "国家" = "Quốc gia";
 "地区" = "Khu vực";
-"我正在使用 Simigo eSIM 应用，快来试试吧！" = "Tôi đang dùng Simigo eSIM — thử ngay!";
+"我正在使用 Simigo eSIM 应用，快来试试吧！" = "Tôi đang dùng eSIM Home — thử ngay!";
 "连接到网络" = "Kết nối mạng";
 "安装教程" = "Hướng dẫn cài đặt";
 "点击 添加蜂窝套餐（Add eSIM / Add Cellular Plan）" = "Chạm Thêm eSIM / Thêm gói di động";
@@ -371,7 +372,7 @@
 "审核中" = "Đang xem xét";
 "已完成" = "Hoàn thành";
 "已拒绝" = "Bị từ chối";
-"品牌名" = "Simigo";
+"品牌名" = "eSIM Home";
 "官方网站" = "Trang web chính thức";
 "模式" = "Chế độ";
 "名字" = "Tên";
@@ -432,3 +433,4 @@
 "货币名_SAR" = "Riyal Ả Rập Saudi (SAR) SAR";
 "货币名_AUD" = "Đô la Úc (AUD) A$";
 "货币名_CAD" = "Đô la Canada (CAD) C$";
+"帮助中心" = "Trung tâm trợ giúp";

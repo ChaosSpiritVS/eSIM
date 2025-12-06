@@ -17,6 +17,7 @@ struct AccountView: View {
     @EnvironmentObject private var navBridge: NavigationBridge
     @EnvironmentObject private var bannerCenter: BannerCenter
     @State private var showSupport = false
+    @State private var showHelpSheet = false
     @State private var showAuthSheet = false
     @State private var showRestoreBanner = false
     @State private var showAppleContinue = false
@@ -116,6 +117,13 @@ struct AccountView: View {
                     Toggle(loc("允许诊断与崩溃日志"), isOn: $settings.crashOptIn)
 
                     Button {
+                        Telemetry.shared.logEvent("account_help_open", parameters: nil)
+                        showHelpSheet = true
+                    } label: {
+                        Text(loc("帮助中心"))
+                    }
+
+                    Button {
                         navBridge.push(MoreInfoView(), auth: auth, settings: settings, network: networkMonitor, title: loc("更多信息"))
                     } label: {
                         Text(loc("更多信息"))
@@ -170,6 +178,7 @@ struct AccountView: View {
                 .padding(16)
             }
             .sheet(isPresented: $showSupport) { UIKitNavHost(root: SupportView()) }
+            .sheet(isPresented: $showHelpSheet) { UIKitNavHost(root: HelpCenterView(showClose: true)) }
             .sheet(isPresented: $showAuthSheet) { UIKitNavHost(root: AuthView(auth: auth)) }
             .alert(loc("确认退出登录？"), isPresented: $showLogoutConfirm) {
                 Button(loc("取消"), role: .cancel) {}

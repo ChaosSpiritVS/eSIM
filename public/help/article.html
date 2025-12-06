@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>文章 · 帮助中心</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="data.js"></script>
+    <script src="help.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
+  </head>
+  <body>
+    <div class="screen">
+      <div class="nav" id="nav"><h1>文章</h1></div>
+      <div class="content" id="content"></div>
+    </div>
+    <script>
+      const lang = detectLang();
+      document.documentElement.lang = lang==='zh' ? 'zh-Hans' : 'en';
+      const url = new URL(window.location.href);
+      const id = url.searchParams.get('id');
+      const art = HelpData.articles.find(a=>a.id===id) || HelpData.articles[0];
+      renderHeader(document.getElementById('nav'), t(art, lang), lang, `category.html?cat=${art.cat}&lang=${lang}${isIOSHost()? '&ios=1':''}`);
+      const bl = document.getElementById('backLabel'); if (bl) bl.textContent = lang==='zh' ? '返回该分类' : 'Back to category';
+      const content = document.getElementById('content');
+      renderLangToggle(content, lang);
+      const card = document.createElement('div'); card.className='card';
+      const originalPath = art.file;
+      const container = document.createElement('div'); container.id = 'docx'; container.style.padding = '8px 4px';
+      card.appendChild(container);
+      content.appendChild(card);
+      function computeLangPath(originalPath, lang) {
+        const fileName = originalPath.split('/').pop();
+        const langFolder = lang==='zh' ? 'zh-Hans' : 'en';
+        const catMap = { 'about': '关于 eSIM', 'getting-started': 'eSIM 使用入门', 'manage': '使用和管理 eSIM', 'account': '我的帐户', 'troubleshoot': '故障排除' };
+        const base = getFaqBase();
+        const categoryCn = catMap[art.cat] || '';
+        if (!fileName || !categoryCn) return originalPath;
+        return `${base}/${categoryCn}/${langFolder}/${fileName}`;
+      }
+      const candidatePath = computeLangPath(originalPath, lang);
+      function fetchDocx(p) { return fetch(encodeURI(p)).then(r=>{ if(!r.ok) throw new Error('HTTP '+r.status); return r.arrayBuffer(); }); }
+      fetchDocx(candidatePath)
+        .catch(()=> fetchDocx(originalPath))
+        .then(buffer=> mammoth.convertToHtml({arrayBuffer: buffer}))
+        .then(res=>{ container.innerHTML = res.value || ''; })
+        .catch(err=>{
+          const dl = encodeURI(candidatePath);
+          container.innerHTML = `<div class="helper">${lang==='zh' ? '无法读取文档，点击下载查看：' : 'Unable to read document. Download: '}<a class="link" href="${dl}">${t(art, lang)}</a></div>`;
+        });
+    </script>
+  </body>
+</html>

@@ -134,7 +134,7 @@ struct SimigoApp: App {
                     Task { await AppConfig.loadRemoteConfig() }
                 }
             }
-            .onReceive(NotificationCenter.default.publisher(for: .sessionExpired)) { note in
+            .onReceive(NotificationCenter.default.publisher(for: .sessionExpired).receive(on: RunLoop.main)) { note in
                 let reason = note.userInfo?["reason"] as? String
                 auth.handleSessionExpired(reason: reason)
                 navBridge.popToRoot()

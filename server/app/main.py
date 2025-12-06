@@ -88,7 +88,7 @@ try:
 except Exception:
     load_dotenv()
 
-app = FastAPI(title="Simigo Backend", version="0.1.0")
+app = FastAPI(title="eSIM Home Backend", version="0.1.0")
 SERVER_STARTED_AT = datetime.utcnow()
 
 # CORS for local development and iOS simulator
@@ -1486,7 +1486,7 @@ async def payments_gsalary_create(request: Request, body: GsalaryCreateBody, cur
         "notify_url": notify_url,
         "order": {
             "reference_order_id": body.orderId,
-            "order_description": "Simigo eSIM purchase",
+            "order_description": "eSIM Home purchase",
             "order_currency": body.currency or "CNY",
             "order_amount": round((body.amount or 0.0), 2),
             "order_buyer_id": getattr(current_user, "id", None) or "",
@@ -1966,7 +1966,7 @@ async def payments_gsalary_pay(request: Request, body: GsalaryPayBody, current_u
         "payment_redirect_url": return_url,
         "order": {
             "reference_order_id": body.orderId,
-            "order_description": "Simigo eSIM purchase",
+            "order_description": "eSIM Home purchase",
             "order_currency": body.currency or "CNY",
             "order_amount": round((body.amount or 0.0), 2),
             "order_buyer_id": getattr(current_user, "id", None) or "",
@@ -2812,7 +2812,7 @@ async def status_html():
       <head>
         <meta charset='utf-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <title>Simigo Status</title>
+        <title>eSIM Home Status</title>
         <style>
           body {{ font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 24px; color: #222; }}
           h1 {{ font-size: 20px; margin-bottom: 12px; }}
@@ -2822,7 +2822,7 @@ async def status_html():
         </style>
       </head>
       <body>
-        <h1>Simigo Backend Status</h1>
+        <h1>eSIM Home Backend Status</h1>
         <div class='grid'>
           <div class='key'>status</div><div class='val'>ok</div>
           <div class='key'>version</div><div class='val'>{app.version}</div>

@@ -350,7 +350,7 @@
 "安全结账" = "Pembayaran aman";
 "国家" = "Negara";
 "地区" = "Wilayah";
-"我正在使用 Simigo eSIM 应用，快来试试吧！" = "Saya menggunakan Simigo eSIM — coba juga!";
+"我正在使用 Simigo eSIM 应用，快来试试吧！" = "Saya menggunakan eSIM Home — coba juga!";
 "连接到网络" = "Hubungkan ke jaringan";
 "安装教程" = "Panduan instalasi";
 "点击 添加蜂窝套餐（Add eSIM / Add Cellular Plan）" = "Ketuk Tambah eSIM / Tambah Paket Seluler";
@@ -371,7 +371,7 @@
 "审核中" = "Dalam peninjauan";
 "已完成" = "Selesai";
 "已拒绝" = "Ditolak";
-"品牌名" = "Simigo";
+"品牌名" = "eSIM Home";
 "官方网站" = "Situs resmi";
 "模式" = "Mode";
 "名字" = "Nama depan";
@@ -432,3 +432,5 @@
 "货币名_SAR" = "Riyal Saudi (SAR) SAR";
 "货币名_AUD" = "Dolar Australia (AUD) A$";
 "货币名_CAD" = "Dolar Kanada (CAD) C$";
+"帮助中心" = "Pusat Bantuan";
+"关闭" = "penutup";

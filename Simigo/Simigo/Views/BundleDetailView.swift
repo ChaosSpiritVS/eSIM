@@ -12,6 +12,7 @@ struct BundleDetailView: View {
     @State private var navigateToCheckout = false
     @State private var showAuthSheet = false
     @State private var showErrorBanner: Bool = false
+    @State private var showHelpSheet = false
 
     init(bundle: ESIMBundle) {
         _viewModel = StateObject(wrappedValue: BundleDetailViewModel(bundle: bundle))
@@ -124,18 +125,20 @@ struct BundleDetailView: View {
 
                 Text(loc("常见问题解答")).font(.headline)
 
-                Link(loc("打开帮助中心"), destination: URL(string: "https://example.com/help")!)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 10)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                    .foregroundColor(.accentColor)
-                    .simultaneousGesture(TapGesture().onEnded {
-                        Telemetry.shared.logEventDeferred("support_help_open", parameters: [
-                            "url": "https://example.com/help",
-                            "bundle_id": viewModel.bundle.id
-                        ])
-                    })
+                Button {
+                    showHelpSheet = true
+                    Telemetry.shared.logEventDeferred("support_help_open", parameters: [
+                        "url": "http://localhost:8000/public/help/index.html",
+                        "bundle_id": viewModel.bundle.id
+                    ])
+                } label: {
+                    Text(loc("打开帮助中心"))
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .background(Color(UIColor.secondarySystemBackground))
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .foregroundColor(.accentColor)
+                }
 
                 FAQItem(title: loc("应该什么时候购买 eSIM?"), content: loc("您可以在出行前购买 eSIM。有效期不会因为提前购买而开始，只有当首次连接到覆盖区域内的网络时才开始计算。购买前请以套餐详情中的有效期与覆盖说明为准。"))
                 FAQItem(title: loc("应该什么时候安装 eSIM?"), content: loc("可以在出发前或到达后安装。若不在覆盖范围内安装，安装成功但不会激活；到达覆盖区域并连接移动网络后即可开始使用。请确保设备支持 eSIM 且网络已解锁，安装二维码与步骤可在我的eSIM详情中查看。"))
@@ -163,6 +166,7 @@ struct BundleDetailView: View {
             }
             .padding()
         }
+        .sheet(isPresented: $showHelpSheet) { UIKitNavHost(root: HelpCenterView(showClose: true)) }
         
         
         

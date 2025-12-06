@@ -20,7 +20,9 @@ enum PaymentEventBridge {
         if let m = method { info["method"] = m }
         Telemetry.shared.logEvent("payment_success", parameters: ["order_id": orderId, "old_order_id": oldOrderId ?? "-", "method": method ?? "-"])
         Telemetry.shared.log("payment_success_\(orderId)")
-        NotificationCenter.default.post(name: .paymentSucceeded, object: nil, userInfo: info)
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: .paymentSucceeded, object: nil, userInfo: info)
+        }
     }
 
     /// 支付失败事件
@@ -44,7 +46,9 @@ enum PaymentEventBridge {
             Telemetry.shared.record(error: err)
         }
         Telemetry.shared.log("payment_failed_\(orderId)")
-        NotificationCenter.default.post(name: .paymentFailed, object: nil, userInfo: info)
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: .paymentFailed, object: nil, userInfo: info)
+        }
     }
 
     static func reasonCategory(reason: String?, error: Error?) -> (category: String, code: String?) {

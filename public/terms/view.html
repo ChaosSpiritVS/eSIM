@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>政策与条款</title>
+    <link rel="stylesheet" href="/public/help/styles.css">
+    <script src="terms.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
+  </head>
+  <body>
+    <div class="screen">
+      <div class="content" id="content"></div>
+    </div>
+    <script>
+      const lang = detectLang();
+      document.documentElement.lang = lang==='zh' ? 'zh-Hans' : 'en';
+      const url = new URL(window.location.href);
+      const topic = url.searchParams.get('topic') || '';
+      const content = document.getElementById('content');
+      renderLangToggle(content, lang, topic);
+      const card = document.createElement('div'); card.className='card';
+      const container = document.createElement('div');
+      container.id = 'docx';
+      container.style.padding = '8px 4px';
+      card.appendChild(container);
+      content.appendChild(card);
+      const base = getTermsBase();
+      const folder = getLangFolder(lang);
+      function fetchDoc(p) { return fetch(encodeURI(p)).then(r=>{ if(!r.ok) throw new Error('HTTP '+r.status); return r.arrayBuffer(); }); }
+      const candidate = `${base}/${topic}/${folder}/${topic}.docx`;
+      fetchDoc(candidate)
+        .catch(()=> fetchDoc(`${base}/${topic}/zh-Hans/${topic}.docx`))
+        .then(buffer=> mammoth.convertToHtml({arrayBuffer: buffer}))
+        .then(res=>{ container.innerHTML = res.value || ''; pruneRedundantTitle(container, topic); })
+        .catch(err=>{
+          const dl = encodeURI(candidate);
+          const msg = lang==='zh' ? '无法读取文档，点击下载查看：' : 'Unable to read document. Download: ';
+          container.innerHTML = `<div class="helper">${msg}<a class="link" href="${dl}">${topic || 'Document'}</a></div>`;
+        });
+    </script>
+  </body>
+</html>
