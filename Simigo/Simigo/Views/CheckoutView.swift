@@ -69,12 +69,12 @@ struct CheckoutView: View {
                     acceptTerms = true
                     if auth.isLoggedIn { viewModel.placeOrder() } else { showAuthSheet = true }
                 }
-                Button(loc("查看服务条款")) { navBridge.push(TermsOfServiceView(showCancel: false), auth: auth, settings: settings, network: networkMonitor, title: loc("服务条款")) }
-                Button(loc("查看隐私政策")) { navBridge.push(PrivacyPolicyView(showCancel: false), auth: auth, settings: settings, network: networkMonitor, title: loc("隐私政策")) }
+                Button(loc("查看服务条款")) { navBridge.push(TermsDocPage(topic: "使用条款"), auth: auth, settings: settings, network: networkMonitor, title: loc("服务条款")) }
+                Button(loc("查看隐私政策")) { navBridge.push(TermsDocPage(topic: "隐私政策"), auth: auth, settings: settings, network: networkMonitor, title: loc("隐私政策")) }
                 Button(loc("取消"), role: .cancel) { }
             }
-            .sheet(isPresented: $showTermsSheet) { UIKitNavHost(root: TermsOfServiceView(showCancel: true)) }
-            .sheet(isPresented: $showPrivacySheet) { UIKitNavHost(root: PrivacyPolicyView(showCancel: true)) }
+            .sheet(isPresented: $showTermsSheet) { UIKitNavHost(root: TermsDocPage(topic: "使用条款", showClose: true)) }
+            .sheet(isPresented: $showPrivacySheet) { UIKitNavHost(root: TermsDocPage(topic: "隐私政策", showClose: true)) }
             .sheet(isPresented: $showAuthSheet) { UIKitNavHost(root: AuthView(auth: auth)) }
             .onAppear { onAppearAction() }
             .onChange(of: acceptTerms) { newValue in onAcceptTermsChange(newValue) }
@@ -181,9 +181,9 @@ struct CheckoutView: View {
     private var termsAgreementText: some View {
         HStack(spacing: 4) {
             Text(loc("购买即表示同意"))
-            Button { navBridge.push(TermsOfServiceView(showCancel: false), auth: auth, settings: settings, network: networkMonitor, title: loc("服务条款")) } label: { Text(loc("服务条款")).underline() }
+            Button { navBridge.push(TermsDocPage(topic: "使用条款"), auth: auth, settings: settings, network: networkMonitor, title: loc("服务条款")) } label: { Text(loc("服务条款")).underline() }
             Text(loc("与"))
-            Button { navBridge.push(PrivacyPolicyView(showCancel: false), auth: auth, settings: settings, network: networkMonitor, title: loc("隐私政策")) } label: { Text(loc("隐私政策")).underline() }
+            Button { navBridge.push(TermsDocPage(topic: "隐私政策"), auth: auth, settings: settings, network: networkMonitor, title: loc("隐私政策")) } label: { Text(loc("隐私政策")).underline() }
         }
         .font(.footnote)
         .foregroundColor(.secondary)

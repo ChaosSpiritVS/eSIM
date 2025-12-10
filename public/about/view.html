@@ -13,8 +13,25 @@
       <div class="content" id="content"></div>
     </div>
     <script>
+      if (typeof detectLang !== 'function') {
+        function detectLang() {
+          try { const qp = new URL(window.location.href).searchParams.get('lang'); return qp === 'zh' ? 'zh' : 'en'; } catch(_) { return 'en'; }
+        }
+      }
+      if (typeof detectLocale !== 'function') {
+        function detectLocale() {
+          try {
+            const url = new URL(window.location.href);
+            const cand = (url.searchParams.get('locale') || url.searchParams.get('lang') || (navigator.language || 'en')).toLowerCase();
+            if (cand.startsWith('zh')) { if (cand.includes('hant') || cand.includes('tw') || cand.includes('hk')) return 'zh-Hant'; return 'zh-Hans'; }
+            if (cand.startsWith('en')) return 'en'; if (cand.startsWith('ja')) return 'ja'; if (cand.startsWith('ko')) return 'ko'; if (cand.startsWith('th')) return 'th'; if (cand.startsWith('id')) return 'id'; if (cand.startsWith('es')) return 'es'; if (cand.startsWith('pt')) return 'pt'; if (cand.startsWith('ms') || cand.startsWith('ml')) return 'ms'; if (cand.startsWith('vi')) return 'vi'; if (cand.startsWith('ar')) return 'ar';
+            return 'en';
+          } catch(_) { return 'en'; }
+        }
+      }
       const lang = detectLang();
-      document.documentElement.lang = lang==='zh' ? 'zh-Hans' : 'en';
+      const locale = detectLocale();
+      document.documentElement.lang = locale;
       const url = new URL(window.location.href);
       const topic = url.searchParams.get('topic') || (lang==='zh' ? '关于 eSIM Home' : 'About eSIM Home');
       const content = document.getElementById('content');
@@ -26,28 +43,55 @@
       card.appendChild(container);
       content.appendChild(card);
       const base = getAboutBase();
-      const folder = getLangFolder(lang);
-      function fetchDoc(p) { return fetch(encodeURI(p)).then(r=>{ if(!r.ok) throw new Error('HTTP '+r.status); return r.arrayBuffer(); }); }
+      const folder = getLangFolder(locale);
+      function fetchDoc(p) { const u = encodeURI(p) + (p.includes('?') ? '&' : '?') + 'v=' + Date.now(); return fetch(u, { cache: 'no-store' }).then(r=>{ if(!r.ok) throw new Error('HTTP '+r.status); return r.arrayBuffer(); }); }
       const cnTopic = '关于 eSIM Home';
       const enTopic = 'About eSIM Home';
+      const dir = cnTopic;
       const candidates = [
-        `${base}/${topic}/${folder}/${topic}.docx`,
-        `${base}/${topic}/zh-Hans/${cnTopic}.docx`,
-        `${base}/${topic}/en/${enTopic}.docx`,
-        `${base}/${topic}/${topic}.docx`
+        `${base}/${dir}/${folder}/${cnTopic}.docx`,
+        `${base}/${dir}/zh-Hans/${cnTopic}.docx`,
+        `${base}/${dir}/zh-Hant/${cnTopic}.docx`,
+        `${base}/${dir}/en/${enTopic}.docx`,
       ];
       (async function(){
         let buffer = null, used = null;
         for (const p of candidates) {
           try { buffer = await fetchDoc(p); used = p; break; } catch(_) {}
         }
-        if (buffer) {
-          const res = await mammoth.convertToHtml({arrayBuffer: buffer});
-          container.innerHTML = res.value || ''; pruneRedundantTitle(container, topic);
-        } else {
+        if (!buffer || !window.mammoth) {
           const msg = lang==='zh' ? '无法读取文档，点击下载查看：' : 'Unable to read document. Download: ';
-          const dl = encodeURI(candidates[0]);
-          container.innerHTML = `<div class="helper">${msg}<a class="link" href="${dl}">${topic || 'Document'}</a></div>`;
+          const dl = encodeURI(used || candidates[0]);
+          container.innerHTML = `<div class=\"helper\">${msg}<a class=\"link\" href=\"${dl}\">${topic || 'Document'}</a></div>`;
+          return;
+        }
+        try {
+          const res = await mammoth.convertToHtml({arrayBuffer: buffer});
+          let html = (res && res.value ? res.value.trim() : '');
+          function hasCJK(s){ return /[\u4e00-\u9fff]/.test(s || ''); }
+          if (lang==='zh' && (!hasCJK(html))) {
+            for (const p of [`${base}/${dir}/zh-Hans/${cnTopic}.docx`, `${base}/${dir}/zh-Hant/${cnTopic}.docx`]) {
+              try {
+                const buf2 = await fetchDoc(p);
+                const r2 = await mammoth.convertToHtml({arrayBuffer: buf2});
+                const h2 = (r2 && r2.value ? r2.value.trim() : '');
+                if (hasCJK(h2)) { html = h2; used = p; break; }
+              } catch(_){ }
+            }
+          }
+          if (html) {
+            container.innerHTML = html; pruneRedundantTitle(container, topic);
+            const titleText = (function(){ try { const doc = new DOMParser().parseFromString(html, 'text/html'); const el = doc.querySelector('h1,h2,h3,p'); return (el && el.textContent ? el.textContent.trim() : topic); } catch(_){ return topic; } })();
+            document.title = titleText || document.title;
+          } else {
+            const msg = lang==='zh' ? '无法读取文档，点击下载查看：' : 'Unable to read document. Download: ';
+            const dl = encodeURI(used || candidates[0]);
+            container.innerHTML = `<div class=\"helper\">${msg}<a class=\"link\" href=\"${dl}\">${topic || 'Document'}</a></div>`;
+          }
+        } catch(_) {
+          const msg = lang==='zh' ? '无法读取文档，点击下载查看：' : 'Unable to read document. Download: ';
+          const dl = encodeURI(used || candidates[0]);
+          container.innerHTML = `<div class=\"helper\">${msg}<a class=\"link\" href=\"${dl}\">${topic || 'Document'}</a></div>`;
         }
       })();
     </script>

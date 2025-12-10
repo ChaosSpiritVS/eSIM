@@ -20,16 +20,6 @@ struct SupportView: View {
                 Button { navBridge.push(ESIMInstallationGuideView(showClose: true), auth: auth, settings: settings, network: networkMonitor, title: loc("安装指南")) } label: {
                     Label(loc("eSIM 安装指南"), systemImage: "qrcode.viewfinder")
                 }
-
-                Button { navBridge.push(PrivacyPolicyView(showCancel: false), auth: auth, settings: settings, network: networkMonitor, title: loc("隐私政策")) } label: {
-                    Label(loc("隐私政策"), systemImage: "lock.shield")
-                }
-                .accessibilityIdentifier("support.privacy")
-
-                Button { navBridge.push(TermsOfServiceView(showCancel: false), auth: auth, settings: settings, network: networkMonitor, title: loc("服务条款")) } label: {
-                    Label(loc("服务条款"), systemImage: "doc.text")
-                }
-                .accessibilityIdentifier("support.terms")
                 
             }
             

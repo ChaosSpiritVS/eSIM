@@ -178,7 +178,7 @@ struct AccountView: View {
                 .padding(16)
             }
             .sheet(isPresented: $showSupport) { UIKitNavHost(root: SupportView()) }
-            .sheet(isPresented: $showHelpSheet) { UIKitNavHost(root: HelpCenterView(showClose: true)) }
+            .fullScreenCover(isPresented: $showHelpSheet) { UIKitNavHost(root: HelpCenterView(showClose: true)) }
             .sheet(isPresented: $showAuthSheet) { UIKitNavHost(root: AuthView(auth: auth)) }
             .alert(loc("确认退出登录？"), isPresented: $showLogoutConfirm) {
                 Button(loc("取消"), role: .cancel) {}

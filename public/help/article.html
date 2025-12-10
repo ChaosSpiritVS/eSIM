@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>文章 · 帮助中心</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="data.js"></script>
-    <script src="help.js"></script>
+    <link rel="stylesheet" href="styles.css?v=20251210">
+    <script src="data.js?v=20251210"></script>
+    <script src="help.js?v=20251210"></script>
     <script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
   </head>
   <body>
@@ -15,38 +15,53 @@
       <div class="content" id="content"></div>
     </div>
     <script>
+      syncUrlWithStoredLocale();
       const lang = detectLang();
-      document.documentElement.lang = lang==='zh' ? 'zh-Hans' : 'en';
+      const locale = detectLocale();
+      document.documentElement.lang = locale;
       const url = new URL(window.location.href);
+      const catParam = url.searchParams.get('cat');
+      const fileParam = url.searchParams.get('file');
       const id = url.searchParams.get('id');
-      const art = HelpData.articles.find(a=>a.id===id) || HelpData.articles[0];
-      renderHeader(document.getElementById('nav'), t(art, lang), lang, `category.html?cat=${art.cat}&lang=${lang}${isIOSHost()? '&ios=1':''}`);
-      const bl = document.getElementById('backLabel'); if (bl) bl.textContent = lang==='zh' ? '返回该分类' : 'Back to category';
+      const artFromData = id ? (HelpData.articles.find(a=>a.id===id) || HelpData.articles[0]) : null;
+      const catCn = catParam ? decodeURIComponent(catParam) : (artFromData ? (CatCnMap[artFromData.cat] || '') : '');
+      const fileName = fileParam ? decodeURIComponent(fileParam) : (artFromData ? artFromData.file : '');
+      const headerTitle = artFromData ? articleTitle(artFromData, locale) : (fileName.replace(/\.docx$/i, '') || locStr('help_center', locale));
+      const backHref = artFromData ? `category.html?cat=${artFromData.cat}&lang=${lang}&locale=${locale}${isIOSHost()? '&ios=1':''}` : `category.html?cat=${encodeURIComponent(catCn)}&lang=${lang}&locale=${locale}${isIOSHost()? '&ios=1':''}`;
+      renderHeader(document.getElementById('nav'), headerTitle, lang, backHref);
+      const bl = document.getElementById('backLabel'); if (bl) bl.textContent = locStr('back_cat', locale);
       const content = document.getElementById('content');
       renderLangToggle(content, lang);
       const card = document.createElement('div'); card.className='card';
-      const originalPath = art.file;
+      const originalPath = artFromData ? artFromData.file : fileName;
       const container = document.createElement('div'); container.id = 'docx'; container.style.padding = '8px 4px';
       card.appendChild(container);
       content.appendChild(card);
-      function computeLangPath(originalPath, lang) {
-        const fileName = originalPath.split('/').pop();
-        const langFolder = lang==='zh' ? 'zh-Hans' : 'en';
-        const catMap = { 'about': '关于 eSIM', 'getting-started': 'eSIM 使用入门', 'manage': '使用和管理 eSIM', 'account': '我的帐户', 'troubleshoot': '故障排除' };
-        const base = getFaqBase();
-        const categoryCn = catMap[art.cat] || '';
-        if (!fileName || !categoryCn) return originalPath;
-        return `${base}/${categoryCn}/${langFolder}/${fileName}`;
+      function computeLangPathDyn(fileName, locale, catCn, artObj) {
+        if (fileName && catCn) {
+          const base = getFaqBase();
+          return `${base}/${catCn}/${locale}/${fileName}`;
+        }
+        return computeArticlePath(artObj, locale);
       }
-      const candidatePath = computeLangPath(originalPath, lang);
-      function fetchDocx(p) { return fetch(encodeURI(p)).then(r=>{ if(!r.ok) throw new Error('HTTP '+r.status); return r.arrayBuffer(); }); }
+      const candidatePath = computeLangPathDyn(originalPath, locale, catCn, artFromData || {});
+      function fetchDocx(p) { const u = encodeURI(p) + (p.includes('?') ? '&' : '?') + 'v=' + Date.now(); return fetch(u, { cache: 'no-store' }).then(r=>{ if(!r.ok) throw new Error('HTTP '+r.status); return r.arrayBuffer(); }); }
       fetchDocx(candidatePath)
         .catch(()=> fetchDocx(originalPath))
         .then(buffer=> mammoth.convertToHtml({arrayBuffer: buffer}))
-        .then(res=>{ container.innerHTML = res.value || ''; })
+        .then(res=>{
+          container.innerHTML = res.value || '';
+          const ti = parseTitleFromHtml(res.value || '');
+          if (ti && ti.trim()) {
+            const cacheId = (artFromData ? artFromData.id : (fileName || ''));
+            setCachedArticleTitle(cacheId, locale, ti.trim());
+            const h1 = document.querySelector('#nav h1'); if (h1) h1.textContent = ti.trim();
+          }
+        })
         .catch(err=>{
           const dl = encodeURI(candidatePath);
-          container.innerHTML = `<div class="helper">${lang==='zh' ? '无法读取文档，点击下载查看：' : 'Unable to read document. Download: '}<a class="link" href="${dl}">${t(art, lang)}</a></div>`;
+          const aTitle = artFromData ? articleTitle(artFromData, locale) : (fileName.replace(/\.docx$/i, '') || headerTitle);
+          container.innerHTML = `<div class=\"helper\">${locStr('doc_unable', locale)}<a class=\"link\" href=\"${dl}\">${aTitle}</a></div>`;
         });
     </script>
   </body>

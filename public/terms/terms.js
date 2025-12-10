@@ -14,7 +14,27 @@ function isIOSHost() {
   try { return new URL(window.location.href).searchParams.get('ios') === '1'; } catch(_) { return false; }
 }
 
-function getLangFolder(lang) { return lang === 'zh' ? 'zh-Hans' : 'en'; }
+const SupportedLocales = ['en','zh-Hans','zh-Hant','ja','ko','th','id','es','pt','ms','vi','ar'];
+function normalizeLocale(sys) {
+  const s = (sys || 'en').toLowerCase();
+  if (s.startsWith('zh')) { if (s.includes('hant') || s.includes('tw') || s.includes('hk')) return 'zh-Hant'; return 'zh-Hans'; }
+  if (s.startsWith('en')) return 'en'; if (s.startsWith('ja')) return 'ja'; if (s.startsWith('ko')) return 'ko'; if (s.startsWith('th')) return 'th'; if (s.startsWith('id')) return 'id'; if (s.startsWith('es')) return 'es'; if (s.startsWith('pt')) return 'pt'; if (s.startsWith('ms') || s.startsWith('ml')) return 'ms'; if (s.startsWith('vi')) return 'vi'; if (s.startsWith('ar')) return 'ar';
+  return 'en';
+}
+function detectLocale() {
+  try {
+    const url = new URL(window.location.href);
+    const qp = url.searchParams.get('locale');
+    const raw = (qp || '').trim();
+    const norm = raw ? normalizeLocale(raw) : '';
+    if (norm) { try { localStorage.setItem('locale', norm);} catch(_){} return norm; }
+    const stored = localStorage.getItem('locale');
+    if (stored) return normalizeLocale(stored);
+  } catch(_){ }
+  return normalizeLocale(navigator.language || 'en');
+}
+
+function getLangFolder() { const loc = detectLocale(); return loc; }
 
 function getTermsBase() { return '/public/terms'; }
 
@@ -29,9 +49,12 @@ function renderLangToggle(container, lang, topic) {
   div.addEventListener('click', function(e){
     const t = e.target; if (t.tagName.toLowerCase() !== 'a') return;
     const next = t.getAttribute('data-lang'); if (!next) return;
-    try { localStorage.setItem('lang', next); } catch(_){}
+    try { localStorage.setItem('lang', next); } catch(_){ }
     const u = new URL(window.location.href);
     u.searchParams.set('lang', next);
+    const locale = next==='zh' ? 'zh-Hans' : 'en';
+    try { localStorage.setItem('locale', locale); } catch(_){}
+    u.searchParams.set('locale', locale);
     if (topic) u.searchParams.set('topic', topic);
     window.location.href = u.toString();
   });

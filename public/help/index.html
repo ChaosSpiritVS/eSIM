@@ -4,9 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>帮助中心</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="data.js"></script>
-    <script src="help.js"></script>
+    <link rel="stylesheet" href="styles.css?v=20251210">
+    <script src="data.js?v=20251210"></script>
+    <script src="help.js?v=20251210"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
   </head>
   <body>
     <div class="screen">
@@ -16,30 +17,35 @@
       </div>
     </div>
     <script>
+      syncUrlWithStoredLocale();
       const lang = detectLang();
-      document.documentElement.lang = lang==='zh' ? 'zh-Hans' : 'en';
-      renderHeader(document.getElementById('nav'), lang==='zh'?'帮助中心':'Help Center', lang);
+      const locale = detectLocale();
+      document.documentElement.lang = locale;
+      const title = locStr('help_center', locale);
+      renderHeader(document.getElementById('nav'), title, lang);
       const bl = document.getElementById('backLabel'); if (bl) bl.style.display = 'none';
       const bk = document.getElementById('back'); if (bk) bk.style.display = 'none';
       const cats = HelpData.categories;
-      const arts = HelpData.articles;
       const catsEl = document.getElementById('cats');
       renderLangToggle(document.querySelector('.content'), lang);
-      function renderGrid() {
+      function renderGridDynamic(catNames) {
         catsEl.innerHTML = '';
         const grid = document.createElement('div'); grid.className = 'grid';
-        cats.forEach(c=>{
+        catNames.forEach(cn=>{
           const a = document.createElement('a'); a.className = 'tile';
-          a.href = `category.html?cat=${c.id}&lang=${lang}${isIOSHost()? '&ios=1':''}`;
-          const emoji = document.createElement('div'); emoji.className='emoji'; emoji.textContent = c.icon || '❓';
-          const title = document.createElement('div'); title.className='title'; title.textContent = t(c, lang);
+          a.href = `category.html?cat=${encodeURIComponent(cn)}&lang=${lang}&locale=${locale}${isIOSHost()? '&ios=1':''}`;
+          const emoji = document.createElement('div'); emoji.className='emoji'; emoji.textContent = '📘';
+          const title = document.createElement('div'); title.className='title'; title.textContent = localizedCategoryDisplayName(cn, locale);
           a.appendChild(emoji); a.appendChild(title);
           grid.appendChild(a);
         });
         catsEl.appendChild(grid);
       }
       renderSearch(document.querySelector('.content'), lang);
-      renderGrid();
+      listCategories().then(renderGridDynamic).catch(()=>{
+        const fallback = (cats || []).map(c=> categoryTitle(c, locale));
+        renderGridDynamic(fallback);
+      });
     </script>
   </body>
 </html>

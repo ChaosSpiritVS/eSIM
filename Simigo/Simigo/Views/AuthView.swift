@@ -314,8 +314,8 @@ struct AuthView: View {
                 marketingOptIn: pendingVerifyMarketingOptIn
             ))
         }
-        .sheet(isPresented: $showTermsSheet) { UIKitNavHost(root: TermsOfServiceView(showCancel: true)) }
-        .sheet(isPresented: $showPrivacySheet) { UIKitNavHost(root: PrivacyPolicyView(showCancel: true)) }
+        .sheet(isPresented: $showTermsSheet) { UIKitNavHost(root: TermsDocPage(topic: "使用条款", showClose: true)) }
+        .sheet(isPresented: $showPrivacySheet) { UIKitNavHost(root: TermsDocPage(topic: "隐私政策", showClose: true)) }
     }
 }
 

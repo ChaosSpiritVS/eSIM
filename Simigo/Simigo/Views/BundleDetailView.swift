@@ -166,7 +166,7 @@ struct BundleDetailView: View {
             }
             .padding()
         }
-        .sheet(isPresented: $showHelpSheet) { UIKitNavHost(root: HelpCenterView(showClose: true)) }
+        .fullScreenCover(isPresented: $showHelpSheet) { UIKitNavHost(root: HelpCenterView(showClose: true)) }
         
         
         
