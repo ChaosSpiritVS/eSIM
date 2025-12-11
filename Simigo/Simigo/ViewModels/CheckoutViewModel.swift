@@ -59,6 +59,37 @@ final class CheckoutViewModel: ObservableObject {
         error = nil
         Task {
             do {
+                if (auth.currentUser?.kycStatus?.lowercased() ?? "") != "verified" {
+                    struct KycStartDTO: Decodable { let provider: String?; let sessionUrl: String? }
+                    struct Empty: Encodable {}
+                    let service = NetworkService()
+                    do {
+                        let dto: KycStartDTO = try await service.post("/kyc/start", body: Empty())
+                        if let u = dto.sessionUrl, let url = URL(string: u) { _ = await UIApplication.shared.open(url) }
+                        // 轮询 /me，等待验证完成（最长 30 秒）
+                        let repo = HTTPUserRepository()
+                        let deadline = Date().addingTimeInterval(30)
+                        while Date() < deadline {
+                            try await Task.sleep(nanoseconds: 2_000_000_000)
+                            do {
+                                let me = try await repo.getMe()
+                                self.auth.currentUser = me
+                                if (me.kycStatus?.lowercased() ?? "") == "verified" { break }
+                            } catch {
+                                // ignore transient failures
+                            }
+                        }
+                        if (self.auth.currentUser?.kycStatus?.lowercased() ?? "") != "verified" {
+                            self.error = loc("需要完成身份验证")
+                            isPlacingOrder = false
+                            return
+                        }
+                    } catch {
+                        self.error = error.localizedDescription
+                        isPlacingOrder = false
+                        return
+                    }
+                }
                 await ensureSupportedSelection()
                 if let existing = existingOrder {
                     var current = existing
@@ -164,7 +195,33 @@ final class CheckoutViewModel: ObservableObject {
                 } else {
                     guard let bundle = bundle else { throw NSError(domain: "checkout", code: -1, userInfo: [NSLocalizedDescriptionKey: loc("缺少套餐信息")]) }
                     guard let method = selectedPaymentMethod else { throw NSError(domain: "checkout", code: -2, userInfo: [NSLocalizedDescriptionKey: loc("请选择付款方式")]) }
-                    var created = try await repository.createOrder(bundle: bundle, paymentMethod: method)
+                    var created: Order
+                    do {
+                        created = try await repository.createOrder(bundle: bundle, paymentMethod: method)
+                    } catch {
+                        if let ne = error as? NetworkError {
+                            switch ne {
+                            case .server(let code, _):
+                                if code == 403 {
+                                    struct KycStartDTO: Decodable { let provider: String?; let sessionUrl: String? }
+                                    struct Empty: Encodable {}
+                                    let service = NetworkService()
+                                    do {
+                                        let dto: KycStartDTO = try await service.post("/kyc/start", body: Empty())
+                                        if let u = dto.sessionUrl, let url = URL(string: u) { _ = await UIApplication.shared.open(url) }
+                                        self.error = loc("需要完成身份验证")
+                                    } catch {
+                                        self.error = error.localizedDescription
+                                    }
+                                    isPlacingOrder = false
+                                    return
+                                }
+                            default:
+                                break
+                            }
+                        }
+                        throw error
+                    }
                     if let processor = processorFactory.processor(for: method) {
                         let status: OrderStatus
                         do {

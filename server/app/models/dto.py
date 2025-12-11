@@ -56,6 +56,10 @@ class UserDTO(BaseModel):
     language: Optional[str] = None
     currency: Optional[str] = None
     country: Optional[str] = None
+    kycStatus: Optional[str] = None
+    kycProvider: Optional[str] = None
+    kycReference: Optional[str] = None
+    kycVerifiedAt: Optional[datetime] = None
 
 
 class RegisterBody(BaseModel):

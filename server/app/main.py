@@ -11,6 +11,7 @@ from fastapi.middleware.gzip import GZipMiddleware
 import hashlib
 from fastapi.responses import JSONResponse, HTMLResponse
 from fastapi.encoders import jsonable_encoder
+import httpx
 
 from .models.dto import (
     OrderDTO,
@@ -423,7 +424,11 @@ async def handle_generic_error(request: Request, exc: Exception):
 @app.post("/orders", response_model=OrderDTO)
 async def create_order(body: CreateOrderBody, current_user: ORMUser = Depends(get_current_user)):
     try:
+        if getattr(current_user, "kyc_status", None) != "verified":
+            raise HTTPException(status_code=403, detail="下单前需完成身份验证")
         return service.create_order(body, user_id=current_user.id)
+    except HTTPException:
+        raise
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
@@ -1778,6 +1783,10 @@ async def get_me(current_user: ORMUser = Depends(get_current_user)):
         language=current_user.language,
         currency=current_user.currency,
         country=current_user.country,
+        kycStatus=getattr(current_user, "kyc_status", None),
+        kycProvider=getattr(current_user, "kyc_provider", None),
+        kycReference=getattr(current_user, "kyc_reference", None),
+        kycVerifiedAt=getattr(current_user, "kyc_verified_at", None),
     )
 
 
@@ -1816,6 +1825,10 @@ async def update_me(body: UpdateProfileBody, current_user: ORMUser = Depends(get
             language=current_user.language,
             currency=current_user.currency,
             country=current_user.country,
+            kycStatus=getattr(current_user, "kyc_status", None),
+            kycProvider=getattr(current_user, "kyc_provider", None),
+            kycReference=getattr(current_user, "kyc_reference", None),
+            kycVerifiedAt=getattr(current_user, "kyc_verified_at", None),
         )
     finally:
         db.close()
@@ -2761,6 +2774,82 @@ async def payments_gsalary_auth_token(current_user: ORMUser = Depends(get_curren
         )
     finally:
         db.close()
+
+class KycStartDTO(BaseModel):
+    provider: str | None = None
+    sessionUrl: str | None = None
+
+class KycCompleteBody(BaseModel):
+    provider: str
+    reference: str | None = None
+
+@app.post("/kyc/start", response_model=KycStartDTO)
+async def kyc_start(current_user: ORMUser = Depends(get_current_user)):
+    db = _get_db()
+    try:
+        provider = os.getenv("KYC_PROVIDER", "veriff").strip().lower()
+        current_user.kyc_status = "pending"
+        current_user.kyc_provider = provider
+        db.add(current_user)
+        db.commit()
+        url = _kyc_create_session(provider, current_user)
+        return KycStartDTO(provider=provider, sessionUrl=url)
+    finally:
+        db.close()
+
+@app.post("/kyc/complete", response_model=SuccessDTO)
+async def kyc_complete(body: KycCompleteBody, current_user: ORMUser = Depends(get_current_user)):
+    db = _get_db()
+    try:
+        from datetime import datetime
+        current_user.kyc_status = "verified"
+        current_user.kyc_provider = body.provider
+        current_user.kyc_reference = (body.reference or current_user.kyc_reference)
+        current_user.kyc_verified_at = datetime.utcnow()
+        db.add(current_user)
+        db.commit()
+        return SuccessDTO(success=True)
+    finally:
+        db.close()
+
+class VeriffWebhookBody(BaseModel):
+    id: str | None = None
+    vendorData: str | None = None
+    status: str | None = None
+    decision: str | None = None
+    verification: dict | None = None
+
+@app.post("/webhooks/kyc/veriff")
+async def kyc_webhook_veriff(body: VeriffWebhookBody):
+    db = _get_db()
+    try:
+        uid = body.vendorData
+        if (not uid) and body.verification:
+            try:
+                uid = (body.verification or {}).get("vendorData")
+            except Exception:
+                uid = None
+        if not uid:
+            return Response(status_code=400)
+        user = db.query(ORMUser).filter(ORMUser.id == uid).first()
+        if not user:
+            return Response(status_code=404)
+        s = (body.status or "").lower()
+        d = (body.decision or "").lower()
+        if s in ("approved", "success") or d in ("approved", "success"):
+            from datetime import datetime
+            user.kyc_status = "verified"
+            user.kyc_provider = "veriff"
+            user.kyc_reference = body.id or user.kyc_reference
+            user.kyc_verified_at = datetime.utcnow()
+        elif s in ("declined", "rejected") or d in ("declined", "rejected"):
+            user.kyc_status = "rejected"
+            user.kyc_provider = "veriff"
+        db.add(user)
+        db.commit()
+        return Response(status_code=204)
+    finally:
+        db.close()
 # ===== Health & Status =====
 @app.get("/health")
 async def health(response: Response):
@@ -2838,3 +2927,44 @@ async def status_html():
     </html>
     """
     return HTMLResponse(content=html)
+def _build_fallback_session_url(user_id: str) -> str:
+    base = os.getenv("KYC_SESSION_BASE_URL", os.getenv("PUBLIC_BASE_URL", "")).rstrip("/")
+    return f"{base}/kyc/session/{user_id}" if base else f"https://example.com/kyc/session/{user_id}"
+
+def _kyc_create_session(provider: str, user: ORMUser) -> str:
+    p = (provider or "").strip().lower()
+    if p == "veriff":
+        base = os.getenv("VERIFF_API_URL", "https://api.veriff.com/v1").rstrip("/")
+        api_key = os.getenv("VERIFF_API_KEY", "")
+        if not api_key:
+            return _build_fallback_session_url(user.id)
+        payload = {
+            "verification": {
+                "vendorData": user.id,
+                "lang": (user.language or "en"),
+            }
+        }
+        cb = os.getenv("KYC_WEBHOOK_URL")
+        if cb:
+            payload["verification"]["callback"] = cb
+        try:
+            with httpx.Client(timeout=float(os.getenv("KYC_HTTP_TIMEOUT", "15"))) as client:
+                resp = client.post(f"{base}/sessions", json=payload, headers={
+                    "X-AUTH-TOKEN": api_key,
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                })
+            if 200 <= resp.status_code < 300:
+                try:
+                    data = resp.json()
+                    v = data.get("verification") or {}
+                    url = v.get("url") or v.get("hostedUrl") or data.get("url")
+                    if isinstance(url, str) and url:
+                        return url
+                except Exception:
+                    pass
+        except Exception:
+            pass
+        return _build_fallback_session_url(user.id)
+    # Default: fallback generic URL
+    return _build_fallback_session_url(user.id)

@@ -29,19 +29,19 @@ struct MockAuthRepository: AuthRepositoryProtocol {
 
     func login(email: String, password: String) async throws -> User {
         try await Task.sleep(nanoseconds: 200_000_000)
-        return User(id: UUID().uuidString, name: email.components(separatedBy: "@").first ?? "用户", lastName: nil, email: email, hasPassword: true)
+        return User(id: UUID().uuidString, name: email.components(separatedBy: "@").first ?? "用户", lastName: nil, email: email, hasPassword: true, kycStatus: nil, kycProvider: nil, kycReference: nil, kycVerifiedAt: nil)
     }
 
     func register(name: String, lastName: String?, email: String, password: String, marketingOptIn: Bool, verificationCode: String?) async throws -> User {
         try await Task.sleep(nanoseconds: 250_000_000)
-        return User(id: UUID().uuidString, name: name, lastName: lastName, email: email, hasPassword: true)
+        return User(id: UUID().uuidString, name: name, lastName: lastName, email: email, hasPassword: true, kycStatus: nil, kycProvider: nil, kycReference: nil, kycVerifiedAt: nil)
     }
 
     func loginApple(userId: String, identityToken: Data?) async throws -> User {
         try await Task.sleep(nanoseconds: 200_000_000)
         // 在开发模式下模拟 Apple 私有邮箱地址，便于端到端测试
         let relayEmail = makeRelayEmail(for: userId)
-        return User(id: userId, name: "Apple 用户", lastName: nil, email: relayEmail, hasPassword: false)
+        return User(id: userId, name: "Apple 用户", lastName: nil, email: relayEmail, hasPassword: false, kycStatus: nil, kycProvider: nil, kycReference: nil, kycVerifiedAt: nil)
     }
 
     func requestPasswordReset(email: String) async throws -> PasswordResetResult {
@@ -67,7 +67,17 @@ struct HTTPAuthRepository: AuthRepositoryProtocol {
     struct LoginBody: Encodable { let email: String; let password: String }
     struct RegisterBody: Encodable { let name: String; let lastName: String?; let email: String; let password: String; let marketingOptIn: Bool; let verificationCode: String? }
     struct AppleBody: Encodable { let userId: String; let identityToken: String? }
-    struct UserDTO: Decodable { let id: String; let name: String; let lastName: String?; let email: String?; let hasPassword: Bool }
+    struct UserDTO: Decodable {
+        let id: String
+        let name: String
+        let lastName: String?
+        let email: String?
+        let hasPassword: Bool
+        let kycStatus: String?
+        let kycProvider: String?
+        let kycReference: String?
+        let kycVerifiedAt: Date?
+    }
     struct AuthResponseDTO: Decodable { let user: UserDTO; let accessToken: String; let refreshToken: String }
     struct ResetBody: Encodable { let email: String }
     struct ResetDTO: Codable { let success: Bool?; let devToken: String? }
@@ -80,14 +90,14 @@ struct HTTPAuthRepository: AuthRepositoryProtocol {
         if AppConfig.isMock { return try await MockAuthRepository().login(email: email, password: password) }
         let dto: AuthResponseDTO = try await service.post("/auth/login", body: LoginBody(email: email, password: password))
         await tokenStore.setTokens(access: dto.accessToken, refresh: dto.refreshToken)
-        return User(id: dto.user.id, name: dto.user.name, lastName: dto.user.lastName, email: dto.user.email, hasPassword: dto.user.hasPassword)
+        return User(id: dto.user.id, name: dto.user.name, lastName: dto.user.lastName, email: dto.user.email, hasPassword: dto.user.hasPassword, kycStatus: dto.user.kycStatus, kycProvider: dto.user.kycProvider, kycReference: dto.user.kycReference, kycVerifiedAt: dto.user.kycVerifiedAt)
     }
 
     func register(name: String, lastName: String?, email: String, password: String, marketingOptIn: Bool, verificationCode: String?) async throws -> User {
         if AppConfig.isMock { return try await MockAuthRepository().register(name: name, lastName: lastName, email: email, password: password, marketingOptIn: marketingOptIn, verificationCode: verificationCode) }
         let dto: AuthResponseDTO = try await service.post("/auth/register", body: RegisterBody(name: name, lastName: lastName, email: email, password: password, marketingOptIn: marketingOptIn, verificationCode: verificationCode))
         await tokenStore.setTokens(access: dto.accessToken, refresh: dto.refreshToken)
-        return User(id: dto.user.id, name: dto.user.name, lastName: dto.user.lastName, email: dto.user.email, hasPassword: dto.user.hasPassword)
+        return User(id: dto.user.id, name: dto.user.name, lastName: dto.user.lastName, email: dto.user.email, hasPassword: dto.user.hasPassword, kycStatus: dto.user.kycStatus, kycProvider: dto.user.kycProvider, kycReference: dto.user.kycReference, kycVerifiedAt: dto.user.kycVerifiedAt)
     }
 
     func loginApple(userId: String, identityToken: Data?) async throws -> User {
@@ -95,7 +105,7 @@ struct HTTPAuthRepository: AuthRepositoryProtocol {
         let tokenString = identityToken.flatMap { String(data: $0, encoding: .utf8) }
         let dto: AuthResponseDTO = try await service.post("/auth/apple", body: AppleBody(userId: userId, identityToken: tokenString))
         await tokenStore.setTokens(access: dto.accessToken, refresh: dto.refreshToken)
-        return User(id: dto.user.id, name: dto.user.name, lastName: dto.user.lastName, email: dto.user.email, hasPassword: dto.user.hasPassword)
+        return User(id: dto.user.id, name: dto.user.name, lastName: dto.user.lastName, email: dto.user.email, hasPassword: dto.user.hasPassword, kycStatus: dto.user.kycStatus, kycProvider: dto.user.kycProvider, kycReference: dto.user.kycReference, kycVerifiedAt: dto.user.kycVerifiedAt)
     }
 
     func requestPasswordReset(email: String) async throws -> PasswordResetResult {

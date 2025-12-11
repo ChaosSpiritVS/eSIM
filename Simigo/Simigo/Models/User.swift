@@ -6,4 +6,8 @@ struct User: Identifiable, Codable, Hashable {
     let lastName: String?
     let email: String?
     let hasPassword: Bool
+    let kycStatus: String?
+    let kycProvider: String?
+    let kycReference: String?
+    let kycVerifiedAt: Date?
 }

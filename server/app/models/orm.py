@@ -38,6 +38,10 @@ class User(Base):
     language: Mapped[Optional[str]] = mapped_column(String(16), nullable=True)
     currency: Mapped[Optional[str]] = mapped_column(String(8), nullable=True)
     country: Mapped[Optional[str]] = mapped_column(String(2), nullable=True)
+    kyc_status: Mapped[Optional[str]] = mapped_column(String(16), nullable=True)
+    kyc_provider: Mapped[Optional[str]] = mapped_column(String(64), nullable=True)
+    kyc_reference: Mapped[Optional[str]] = mapped_column(String(64), nullable=True)
+    kyc_verified_at: Mapped[Optional[datetime]] = mapped_column(DateTime, nullable=True)
 
     sessions: Mapped[list[Session]] = relationship("Session", back_populates="user", cascade="all, delete-orphan")
     # 保留订单记录：移除 delete-orphan 级联，避免在删除用户时误删订单

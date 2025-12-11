@@ -11,24 +11,34 @@ protocol UserRepositoryProtocol {
 struct HTTPUserRepository: UserRepositoryProtocol {
     let service = NetworkService()
 
-    struct UserDTO: Decodable { let id: String; let name: String; let lastName: String?; let email: String?; let hasPassword: Bool }
+    struct UserDTO: Decodable {
+        let id: String
+        let name: String
+        let lastName: String?
+        let email: String?
+        let hasPassword: Bool
+        let kycStatus: String?
+        let kycProvider: String?
+        let kycReference: String?
+        let kycVerifiedAt: Date?
+    }
     struct SuccessDTO: Decodable { let success: Bool? }
 
     func getMe() async throws -> User {
         let dto: UserDTO = try await service.get("/me")
-        return User(id: dto.id, name: dto.name, lastName: dto.lastName, email: dto.email, hasPassword: dto.hasPassword)
+        return User(id: dto.id, name: dto.name, lastName: dto.lastName, email: dto.email, hasPassword: dto.hasPassword, kycStatus: dto.kycStatus, kycProvider: dto.kycProvider, kycReference: dto.kycReference, kycVerifiedAt: dto.kycVerifiedAt)
     }
 
     struct UpdateProfileBody: Encodable { let name: String?; let lastName: String? }
     func updateProfile(name: String?, lastName: String?) async throws -> User {
         let dto: UserDTO = try await service.put("/me", body: UpdateProfileBody(name: name, lastName: lastName))
-        return User(id: dto.id, name: dto.name, lastName: dto.lastName, email: dto.email, hasPassword: dto.hasPassword)
+        return User(id: dto.id, name: dto.name, lastName: dto.lastName, email: dto.email, hasPassword: dto.hasPassword, kycStatus: dto.kycStatus, kycProvider: dto.kycProvider, kycReference: dto.kycReference, kycVerifiedAt: dto.kycVerifiedAt)
     }
 
     struct ChangeEmailBody: Encodable { let email: String; let password: String; let verificationCode: String? }
     func changeEmail(email: String, password: String, verificationCode: String?) async throws -> User {
         let dto: UserDTO = try await service.put("/me/email", body: ChangeEmailBody(email: email, password: password, verificationCode: verificationCode))
-        return User(id: dto.id, name: dto.name, lastName: dto.lastName, email: dto.email, hasPassword: dto.hasPassword)
+        return User(id: dto.id, name: dto.name, lastName: dto.lastName, email: dto.email, hasPassword: dto.hasPassword, kycStatus: dto.kycStatus, kycProvider: dto.kycProvider, kycReference: dto.kycReference, kycVerifiedAt: dto.kycVerifiedAt)
     }
 
     struct UpdatePasswordBody: Encodable { let currentPassword: String?; let newPassword: String }
@@ -67,7 +77,11 @@ struct MockUserRepository: UserRepositoryProtocol {
             name: name ?? u.name,
             lastName: lastName ?? u.lastName,
             email: u.email,
-            hasPassword: u.hasPassword
+            hasPassword: u.hasPassword,
+            kycStatus: u.kycStatus,
+            kycProvider: u.kycProvider,
+            kycReference: u.kycReference,
+            kycVerifiedAt: u.kycVerifiedAt
         )
         return updated
     }
@@ -86,7 +100,11 @@ struct MockUserRepository: UserRepositoryProtocol {
             name: u.name,
             lastName: u.lastName,
             email: email,
-            hasPassword: u.hasPassword
+            hasPassword: u.hasPassword,
+            kycStatus: u.kycStatus,
+            kycProvider: u.kycProvider,
+            kycReference: u.kycReference,
+            kycVerifiedAt: u.kycVerifiedAt
         )
         return updated
     }
@@ -97,7 +115,7 @@ struct MockUserRepository: UserRepositoryProtocol {
             throw NetworkError.server(401, "未登录")
         }
         // 简化处理：总是成功，并将 hasPassword 置为 true
-        _ = User(id: u.id, name: u.name, lastName: u.lastName, email: u.email, hasPassword: true)
+        _ = User(id: u.id, name: u.name, lastName: u.lastName, email: u.email, hasPassword: true, kycStatus: u.kycStatus, kycProvider: u.kycProvider, kycReference: u.kycReference, kycVerifiedAt: u.kycVerifiedAt)
         return true
     }
 

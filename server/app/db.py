@@ -51,6 +51,7 @@ def init_db():
     Base.metadata.create_all(bind=engine)
     _drop_operator_i18n_tables()
     _ensure_user_profile_columns()
+    _ensure_user_kyc_columns()
     _ensure_order_reference_email_columns()
     _seed_settings()
     _seed_i18n_catalog_from_files()
@@ -85,6 +86,30 @@ def _ensure_user_profile_columns():
                 conn.execute(text(f"ALTER TABLE users ADD COLUMN {name} {type_sql}"))
             except Exception:
                 # Ignore if cannot alter; developer can migrate manually
+                pass
+
+def _ensure_user_kyc_columns():
+    try:
+        inspector = inspect(engine)
+        cols = {c["name"] for c in inspector.get_columns("users")}
+    except Exception:
+        return
+    to_add: list[tuple[str, str]] = []
+    if "kyc_status" not in cols:
+        to_add.append(("kyc_status", "VARCHAR(16)"))
+    if "kyc_provider" not in cols:
+        to_add.append(("kyc_provider", "VARCHAR(64)"))
+    if "kyc_reference" not in cols:
+        to_add.append(("kyc_reference", "VARCHAR(64)"))
+    if "kyc_verified_at" not in cols:
+        to_add.append(("kyc_verified_at", "TIMESTAMP"))
+    if not to_add:
+        return
+    with engine.begin() as conn:
+        for name, type_sql in to_add:
+            try:
+                conn.execute(text(f"ALTER TABLE users ADD COLUMN {name} {type_sql}"))
+            except Exception:
                 pass
 
 def _ensure_order_reference_email_columns():
@@ -578,4 +603,3 @@ def _seed_i18n_catalog_from_files():
     except Exception:
         # Best-effort only
         pass
-

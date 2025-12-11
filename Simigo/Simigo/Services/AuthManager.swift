@@ -43,10 +43,20 @@ final class AuthManager: ObservableObject {
         let token = await TokenStore.shared.getAccessToken()
         guard token != nil else { isRestoring = false; Telemetry.shared.logEvent("auth_restore_skip", parameters: ["has_token": false]); return }
         let service = NetworkService()
-        struct MeDTO: Decodable { let id: String; let name: String; let lastName: String?; let email: String?; let hasPassword: Bool }
+        struct MeDTO: Decodable {
+            let id: String
+            let name: String
+            let lastName: String?
+            let email: String?
+            let hasPassword: Bool
+            let kycStatus: String?
+            let kycProvider: String?
+            let kycReference: String?
+            let kycVerifiedAt: Date?
+        }
         do {
             let me: MeDTO = try await service.get("/me")
-            currentUser = User(id: me.id, name: me.name, lastName: me.lastName, email: me.email, hasPassword: me.hasPassword)
+            currentUser = User(id: me.id, name: me.name, lastName: me.lastName, email: me.email, hasPassword: me.hasPassword, kycStatus: me.kycStatus, kycProvider: me.kycProvider, kycReference: me.kycReference, kycVerifiedAt: me.kycVerifiedAt)
             restoreHint = nil
             Telemetry.shared.logEvent("auth_restore_success", parameters: [
                 "user_id": me.id
