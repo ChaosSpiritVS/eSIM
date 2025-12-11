@@ -70,12 +70,20 @@ struct HTTPUpstreamCatalogRepository: UpstreamCatalogRepositoryProtocol {
         let voiceAmount: Int?
         let resellerRetailPrice: Double
         let bundlePriceFinal: Double
+        let status: Int?
+        let allocateStatus: Int?
+        let bundleSubscribePrice: Double?
+        let bundleSalePrice: Double?
+        let customSalePrice: Double?
+        let bundlePriceActual: Double?
         private enum CodingKeys: String, CodingKey {
             case bundleCategory, bundleCode, bundleMarketingName, bundleName, bundleTag
             case countryCode, countryName, dataUnit, gprsLimit, isActive
             case regionCode, regionName, serviceType, smsAmount, supportTopup
             case supportsCallsSms, unlimited, validity, voiceAmount
             case resellerRetailPrice, bundlePriceFinal
+            case status, allocateStatus
+            case bundleSubscribePrice, bundleSalePrice, customSalePrice, bundlePriceActual
         }
         init(
             bundleCategory: String,
@@ -98,7 +106,13 @@ struct HTTPUpstreamCatalogRepository: UpstreamCatalogRepositoryProtocol {
             validity: Int,
             voiceAmount: Int?,
             resellerRetailPrice: Double,
-            bundlePriceFinal: Double
+            bundlePriceFinal: Double,
+            status: Int? = nil,
+            allocateStatus: Int? = nil,
+            bundleSubscribePrice: Double? = nil,
+            bundleSalePrice: Double? = nil,
+            customSalePrice: Double? = nil,
+            bundlePriceActual: Double? = nil
         ) {
             self.bundleCategory = bundleCategory
             self.bundleCode = bundleCode
@@ -121,22 +135,33 @@ struct HTTPUpstreamCatalogRepository: UpstreamCatalogRepositoryProtocol {
             self.voiceAmount = voiceAmount
             self.resellerRetailPrice = resellerRetailPrice
             self.bundlePriceFinal = bundlePriceFinal
+            self.status = status
+            self.allocateStatus = allocateStatus
+            self.bundleSubscribePrice = bundleSubscribePrice
+            self.bundleSalePrice = bundleSalePrice
+            self.customSalePrice = customSalePrice
+            self.bundlePriceActual = bundlePriceActual
         }
         init(from decoder: Decoder) throws {
             let c = try decoder.container(keyedBy: CodingKeys.self)
-            func decodeDouble(for key: CodingKeys) throws -> Double {
+            func decodeDoubleOrZero(for key: CodingKeys) -> Double {
                 if let v = try? c.decode(Double.self, forKey: key) { return v }
                 if let s = try? c.decode(String.self, forKey: key), let v = Double(s) { return v }
-                throw DecodingError.typeMismatch(Double.self, .init(codingPath: c.codingPath, debugDescription: "Expected Double for \(key.rawValue)"))
+                return 0.0
             }
-            func decodeInt(for key: CodingKeys) throws -> Int {
+            func decodeIntOrZero(for key: CodingKeys) -> Int {
                 if let v = try? c.decode(Int.self, forKey: key) { return v }
                 if let s = try? c.decode(String.self, forKey: key), let v = Int(s) { return v }
-                throw DecodingError.typeMismatch(Int.self, .init(codingPath: c.codingPath, debugDescription: "Expected Int for \(key.rawValue)"))
+                return 0
             }
             func decodeOptionalInt(for key: CodingKeys) -> Int? {
                 if let v = try? c.decode(Int.self, forKey: key) { return v }
                 if let s = try? c.decode(String.self, forKey: key), let v = Int(s) { return v }
+                return nil
+            }
+            func decodeOptionalDouble(for key: CodingKeys) -> Double? {
+                if let v = try? c.decode(Double.self, forKey: key) { return v }
+                if let s = try? c.decode(String.self, forKey: key), let v = Double(s) { return v }
                 return nil
             }
             self.bundleCategory = (try? c.decode(String.self, forKey: .bundleCategory)) ?? ""
@@ -147,19 +172,25 @@ struct HTTPUpstreamCatalogRepository: UpstreamCatalogRepositoryProtocol {
             self.countryCode = (try? c.decode([String].self, forKey: .countryCode)) ?? []
             self.countryName = (try? c.decode([String].self, forKey: .countryName)) ?? []
             self.dataUnit = (try? c.decode(String.self, forKey: .dataUnit)) ?? ""
-            self.gprsLimit = try decodeDouble(for: .gprsLimit)
+            self.gprsLimit = decodeDoubleOrZero(for: .gprsLimit)
             self.isActive = (try? c.decode(Bool.self, forKey: .isActive)) ?? false
             self.regionCode = try? c.decode(String.self, forKey: .regionCode)
             self.regionName = try? c.decode(String.self, forKey: .regionName)
             self.serviceType = (try? c.decode(String.self, forKey: .serviceType)) ?? ""
-            self.smsAmount = try decodeInt(for: .smsAmount)
+            self.smsAmount = decodeIntOrZero(for: .smsAmount)
             self.supportTopup = (try? c.decode(Bool.self, forKey: .supportTopup)) ?? false
             self.supportsCallsSms = (try? c.decode(Bool.self, forKey: .supportsCallsSms)) ?? false
             self.unlimited = (try? c.decode(Bool.self, forKey: .unlimited)) ?? false
-            self.validity = try decodeInt(for: .validity)
+            self.validity = decodeIntOrZero(for: .validity)
             self.voiceAmount = decodeOptionalInt(for: .voiceAmount)
-            self.resellerRetailPrice = try decodeDouble(for: .resellerRetailPrice)
-            self.bundlePriceFinal = try decodeDouble(for: .bundlePriceFinal)
+            self.resellerRetailPrice = decodeDoubleOrZero(for: .resellerRetailPrice)
+            self.bundlePriceFinal = decodeDoubleOrZero(for: .bundlePriceFinal)
+            self.status = (try? c.decode(Int.self, forKey: .status)) ?? ((try? c.decode(String.self, forKey: .status)).flatMap { Int($0) })
+            self.allocateStatus = (try? c.decode(Int.self, forKey: .allocateStatus)) ?? ((try? c.decode(String.self, forKey: .allocateStatus)).flatMap { Int($0) })
+            self.bundleSubscribePrice = decodeOptionalDouble(for: .bundleSubscribePrice)
+            self.bundleSalePrice = decodeOptionalDouble(for: .bundleSalePrice)
+            self.customSalePrice = decodeOptionalDouble(for: .customSalePrice)
+            self.bundlePriceActual = decodeOptionalDouble(for: .bundlePriceActual)
         }
     }
 
@@ -535,11 +566,19 @@ struct HTTPUpstreamCatalogRepository: UpstreamCatalogRepositoryProtocol {
                     if u.isEmpty { return String(format: "%.0f", v) }
                     return String(format: "%g %@", v, u)
                 }()
+                let priceResolved: Double = {
+                    if let p = dto.bundlePriceActual, p > 0 { return p }
+                    if let p = dto.bundleSalePrice, p > 0 { return p }
+                    if let p = dto.customSalePrice, p > 0 { return p }
+                    if dto.bundlePriceFinal > 0 { return dto.bundlePriceFinal }
+                    if dto.resellerRetailPrice > 0 { return dto.resellerRetailPrice }
+                    return 0.0
+                }()
                 return ESIMBundle(
                     id: dto.bundleCode,
                     name: name,
                     countryCode: code2,
-                    price: Decimal(dto.bundlePriceFinal),
+                    price: Decimal(priceResolved),
                     currency: "GBP",
                     dataAmount: amountStr,
                     validityDays: dto.validity,
